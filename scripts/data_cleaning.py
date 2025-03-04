@@ -67,7 +67,7 @@ def save_data(df: pd.DataFrame, output_path: str):
     Guarda el DataFrame en formato CSV (puedes usar Excel también si deseas).
     """
     df.to_csv(output_path, index=False)
-
+         
 if __name__ == "__main__":
 
     input_file = "../data/raw/walmart Retail Data.xlsx"
@@ -87,5 +87,5 @@ if __name__ == "__main__":
     print("Columnas reordenadas:", df_clean.columns)
 
     # 4. Guardado
-    save_data(df_clean, output_file)
+    save_data(df_clean,  output_file)
     print(f"Dataset limpio guardado en: {output_file}")
