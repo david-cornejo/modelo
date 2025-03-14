@@ -43,7 +43,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
         print(outliers_sales[["Sales", "z_sales"]].head(10))
 
         # Decide si excluyes outliers
-        # df = df[abs(df["z_sales"]) <= 3]
+        #df = df[abs(df["z_sales"]) <= 3]
 
         # Limpia la columna auxiliar
         df.drop(columns="z_sales", inplace=True)
@@ -71,7 +71,7 @@ def save_data(df: pd.DataFrame, output_path: str):
 if __name__ == "__main__":
 
     input_file = "../data/raw/walmart Retail Data.xlsx"
-    output_file = "../data/processed/walmart_cleaned.csv"
+    output_file = "../data/processed/walmart_cleaned_w_out.csv"
 
     # 1. Carga
     df_raw = load_data(input_file)

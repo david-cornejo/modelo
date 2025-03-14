@@ -16,9 +16,11 @@ West,Utah,2012-01-03,2012,1,3,Corporate,Technology,896.49
 South,Louisiana,2012-01-03,2012,1,3,Corporate,Technology,522.49
 Central,Nebraska,2012-01-03,2012,1,3,Corporate,Technology,754.6555
 South,Louisiana,2012-01-03,2012,1,3,Corporate,Office Supplies,123.76
+South,Louisiana,2012-01-03,2012,1,3,Corporate,Technology,28359.4
 Central,Texas,2012-01-04,2012,1,4,Home Office,Furniture,1039.56
 Central,Texas,2012-01-04,2012,1,4,Corporate,Office Supplies,63.34
 Central,Texas,2012-01-04,2012,1,4,Corporate,Office Supplies,151.35
+Central,Texas,2012-01-05,2012,1,5,Consumer,Furniture,12635.75
 Central,Texas,2012-01-05,2012,1,5,Consumer,Technology,2750.107
 Central,Iowa,2012-01-05,2012,1,5,Corporate,Furniture,1244.19
 Central,Texas,2012-01-05,2012,1,5,Consumer,Furniture,240.3
@@ -34,6 +36,7 @@ Central,Illinois,2012-01-05,2012,1,5,Home Office,Technology,700.73
 Central,Oklahoma,2012-01-05,2012,1,5,Small Business,Technology,4913.7
 Central,Iowa,2012-01-05,2012,1,5,Consumer,Technology,2021.147
 East,Connecticut,2012-01-06,2012,1,6,Small Business,Furniture,2357.45
+Central,Illinois,2012-01-06,2012,1,6,Home Office,Furniture,26133.39
 South,Virginia,2012-01-06,2012,1,6,Consumer,Office Supplies,37.06
 South,South Carolina,2012-01-06,2012,1,6,Consumer,Technology,61.7185
 South,Virginia,2012-01-06,2012,1,6,Consumer,Technology,46.86
@@ -48,6 +51,7 @@ South,Virginia,2012-01-06,2012,1,6,Corporate,Office Supplies,159.05
 West,Nevada,2012-01-07,2012,1,7,Consumer,Office Supplies,737.25
 East,New York,2012-01-07,2012,1,7,Home Office,Office Supplies,10.58
 East,New York,2012-01-07,2012,1,7,Home Office,Technology,2119.67
+East,New York,2012-01-07,2012,1,7,Home Office,Technology,45923.76
 Central,Oklahoma,2012-01-07,2012,1,7,Small Business,Technology,607.597
 Central,Texas,2012-01-07,2012,1,7,Consumer,Office Supplies,610.65
 Central,Texas,2012-01-07,2012,1,7,Consumer,Technology,158.04
@@ -56,6 +60,7 @@ East,Maine,2012-01-07,2012,1,7,Corporate,Office Supplies,11.57
 East,Ohio,2012-01-08,2012,1,8,Home Office,Furniture,75.77
 East,Ohio,2012-01-08,2012,1,8,Home Office,Office Supplies,64.29
 South,South Carolina,2012-01-08,2012,1,8,Home Office,Office Supplies,324.28
+West,Washington,2012-01-08,2012,1,8,Corporate,Office Supplies,21752.01
 West,California,2012-01-09,2012,1,9,Small Business,Office Supplies,145.19
 Central,Oklahoma,2012-01-09,2012,1,9,Home Office,Office Supplies,45.87
 West,California,2012-01-09,2012,1,9,Small Business,Office Supplies,68.5
@@ -75,6 +80,7 @@ Central,Michigan,2012-01-10,2012,1,10,Consumer,Office Supplies,571.17
 Central,Minnesota,2012-01-10,2012,1,10,Corporate,Office Supplies,4906.85
 Central,MO,2012-01-10,2012,1,10,Home Office,Technology,1307.35
 South,Kentucky,2012-01-10,2012,1,10,Corporate,Furniture,1009.42
+South,Kentucky,2012-01-10,2012,1,10,Corporate,Technology,15137.11
 East,New Jersey,2012-01-11,2012,1,11,Small Business,Office Supplies,216.87
 East,MA,2012-01-11,2012,1,11,Small Business,Technology,4531.34
 East,MA,2012-01-11,2012,1,11,Small Business,Furniture,574.5
@@ -86,6 +92,7 @@ South,Kentucky,2012-01-12,2012,1,12,Corporate,Office Supplies,1030.09
 West,Colorado,2012-01-12,2012,1,12,Home Office,Furniture,4080.3
 East,Maryland,2012-01-12,2012,1,12,Consumer,Office Supplies,58.48
 South,Kentucky,2012-01-12,2012,1,12,Consumer,Technology,401.14
+East,Maryland,2012-01-12,2012,1,12,Consumer,Furniture,15963.09
 Central,MO,2012-01-12,2012,1,12,Corporate,Office Supplies,1603.27
 West,Colorado,2012-01-12,2012,1,12,Home Office,Office Supplies,260.79
 West,Colorado,2012-01-12,2012,1,12,Home Office,Office Supplies,90.35
@@ -169,6 +176,7 @@ South,Tennessee,2012-01-22,2012,1,22,Home Office,Technology,187.37
 South,Alabama,2012-01-22,2012,1,22,Home Office,Technology,4584.73
 East,Ohio,2012-01-22,2012,1,22,Corporate,Office Supplies,1160.59
 South,Florida,2012-01-22,2012,1,22,Small Business,Office Supplies,134.83
+Central,Minnesota,2012-01-22,2012,1,22,Home Office,Furniture,28180.08
 Central,Kansas,2012-01-23,2012,1,23,Consumer,Office Supplies,136.41
 South,Virginia,2012-01-23,2012,1,23,Consumer,Office Supplies,1312.65
 West,Washington,2012-01-23,2012,1,23,Small Business,Technology,1383.2
@@ -201,8 +209,10 @@ West,Arizona,2012-01-28,2012,1,28,Corporate,Office Supplies,179.99
 West,Arizona,2012-01-28,2012,1,28,Corporate,Office Supplies,190.45
 Central,Nebraska,2012-01-29,2012,1,29,Corporate,Furniture,1042.63
 South,Virginia,2012-01-29,2012,1,29,Consumer,Technology,1122.6375
+South,Virginia,2012-01-29,2012,1,29,Corporate,Office Supplies,16147.61
 Central,Illinois,2012-01-30,2012,1,30,Corporate,Technology,361.65
 Central,Illinois,2012-01-30,2012,1,30,Corporate,Technology,1285.37
+Central,Illinois,2012-01-30,2012,1,30,Consumer,Technology,16066.85
 Central,Minnesota,2012-01-31,2012,1,31,Home Office,Furniture,6244.18
 Central,Minnesota,2012-01-31,2012,1,31,Home Office,Office Supplies,239.75
 East,West Virginia,2012-01-31,2012,1,31,Corporate,Furniture,9141.64
@@ -241,6 +251,7 @@ West,California,2012-02-04,2012,2,4,Home Office,Office Supplies,7.01
 Central,Indiana,2012-02-04,2012,2,4,Corporate,Technology,1441.57
 South,Florida,2012-02-05,2012,2,5,Home Office,Office Supplies,221.33
 Central,Iowa,2012-02-05,2012,2,5,Small Business,Office Supplies,6133.18
+West,California,2012-02-05,2012,2,5,Small Business,Technology,15260.78
 West,Arizona,2012-02-05,2012,2,5,Corporate,Furniture,150.24
 West,California,2012-02-05,2012,2,5,Small Business,Office Supplies,540.41
 Central,Iowa,2012-02-05,2012,2,5,Small Business,Office Supplies,139.86
@@ -270,6 +281,7 @@ Central,Texas,2012-02-11,2012,2,11,Consumer,Office Supplies,1002.73
 South,North Carolina,2012-02-11,2012,2,11,Consumer,Technology,8475.962
 South,North Carolina,2012-02-11,2012,2,11,Consumer,Technology,3015.494
 South,Florida,2012-02-11,2012,2,11,Corporate,Furniture,9757.48
+West,California,2012-02-11,2012,2,11,Consumer,Technology,13253.93
 Central,Michigan,2012-02-12,2012,2,12,Consumer,Office Supplies,206.54
 Central,Texas,2012-02-12,2012,2,12,Small Business,Office Supplies,124.84
 Central,Wisconsin,2012-02-12,2012,2,12,Home Office,Office Supplies,19.32
@@ -291,6 +303,7 @@ West,California,2012-02-14,2012,2,14,Consumer,Furniture,6686.344
 South,North Carolina,2012-02-14,2012,2,14,Consumer,Office Supplies,1003.43
 West,California,2012-02-14,2012,2,14,Home Office,Furniture,2651.21
 Central,Oklahoma,2012-02-14,2012,2,14,Home Office,Furniture,256.77
+Central,Indiana,2012-02-15,2012,2,15,Consumer,Furniture,18824.42
 West,California,2012-02-15,2012,2,15,Consumer,Furniture,2548.3
 Central,Indiana,2012-02-15,2012,2,15,Consumer,Office Supplies,93.05
 Central,Indiana,2012-02-15,2012,2,15,Consumer,Office Supplies,154.13
@@ -326,6 +339,7 @@ Central,Illinois,2012-02-20,2012,2,20,Small Business,Office Supplies,241.1
 Central,Illinois,2012-02-21,2012,2,21,Home Office,Office Supplies,199.39
 East,MA,2012-02-21,2012,2,21,Small Business,Technology,901.81
 Central,Illinois,2012-02-21,2012,2,21,Home Office,Furniture,2770.35
+West,Colorado,2012-02-22,2012,2,22,Corporate,Technology,19100.45
 West,Oregon,2012-02-22,2012,2,22,Corporate,Office Supplies,1633.37
 Central,Kansas,2012-02-22,2012,2,22,Consumer,Technology,132.36
 Central,Kansas,2012-02-22,2012,2,22,Consumer,Furniture,1498.46
@@ -333,6 +347,7 @@ South,Kentucky,2012-02-23,2012,2,23,Corporate,Office Supplies,467.4
 Central,Texas,2012-02-23,2012,2,23,Corporate,Office Supplies,1025.02
 Central,Minnesota,2012-02-23,2012,2,23,Home Office,Office Supplies,834.81
 Central,Texas,2012-02-23,2012,2,23,Corporate,Furniture,240.87
+Central,Wisconsin,2012-02-24,2012,2,24,Home Office,Furniture,14740.51
 East,New York,2012-02-24,2012,2,24,Corporate,Office Supplies,580.46
 Central,Wisconsin,2012-02-24,2012,2,24,Home Office,Office Supplies,3.77
 East,Maine,2012-02-24,2012,2,24,Small Business,Office Supplies,2545.89
@@ -403,6 +418,7 @@ South,North Carolina,2012-03-09,2012,3,9,Corporate,Technology,12215.43
 South,Florida,2012-03-10,2012,3,10,Consumer,Office Supplies,175.35
 South,Florida,2012-03-10,2012,3,10,Consumer,Office Supplies,590.6
 South,Virginia,2012-03-10,2012,3,10,Home Office,Technology,608.93
+West,Washington,2012-03-10,2012,3,10,Consumer,Technology,18888.0
 Central,Illinois,2012-03-11,2012,3,11,Home Office,Technology,774.0525
 Central,Nebraska,2012-03-11,2012,3,11,Corporate,Office Supplies,317.59
 Central,Illinois,2012-03-11,2012,3,11,Home Office,Office Supplies,3497.05
@@ -460,7 +476,9 @@ Central,Iowa,2012-03-20,2012,3,20,Corporate,Office Supplies,23.46
 Central,Wisconsin,2012-03-20,2012,3,20,Home Office,Office Supplies,100.36
 West,California,2012-03-20,2012,3,20,Consumer,Furniture,4620.05
 South,Alabama,2012-03-21,2012,3,21,Consumer,Technology,6636.664
+East,Ohio,2012-03-21,2012,3,21,Home Office,Office Supplies,18081.76
 West,Washington,2012-03-21,2012,3,21,Home Office,Office Supplies,186.79
+South,Alabama,2012-03-21,2012,3,21,Consumer,Technology,89061.05
 West,Washington,2012-03-21,2012,3,21,Home Office,Office Supplies,522.62
 West,Washington,2012-03-21,2012,3,21,Consumer,Technology,2587.53
 Central,Minnesota,2012-03-22,2012,3,22,Consumer,Technology,7486.09
@@ -489,6 +507,7 @@ East,MA,2012-03-24,2012,3,24,Small Business,Office Supplies,1386.69
 East,MA,2012-03-24,2012,3,24,Small Business,Furniture,107.56
 South,Florida,2012-03-24,2012,3,24,Small Business,Furniture,60.67
 South,Florida,2012-03-24,2012,3,24,Small Business,Office Supplies,6195.87
+West,Colorado,2012-03-25,2012,3,25,Small Business,Furniture,14357.85
 South,South Carolina,2012-03-25,2012,3,25,Corporate,Office Supplies,617.51
 East,Pennsylvania,2012-03-25,2012,3,25,Small Business,Office Supplies,64.29
 South,South Carolina,2012-03-25,2012,3,25,Corporate,Office Supplies,278.83
@@ -548,6 +567,7 @@ Central,Wisconsin,2012-04-01,2012,4,1,Corporate,Technology,2287.1
 East,Connecticut,2012-04-01,2012,4,1,Small Business,Office Supplies,17.62
 South,Alabama,2012-04-01,2012,4,1,Consumer,Technology,835.1505
 South,North Carolina,2012-04-02,2012,4,2,Small Business,Furniture,1801.95
+Central,Texas,2012-04-02,2012,4,2,Corporate,Furniture,14075.99
 Central,Wisconsin,2012-04-02,2012,4,2,Corporate,Office Supplies,585.47
 East,Ohio,2012-04-02,2012,4,2,Home Office,Office Supplies,499.26
 East,Ohio,2012-04-02,2012,4,2,Home Office,Office Supplies,1427.67
@@ -592,7 +612,9 @@ South,Arkansas,2012-04-08,2012,4,8,Corporate,Office Supplies,32.76
 South,Florida,2012-04-09,2012,4,9,Consumer,Furniture,9558.65
 South,Tennessee,2012-04-09,2012,4,9,Corporate,Furniture,350.71
 Central,Wisconsin,2012-04-09,2012,4,9,Small Business,Office Supplies,80.61
+West,California,2012-04-09,2012,4,9,Consumer,Technology,14591.44
 West,California,2012-04-09,2012,4,9,Corporate,Technology,3197.003
+South,Florida,2012-04-09,2012,4,9,Consumer,Furniture,14377.78
 South,Florida,2012-04-09,2012,4,9,Consumer,Office Supplies,85.85
 South,Tennessee,2012-04-09,2012,4,9,Corporate,Office Supplies,985.01
 South,Tennessee,2012-04-09,2012,4,9,Corporate,Office Supplies,75.23
@@ -632,7 +654,10 @@ South,Virginia,2012-04-15,2012,4,15,Consumer,Technology,998.05
 South,Virginia,2012-04-15,2012,4,15,Consumer,Furniture,4353.02
 South,Mississippi,2012-04-15,2012,4,15,Consumer,Furniture,736.96
 West,California,2012-04-16,2012,4,16,Consumer,Office Supplies,122.99
+Central,Wisconsin,2012-04-16,2012,4,16,Corporate,Technology,14535.8
+West,California,2012-04-16,2012,4,16,Consumer,Technology,14734.71
 South,Arkansas,2012-04-16,2012,4,16,Home Office,Technology,4158.1235
+South,Georgia,2012-04-17,2012,4,17,Corporate,Office Supplies,17853.64
 West,California,2012-04-17,2012,4,17,Small Business,Office Supplies,248.54
 West,Washington,2012-04-17,2012,4,17,Corporate,Technology,226.882
 West,California,2012-04-17,2012,4,17,Small Business,Technology,1344.88
@@ -645,6 +670,7 @@ South,South Carolina,2012-04-18,2012,4,18,Home Office,Furniture,1559.86
 Central,Iowa,2012-04-18,2012,4,18,Corporate,Technology,1531.411
 Central,Iowa,2012-04-18,2012,4,18,Corporate,Furniture,861.26
 South,Georgia,2012-04-19,2012,4,19,Home Office,Furniture,750.14
+East,Ohio,2012-04-19,2012,4,19,Consumer,Office Supplies,18092.66
 East,Maryland,2012-04-19,2012,4,19,Home Office,Technology,3960.99
 Central,Texas,2012-04-19,2012,4,19,Corporate,Office Supplies,132.07
 West,Utah,2012-04-19,2012,4,19,Corporate,Furniture,4987.73
@@ -866,6 +892,7 @@ West,Arizona,2012-05-25,2012,5,25,Corporate,Technology,4191.5625
 West,Arizona,2012-05-25,2012,5,25,Corporate,Technology,35.666
 West,Arizona,2012-05-25,2012,5,25,Home Office,Technology,598.19
 West,Colorado,2012-05-26,2012,5,26,Small Business,Technology,2292.1015
+West,Washington,2012-05-26,2012,5,26,Consumer,Furniture,14451.75
 Central,MO,2012-05-26,2012,5,26,Corporate,Office Supplies,698.1
 East,New Jersey,2012-05-26,2012,5,26,Small Business,Office Supplies,56.21
 Central,MO,2012-05-26,2012,5,26,Corporate,Office Supplies,106.05
@@ -927,6 +954,7 @@ West,California,2012-06-07,2012,6,7,Home Office,Office Supplies,46.94
 West,California,2012-06-07,2012,6,7,Home Office,Office Supplies,12.95
 East,Maine,2012-06-07,2012,6,7,Consumer,Furniture,2208.31
 West,California,2012-06-07,2012,6,7,Home Office,Office Supplies,89.96
+Central,Illinois,2012-06-07,2012,6,7,Small Business,Office Supplies,23792.93
 South,Virginia,2012-06-07,2012,6,7,Small Business,Office Supplies,2494.92
 South,Virginia,2012-06-07,2012,6,7,Small Business,Furniture,2161.36
 East,New Jersey,2012-06-07,2012,6,7,Consumer,Office Supplies,1683.69
@@ -1006,6 +1034,7 @@ Central,Michigan,2012-06-21,2012,6,21,Corporate,Office Supplies,67.35
 Central,Illinois,2012-06-22,2012,6,22,Corporate,Furniture,1211.98
 East,Maryland,2012-06-22,2012,6,22,Consumer,Office Supplies,96.01
 East,New Jersey,2012-06-22,2012,6,22,Consumer,Office Supplies,30.61
+Central,Nebraska,2012-06-22,2012,6,22,Home Office,Office Supplies,15383.7
 East,Maine,2012-06-22,2012,6,22,Consumer,Technology,815.89
 Central,Nebraska,2012-06-22,2012,6,22,Home Office,Technology,1637.457
 East,Pennsylvania,2012-06-22,2012,6,22,Home Office,Office Supplies,92.4
@@ -1054,6 +1083,7 @@ South,Arkansas,2012-07-01,2012,7,1,Consumer,Technology,1967.83
 South,Georgia,2012-07-01,2012,7,1,Home Office,Furniture,6865.072
 Central,Indiana,2012-07-01,2012,7,1,Small Business,Office Supplies,123.46
 South,Mississippi,2012-07-01,2012,7,1,Small Business,Furniture,2170.61
+West,Washington,2012-07-01,2012,7,1,Small Business,Technology,17279.62
 West,Colorado,2012-07-01,2012,7,1,Small Business,Technology,6041.01
 West,Washington,2012-07-01,2012,7,1,Corporate,Technology,4233.15
 West,Washington,2012-07-01,2012,7,1,Small Business,Office Supplies,120.3
@@ -1064,6 +1094,7 @@ West,Washington,2012-07-02,2012,7,2,Home Office,Furniture,2453.3
 East,New York,2012-07-02,2012,7,2,Home Office,Furniture,4629.67
 South,North Carolina,2012-07-02,2012,7,2,Corporate,Office Supplies,1205.73
 Central,Illinois,2012-07-02,2012,7,2,Consumer,Office Supplies,281.39
+Central,Illinois,2012-07-02,2012,7,2,Consumer,Technology,12593.91
 South,Florida,2012-07-02,2012,7,2,Consumer,Technology,157.42
 Central,Michigan,2012-07-03,2012,7,3,Home Office,Technology,3419.1505
 South,Florida,2012-07-03,2012,7,3,Corporate,Furniture,708.87
@@ -1115,7 +1146,9 @@ West,California,2012-07-09,2012,7,9,Corporate,Office Supplies,11.16
 West,California,2012-07-09,2012,7,9,Corporate,Office Supplies,156.2
 South,Alabama,2012-07-09,2012,7,9,Small Business,Office Supplies,519.65
 South,Florida,2012-07-09,2012,7,9,Corporate,Office Supplies,24.09
+South,North Carolina,2012-07-09,2012,7,9,Small Business,Office Supplies,16949.44
 South,Kentucky,2012-07-09,2012,7,9,Small Business,Technology,6944.092
+South,Virginia,2012-07-10,2012,7,10,Consumer,Technology,21956.03
 South,Virginia,2012-07-10,2012,7,10,Consumer,Office Supplies,89.89
 East,New Jersey,2012-07-11,2012,7,11,Home Office,Furniture,230.74
 West,California,2012-07-12,2012,7,12,Home Office,Technology,1624.5965
@@ -1197,6 +1230,7 @@ West,Colorado,2012-07-25,2012,7,25,Corporate,Office Supplies,101.47
 Central,Wisconsin,2012-07-26,2012,7,26,Home Office,Furniture,387.03
 Central,Iowa,2012-07-26,2012,7,26,Corporate,Technology,1313.811
 Central,Michigan,2012-07-26,2012,7,26,Consumer,Furniture,3416.38
+East,Pennsylvania,2012-07-26,2012,7,26,Home Office,Furniture,21425.91
 Central,Michigan,2012-07-26,2012,7,26,Consumer,Office Supplies,142.81
 Central,Iowa,2012-07-26,2012,7,26,Corporate,Office Supplies,100.41
 Central,Texas,2012-07-26,2012,7,26,Home Office,Office Supplies,88.84
@@ -1214,6 +1248,7 @@ South,Florida,2012-07-27,2012,7,27,Home Office,Technology,2152.404
 South,Kentucky,2012-07-27,2012,7,27,Corporate,Office Supplies,223.34
 East,Maine,2012-07-28,2012,7,28,Corporate,Furniture,5897.47
 East,New Jersey,2012-07-28,2012,7,28,Corporate,Office Supplies,2550.12
+West,Washington,2012-07-28,2012,7,28,Corporate,Technology,13070.2
 East,Maine,2012-07-29,2012,7,29,Consumer,Furniture,5369.46
 Central,MO,2012-07-29,2012,7,29,Corporate,Office Supplies,225.98
 East,MA,2012-07-29,2012,7,29,Consumer,Technology,175.08
@@ -1231,6 +1266,7 @@ West,Oregon,2012-07-31,2012,7,31,Consumer,Office Supplies,142.3
 West,Oregon,2012-07-31,2012,7,31,Consumer,Office Supplies,21.93
 West,Oregon,2012-07-31,2012,7,31,Consumer,Office Supplies,477.53
 West,Oregon,2012-07-31,2012,7,31,Consumer,Office Supplies,75.58
+West,Oregon,2012-07-31,2012,7,31,Consumer,Technology,26095.13
 Central,Michigan,2012-08-01,2012,8,1,Corporate,Technology,3075.83
 Central,Michigan,2012-08-01,2012,8,1,Corporate,Office Supplies,73.37
 West,California,2012-08-01,2012,8,1,Corporate,Office Supplies,192.41
@@ -1254,6 +1290,7 @@ West,California,2012-08-04,2012,8,4,Corporate,Technology,3501.79
 West,Washington,2012-08-04,2012,8,4,Small Business,Office Supplies,388.9
 Central,Minnesota,2012-08-04,2012,8,4,Corporate,Technology,2560.59
 East,New York,2012-08-04,2012,8,4,Consumer,Office Supplies,357.48
+West,California,2012-08-05,2012,8,5,Corporate,Furniture,17248.09
 East,Vermont,2012-08-05,2012,8,5,Corporate,Office Supplies,1033.93
 Central,Wisconsin,2012-08-05,2012,8,5,Home Office,Office Supplies,634.12
 West,Arizona,2012-08-05,2012,8,5,Home Office,Office Supplies,555.2
@@ -1284,6 +1321,7 @@ Central,Iowa,2012-08-09,2012,8,9,Corporate,Office Supplies,21.64
 Central,South Dakota,2012-08-09,2012,8,9,Corporate,Office Supplies,238.74
 South,Virginia,2012-08-09,2012,8,9,Small Business,Office Supplies,112.35
 Central,Illinois,2012-08-10,2012,8,10,Home Office,Technology,1665.0395
+Central,Minnesota,2012-08-10,2012,8,10,Consumer,Furniture,12689.87
 Central,Michigan,2012-08-10,2012,8,10,Consumer,Office Supplies,146.63
 West,Washington,2012-08-10,2012,8,10,Consumer,Office Supplies,121.73
 Central,Michigan,2012-08-10,2012,8,10,Consumer,Technology,2506.2675
@@ -1331,6 +1369,7 @@ Central,Kansas,2012-08-15,2012,8,15,Corporate,Office Supplies,1811.3
 Central,Kansas,2012-08-15,2012,8,15,Corporate,Technology,482.37
 Central,Kansas,2012-08-15,2012,8,15,Corporate,Furniture,4095.76
 Central,Illinois,2012-08-15,2012,8,15,Corporate,Office Supplies,34.42
+West,Nevada,2012-08-15,2012,8,15,Consumer,Furniture,14665.15
 West,Nevada,2012-08-15,2012,8,15,Consumer,Furniture,324.97
 West,Nevada,2012-08-15,2012,8,15,Consumer,Technology,451.52
 West,Oregon,2012-08-16,2012,8,16,Corporate,Furniture,1210.72
@@ -1346,6 +1385,7 @@ West,Colorado,2012-08-18,2012,8,18,Home Office,Office Supplies,45.91
 Central,Illinois,2012-08-18,2012,8,18,Corporate,Office Supplies,820.52
 West,Colorado,2012-08-18,2012,8,18,Home Office,Office Supplies,520.65
 West,California,2012-08-18,2012,8,18,Home Office,Office Supplies,123.15
+West,Colorado,2012-08-18,2012,8,18,Home Office,Technology,22319.58
 South,Florida,2012-08-18,2012,8,18,Home Office,Technology,244.9
 Central,Texas,2012-08-18,2012,8,18,Home Office,Technology,5442.142
 West,New Mexico,2012-08-19,2012,8,19,Home Office,Office Supplies,69.6
@@ -1356,6 +1396,7 @@ West,Utah,2012-08-19,2012,8,19,Consumer,Technology,1133.4495
 Central,Illinois,2012-08-20,2012,8,20,Home Office,Office Supplies,58.33
 Central,Illinois,2012-08-20,2012,8,20,Home Office,Office Supplies,10377.22
 Central,Illinois,2012-08-20,2012,8,20,Home Office,Office Supplies,349.43
+West,Utah,2012-08-21,2012,8,21,Corporate,Technology,24105.87
 West,New Mexico,2012-08-21,2012,8,21,Small Business,Furniture,3537.84
 West,Utah,2012-08-21,2012,8,21,Small Business,Office Supplies,174.64
 West,New Mexico,2012-08-21,2012,8,21,Small Business,Office Supplies,2221.2
@@ -1425,6 +1466,7 @@ South,Florida,2012-09-01,2012,9,1,Consumer,Furniture,227.41
 South,Arkansas,2012-09-01,2012,9,1,Home Office,Furniture,441.7
 Central,Illinois,2012-09-01,2012,9,1,Consumer,Office Supplies,209.42
 East,New Jersey,2012-09-01,2012,9,1,Home Office,Office Supplies,11.35
+East,Rhode Island,2012-09-01,2012,9,1,Home Office,Technology,15464.01
 South,Virginia,2012-09-01,2012,9,1,Corporate,Technology,277.0745
 East,Ohio,2012-09-02,2012,9,2,Consumer,Furniture,11262.04
 East,Ohio,2012-09-02,2012,9,2,Consumer,Office Supplies,958.06
@@ -1434,9 +1476,11 @@ East,Pennsylvania,2012-09-02,2012,9,2,Small Business,Office Supplies,65.12
 East,Ohio,2012-09-02,2012,9,2,Consumer,Office Supplies,14.75
 West,Nevada,2012-09-03,2012,9,3,Corporate,Office Supplies,541.47
 Central,Illinois,2012-09-04,2012,9,4,Corporate,Office Supplies,50.7
+West,Washington,2012-09-04,2012,9,4,Corporate,Furniture,15341.46
 Central,Illinois,2012-09-04,2012,9,4,Corporate,Furniture,338.52
 Central,Michigan,2012-09-04,2012,9,4,Corporate,Office Supplies,318.14
 West,Washington,2012-09-04,2012,9,4,Corporate,Office Supplies,25.27
+West,Washington,2012-09-04,2012,9,4,Corporate,Office Supplies,14410.78
 Central,Illinois,2012-09-04,2012,9,4,Corporate,Technology,6109.817
 South,North Carolina,2012-09-04,2012,9,4,Corporate,Furniture,9501.624
 West,California,2012-09-04,2012,9,4,Corporate,Technology,7312.0315
@@ -1506,11 +1550,13 @@ West,California,2012-09-15,2012,9,15,Small Business,Office Supplies,229.43
 East,Pennsylvania,2012-09-16,2012,9,16,Home Office,Furniture,907.24
 Central,Michigan,2012-09-16,2012,9,16,Home Office,Furniture,507.74
 Central,Illinois,2012-09-16,2012,9,16,Home Office,Office Supplies,644.4
+South,Alabama,2012-09-16,2012,9,16,Corporate,Office Supplies,20175.48
 West,California,2012-09-16,2012,9,16,Corporate,Office Supplies,64.23
 Central,Indiana,2012-09-16,2012,9,16,Home Office,Office Supplies,284.38
 Central,Texas,2012-09-16,2012,9,16,Corporate,Office Supplies,156.15
 West,California,2012-09-16,2012,9,16,Small Business,Office Supplies,110.14
 West,California,2012-09-16,2012,9,16,Small Business,Office Supplies,453.89
+Central,Michigan,2012-09-16,2012,9,16,Home Office,Technology,12600.99
 Central,Texas,2012-09-17,2012,9,17,Corporate,Technology,4186.53
 East,Ohio,2012-09-17,2012,9,17,Corporate,Office Supplies,96.73
 East,Ohio,2012-09-17,2012,9,17,Corporate,Furniture,253.6
@@ -1595,6 +1641,7 @@ West,Utah,2012-09-30,2012,9,30,Corporate,Office Supplies,314.0
 West,Utah,2012-09-30,2012,9,30,Corporate,Office Supplies,155.54
 East,MA,2012-09-30,2012,9,30,Home Office,Office Supplies,1193.65
 East,Maryland,2012-09-30,2012,9,30,Corporate,Office Supplies,180.38
+East,Ohio,2012-09-30,2012,9,30,Corporate,Office Supplies,23106.46
 South,Alabama,2012-09-30,2012,9,30,Home Office,Technology,2860.93
 Central,Illinois,2012-10-01,2012,10,1,Small Business,Furniture,623.71
 East,New Hampshire,2012-10-01,2012,10,1,Small Business,Office Supplies,43.72
@@ -1615,6 +1662,7 @@ Central,Oklahoma,2012-10-04,2012,10,4,Corporate,Furniture,185.15
 East,New Jersey,2012-10-04,2012,10,4,Corporate,Furniture,315.07
 Central,Oklahoma,2012-10-04,2012,10,4,Corporate,Office Supplies,103.72
 East,New York,2012-10-04,2012,10,4,Small Business,Office Supplies,1184.45
+East,New York,2012-10-04,2012,10,4,Small Business,Office Supplies,25409.63
 East,New York,2012-10-04,2012,10,4,Small Business,Technology,7308.283
 South,Florida,2012-10-04,2012,10,4,Consumer,Technology,54.84
 East,MA,2012-10-04,2012,10,4,Corporate,Office Supplies,17.59
@@ -1689,6 +1737,7 @@ West,Utah,2012-10-15,2012,10,15,Corporate,Office Supplies,183.45
 Central,Illinois,2012-10-17,2012,10,17,Consumer,Office Supplies,1003.06
 South,Florida,2012-10-17,2012,10,17,Home Office,Furniture,112.47
 West,Montana,2012-10-17,2012,10,17,Home Office,Office Supplies,103.5
+West,Montana,2012-10-17,2012,10,17,Home Office,Technology,19707.2
 East,Ohio,2012-10-17,2012,10,17,Home Office,Office Supplies,2421.44
 South,Kentucky,2012-10-18,2012,10,18,Corporate,Technology,2115.242
 South,Kentucky,2012-10-18,2012,10,18,Corporate,Office Supplies,1411.58
@@ -1709,8 +1758,11 @@ South,Georgia,2012-10-20,2012,10,20,Home Office,Furniture,1175.53
 East,New York,2012-10-20,2012,10,20,Consumer,Office Supplies,161.8
 East,New York,2012-10-20,2012,10,20,Consumer,Office Supplies,64.36
 Central,Texas,2012-10-20,2012,10,20,Home Office,Technology,3925.9715
+Central,Texas,2012-10-20,2012,10,20,Home Office,Furniture,14521.39
 South,Georgia,2012-10-20,2012,10,20,Home Office,Office Supplies,12073.06
 West,Washington,2012-10-20,2012,10,20,Small Business,Technology,1768.969
+South,Virginia,2012-10-20,2012,10,20,Consumer,Technology,26126.92
+East,Ohio,2012-10-21,2012,10,21,Corporate,Office Supplies,21337.27
 South,Georgia,2012-10-21,2012,10,21,Corporate,Office Supplies,14.84
 Central,South Dakota,2012-10-21,2012,10,21,Home Office,Office Supplies,52.38
 South,Georgia,2012-10-21,2012,10,21,Corporate,Technology,922.47
@@ -1720,10 +1772,12 @@ East,MA,2012-10-22,2012,10,22,Small Business,Office Supplies,2096.7
 Central,Texas,2012-10-23,2012,10,23,Corporate,Furniture,2230.97
 Central,Illinois,2012-10-23,2012,10,23,Corporate,Office Supplies,22.06
 Central,Texas,2012-10-23,2012,10,23,Corporate,Furniture,200.77
+Central,Illinois,2012-10-23,2012,10,23,Corporate,Technology,12616.2
 West,Colorado,2012-10-24,2012,10,24,Home Office,Office Supplies,9.4
 West,Oregon,2012-10-24,2012,10,24,Consumer,Office Supplies,378.9
 West,Oregon,2012-10-24,2012,10,24,Consumer,Office Supplies,264.05
 West,California,2012-10-25,2012,10,25,Consumer,Furniture,485.97
+West,California,2012-10-25,2012,10,25,Consumer,Furniture,16451.33
 West,California,2012-10-25,2012,10,25,Consumer,Furniture,109.71
 South,Georgia,2012-10-25,2012,10,25,Home Office,Office Supplies,128.31
 West,California,2012-10-25,2012,10,25,Consumer,Office Supplies,194.2
@@ -1905,6 +1959,7 @@ West,Arizona,2012-11-25,2012,11,25,Consumer,Technology,2525.9875
 South,South Carolina,2012-11-26,2012,11,26,Consumer,Office Supplies,2269.01
 South,South Carolina,2012-11-26,2012,11,26,Consumer,Office Supplies,120.52
 South,South Carolina,2012-11-26,2012,11,26,Consumer,Office Supplies,276.3
+Central,Kansas,2012-11-27,2012,11,27,Corporate,Technology,20872.16
 Central,Minnesota,2012-11-28,2012,11,28,Corporate,Office Supplies,129.44
 West,Idaho,2012-11-28,2012,11,28,Consumer,Office Supplies,941.4
 Central,Minnesota,2012-11-28,2012,11,28,Corporate,Technology,1829.387
@@ -1948,6 +2003,8 @@ South,Florida,2012-12-05,2012,12,5,Home Office,Technology,9704.37
 East,Connecticut,2012-12-05,2012,12,5,Home Office,Office Supplies,21.44
 East,New Jersey,2012-12-05,2012,12,5,Home Office,Office Supplies,416.4
 West,Arizona,2012-12-05,2012,12,5,Home Office,Office Supplies,102.61
+East,Maine,2012-12-05,2012,12,5,Home Office,Technology,21717.36
+East,Vermont,2012-12-05,2012,12,5,Home Office,Technology,15823.27
 West,Arizona,2012-12-05,2012,12,5,Home Office,Office Supplies,453.09
 Central,MO,2012-12-05,2012,12,5,Home Office,Furniture,436.98
 West,Arizona,2012-12-05,2012,12,5,Home Office,Furniture,2758.22
@@ -1988,7 +2045,9 @@ Central,Minnesota,2012-12-11,2012,12,11,Home Office,Office Supplies,334.71
 South,Virginia,2012-12-11,2012,12,11,Small Business,Technology,7062.616
 South,Florida,2012-12-11,2012,12,11,Corporate,Furniture,565.91
 Central,Oklahoma,2012-12-12,2012,12,12,Consumer,Technology,842.6135
+Central,Kansas,2012-12-12,2012,12,12,Corporate,Furniture,15897.01
 South,North Carolina,2012-12-12,2012,12,12,Corporate,Office Supplies,203.53
+Central,Texas,2012-12-12,2012,12,12,Corporate,Technology,14475.74
 Central,Texas,2012-12-12,2012,12,12,Corporate,Technology,306.6205
 Central,Oklahoma,2012-12-12,2012,12,12,Consumer,Furniture,302.91
 Central,Kansas,2012-12-12,2012,12,12,Consumer,Furniture,5572.92
@@ -2000,6 +2059,7 @@ Central,Texas,2012-12-12,2012,12,12,Corporate,Office Supplies,1072.36
 Central,Kansas,2012-12-12,2012,12,12,Corporate,Technology,1265.293
 Central,Wisconsin,2012-12-13,2012,12,13,Small Business,Office Supplies,118.56
 Central,Wisconsin,2012-12-13,2012,12,13,Small Business,Office Supplies,2145.05
+West,California,2012-12-13,2012,12,13,Home Office,Furniture,13255.93
 Central,Indiana,2012-12-14,2012,12,14,Consumer,Office Supplies,216.33
 East,Maine,2012-12-14,2012,12,14,Consumer,Office Supplies,2169.49
 Central,Minnesota,2012-12-14,2012,12,14,Consumer,Furniture,4411.5
@@ -2031,12 +2091,14 @@ Central,Minnesota,2012-12-18,2012,12,18,Consumer,Furniture,216.25
 Central,MO,2012-12-19,2012,12,19,Consumer,Office Supplies,41.53
 West,California,2012-12-19,2012,12,19,Small Business,Technology,83.02
 Central,Indiana,2012-12-19,2012,12,19,Consumer,Furniture,145.68
+East,Maine,2012-12-19,2012,12,19,Corporate,Furniture,14922.16
 East,New Hampshire,2012-12-19,2012,12,19,Corporate,Office Supplies,201.98
 East,Connecticut,2012-12-19,2012,12,19,Corporate,Office Supplies,4115.74
 West,Colorado,2012-12-19,2012,12,19,Consumer,Technology,1651.07
 Central,Indiana,2012-12-19,2012,12,19,Consumer,Technology,1483.44
 East,Connecticut,2012-12-20,2012,12,20,Small Business,Furniture,5748.2
 West,Washington,2012-12-20,2012,12,20,Consumer,Office Supplies,129.9
+West,Washington,2012-12-20,2012,12,20,Consumer,Technology,17274.87
 Central,Texas,2012-12-20,2012,12,20,Corporate,Technology,1082.43
 West,California,2012-12-20,2012,12,20,Small Business,Technology,6717.9325
 East,Maryland,2012-12-20,2012,12,20,Consumer,Office Supplies,2315.11
@@ -2053,6 +2115,7 @@ Central,Texas,2012-12-22,2012,12,22,Consumer,Office Supplies,200.1
 Central,Texas,2012-12-22,2012,12,22,Consumer,Office Supplies,120.54
 Central,Wisconsin,2012-12-23,2012,12,23,Small Business,Furniture,383.45
 East,Maryland,2012-12-23,2012,12,23,Home Office,Furniture,2811.7
+Central,Indiana,2012-12-23,2012,12,23,Corporate,Technology,23255.61
 West,Washington,2012-12-24,2012,12,24,Small Business,Office Supplies,281.17
 West,Washington,2012-12-24,2012,12,24,Small Business,Office Supplies,194.65
 Central,Michigan,2012-12-24,2012,12,24,Corporate,Furniture,1935.1
@@ -2066,6 +2129,7 @@ South,Mississippi,2012-12-25,2012,12,25,Consumer,Office Supplies,651.45
 Central,Wisconsin,2012-12-26,2012,12,26,Home Office,Furniture,652.24
 East,New York,2012-12-26,2012,12,26,Small Business,Furniture,601.52
 East,New York,2012-12-26,2012,12,26,Small Business,Technology,1393.39
+South,Virginia,2012-12-26,2012,12,26,Corporate,Furniture,14567.15
 West,California,2012-12-27,2012,12,27,Corporate,Office Supplies,222.25
 Central,South Dakota,2012-12-27,2012,12,27,Corporate,Furniture,4760.02
 Central,South Dakota,2012-12-27,2012,12,27,Corporate,Office Supplies,88.17
@@ -2073,6 +2137,7 @@ West,California,2012-12-27,2012,12,27,Corporate,Technology,388.7135
 East,New Hampshire,2012-12-27,2012,12,27,Home Office,Office Supplies,55.27
 West,Oregon,2012-12-28,2012,12,28,Small Business,Office Supplies,38.44
 East,New York,2012-12-28,2012,12,28,Small Business,Office Supplies,235.98
+East,New York,2012-12-28,2012,12,28,Small Business,Technology,16468.55
 West,California,2012-12-28,2012,12,28,Corporate,Technology,99.55
 West,Oregon,2012-12-28,2012,12,28,Small Business,Technology,266.27
 Central,Texas,2012-12-28,2012,12,28,Home Office,Technology,3730.54
@@ -2083,6 +2148,7 @@ South,Florida,2012-12-29,2012,12,29,Small Business,Technology,5433.0895
 South,Florida,2012-12-29,2012,12,29,Small Business,Office Supplies,133.94
 East,New York,2012-12-30,2012,12,30,Corporate,Office Supplies,45.18
 East,New York,2012-12-30,2012,12,30,Corporate,Office Supplies,1420.89
+East,New York,2012-12-30,2012,12,30,Corporate,Technology,27820.34
 East,New York,2012-12-31,2012,12,31,Consumer,Technology,8216.593
 East,New York,2012-12-31,2012,12,31,Consumer,Furniture,200.57
 East,New York,2012-12-31,2012,12,31,Consumer,Office Supplies,130.36
@@ -2101,6 +2167,7 @@ South,Florida,2013-01-03,2013,1,3,Consumer,Office Supplies,1011.67
 South,Florida,2013-01-03,2013,1,3,Consumer,Office Supplies,128.52
 East,Connecticut,2013-01-03,2013,1,3,Small Business,Office Supplies,1216.5
 Central,Texas,2013-01-03,2013,1,3,Consumer,Technology,294.48
+West,Oregon,2013-01-03,2013,1,3,Consumer,Furniture,28389.14
 South,Florida,2013-01-03,2013,1,3,Consumer,Office Supplies,287.61
 South,Florida,2013-01-03,2013,1,3,Consumer,Technology,277.42
 South,Florida,2013-01-03,2013,1,3,Consumer,Office Supplies,1767.88
@@ -2127,6 +2194,9 @@ West,California,2013-01-08,2013,1,8,Corporate,Technology,478.27
 East,Delaware,2013-01-08,2013,1,8,Consumer,Office Supplies,88.61
 South,Georgia,2013-01-08,2013,1,8,Home Office,Office Supplies,287.75
 East,Ohio,2013-01-08,2013,1,8,Corporate,Technology,436.4835
+South,Florida,2013-01-09,2013,1,9,Consumer,Technology,16172.44
+West,California,2013-01-09,2013,1,9,Corporate,Technology,29884.6
+East,New York,2013-01-10,2013,1,10,Corporate,Furniture,21390.44
 East,New York,2013-01-10,2013,1,10,Corporate,Office Supplies,112.59
 West,Oregon,2013-01-10,2013,1,10,Corporate,Technology,827.27
 East,New York,2013-01-10,2013,1,10,Corporate,Furniture,1091.47
@@ -2143,6 +2213,7 @@ West,Washington,2013-01-11,2013,1,11,Small Business,Office Supplies,1767.47
 West,California,2013-01-11,2013,1,11,Small Business,Furniture,1940.32
 West,Washington,2013-01-11,2013,1,11,Small Business,Office Supplies,2164.07
 East,New York,2013-01-11,2013,1,11,Home Office,Office Supplies,360.7
+East,MA,2013-01-11,2013,1,11,Small Business,Technology,25312.0
 East,Maine,2013-01-11,2013,1,11,Small Business,Technology,1597.02
 West,Oregon,2013-01-12,2013,1,12,Home Office,Office Supplies,1057.06
 East,Vermont,2013-01-12,2013,1,12,Consumer,Furniture,224.744
@@ -2221,6 +2292,7 @@ Central,Illinois,2013-01-25,2013,1,25,Home Office,Furniture,1584.1
 West,Colorado,2013-01-25,2013,1,25,Home Office,Office Supplies,12.41
 West,Colorado,2013-01-25,2013,1,25,Home Office,Furniture,3116.47
 Central,Illinois,2013-01-25,2013,1,25,Home Office,Office Supplies,9062.73
+East,Pennsylvania,2013-01-25,2013,1,25,Corporate,Furniture,15468.216
 Central,Illinois,2013-01-26,2013,1,26,Small Business,Office Supplies,324.4
 Central,Illinois,2013-01-26,2013,1,26,Small Business,Office Supplies,137.02
 East,Ohio,2013-01-26,2013,1,26,Home Office,Office Supplies,840.04
@@ -2300,6 +2372,7 @@ East,New York,2013-02-08,2013,2,8,Small Business,Furniture,12296.49
 South,Virginia,2013-02-08,2013,2,8,Corporate,Furniture,2429.09
 East,New Hampshire,2013-02-08,2013,2,8,Small Business,Office Supplies,147.88
 East,New York,2013-02-08,2013,2,8,Small Business,Office Supplies,128.13
+Central,Illinois,2013-02-09,2013,2,9,Small Business,Technology,21506.77
 Central,Texas,2013-02-09,2013,2,9,Home Office,Office Supplies,47.03
 Central,Illinois,2013-02-09,2013,2,9,Small Business,Office Supplies,669.02
 Central,Wisconsin,2013-02-09,2013,2,9,Home Office,Office Supplies,611.68
@@ -2309,6 +2382,7 @@ Central,Texas,2013-02-10,2013,2,10,Corporate,Furniture,633.13
 Central,Oklahoma,2013-02-10,2013,2,10,Corporate,Technology,1297.4485
 West,Colorado,2013-02-10,2013,2,10,Home Office,Office Supplies,26.64
 South,Mississippi,2013-02-10,2013,2,10,Home Office,Office Supplies,16.48
+South,Mississippi,2013-02-10,2013,2,10,Home Office,Office Supplies,15655.24
 West,Colorado,2013-02-10,2013,2,10,Home Office,Office Supplies,88.19
 West,Nevada,2013-02-11,2013,2,11,Corporate,Technology,81.56
 West,Nevada,2013-02-11,2013,2,11,Corporate,Furniture,3753.72
@@ -2400,10 +2474,12 @@ South,Virginia,2013-02-26,2013,2,26,Small Business,Furniture,301.6
 Central,Michigan,2013-02-26,2013,2,26,Consumer,Furniture,173.44
 Central,Illinois,2013-02-26,2013,2,26,Small Business,Office Supplies,1373.11
 Central,Illinois,2013-02-26,2013,2,26,Small Business,Technology,71.94
+West,California,2013-02-26,2013,2,26,Corporate,Office Supplies,16116.33
 South,Arkansas,2013-02-26,2013,2,26,Corporate,Office Supplies,65.61
 South,Arkansas,2013-02-26,2013,2,26,Corporate,Technology,2864.55
 Central,Minnesota,2013-02-27,2013,2,27,Corporate,Office Supplies,41.23
 South,Georgia,2013-02-27,2013,2,27,Corporate,Office Supplies,138.85
+Central,Illinois,2013-02-27,2013,2,27,Home Office,Technology,15251.5
 South,South Carolina,2013-02-27,2013,2,27,Corporate,Technology,918.7395
 Central,Kansas,2013-02-27,2013,2,27,Corporate,Furniture,3379.01
 South,Tennessee,2013-02-27,2013,2,27,Corporate,Furniture,4965.384
@@ -2412,6 +2488,7 @@ South,Tennessee,2013-02-27,2013,2,27,Corporate,Furniture,497.4
 South,South Carolina,2013-02-27,2013,2,27,Corporate,Office Supplies,22.6
 Central,Kansas,2013-02-27,2013,2,27,Corporate,Office Supplies,13.3
 South,Tennessee,2013-02-27,2013,2,27,Corporate,Technology,358.4195
+South,South Carolina,2013-02-27,2013,2,27,Corporate,Technology,17034.92
 East,Ohio,2013-02-27,2013,2,27,Small Business,Technology,855.865
 Central,Wisconsin,2013-02-27,2013,2,27,Home Office,Furniture,307.49
 Central,Kansas,2013-02-27,2013,2,27,Corporate,Office Supplies,4538.66
@@ -2436,6 +2513,7 @@ South,South Carolina,2013-03-02,2013,3,2,Home Office,Office Supplies,215.76
 Central,Indiana,2013-03-02,2013,3,2,Corporate,Furniture,1445.6
 East,New York,2013-03-03,2013,3,3,Small Business,Office Supplies,7.75
 East,Maine,2013-03-03,2013,3,3,Home Office,Technology,803.267
+East,Maryland,2013-03-03,2013,3,3,Home Office,Furniture,18421.2
 South,Florida,2013-03-03,2013,3,3,Consumer,Office Supplies,468.48
 South,Florida,2013-03-03,2013,3,3,Consumer,Office Supplies,284.14
 Central,Minnesota,2013-03-03,2013,3,3,Small Business,Furniture,191.55
@@ -2661,6 +2739,7 @@ South,Florida,2013-04-16,2013,4,16,Home Office,Technology,614.15
 Central,Michigan,2013-04-16,2013,4,16,Consumer,Office Supplies,135.88
 East,New York,2013-04-16,2013,4,16,Consumer,Office Supplies,589.24
 East,New York,2013-04-16,2013,4,16,Consumer,Office Supplies,233.05
+West,Oregon,2013-04-16,2013,4,16,Small Business,Technology,19224.92
 West,Oregon,2013-04-16,2013,4,16,Small Business,Furniture,778.62
 East,Maryland,2013-04-17,2013,4,17,Home Office,Technology,2175.218
 Central,Wisconsin,2013-04-18,2013,4,18,Corporate,Office Supplies,315.42
@@ -2674,6 +2753,7 @@ West,California,2013-04-20,2013,4,20,Home Office,Furniture,6717.784
 Central,Texas,2013-04-20,2013,4,20,Corporate,Office Supplies,533.25
 West,Washington,2013-04-20,2013,4,20,Corporate,Office Supplies,561.66
 East,Pennsylvania,2013-04-20,2013,4,20,Small Business,Office Supplies,729.57
+West,New Mexico,2013-04-20,2013,4,20,Small Business,Furniture,24639.8
 West,New Mexico,2013-04-20,2013,4,20,Small Business,Technology,1873.349
 West,Washington,2013-04-20,2013,4,20,Corporate,Furniture,1851.62
 West,California,2013-04-20,2013,4,20,Home Office,Furniture,200.38
@@ -2698,6 +2778,7 @@ South,North Carolina,2013-04-25,2013,4,25,Corporate,Office Supplies,70.45
 West,Colorado,2013-04-25,2013,4,25,Small Business,Office Supplies,318.28
 South,Virginia,2013-04-25,2013,4,25,Small Business,Technology,469.438
 West,Colorado,2013-04-25,2013,4,25,Small Business,Office Supplies,322.8
+West,Utah,2013-04-26,2013,4,26,Consumer,Office Supplies,17129.97
 South,Arkansas,2013-04-26,2013,4,26,Home Office,Office Supplies,110.2
 East,Rhode Island,2013-04-26,2013,4,26,Small Business,Technology,1854.94
 South,Arkansas,2013-04-26,2013,4,26,Home Office,Office Supplies,54.86
@@ -2713,6 +2794,7 @@ East,Maine,2013-04-29,2013,4,29,Consumer,Furniture,1060.34
 South,Florida,2013-04-29,2013,4,29,Home Office,Office Supplies,130.16
 East,Ohio,2013-04-29,2013,4,29,Small Business,Office Supplies,101.57
 East,MA,2013-04-29,2013,4,29,Consumer,Technology,2361.1
+West,California,2013-04-29,2013,4,29,Home Office,Furniture,12570.74
 Central,Illinois,2013-04-29,2013,4,29,Corporate,Furniture,118.97
 East,Maine,2013-04-29,2013,4,29,Consumer,Office Supplies,167.53
 South,Florida,2013-04-30,2013,4,30,Corporate,Technology,5144.94
@@ -2780,6 +2862,7 @@ East,Pennsylvania,2013-05-11,2013,5,11,Home Office,Furniture,675.71
 Central,Texas,2013-05-11,2013,5,11,Consumer,Office Supplies,479.84
 West,California,2013-05-11,2013,5,11,Consumer,Office Supplies,303.07
 Central,Texas,2013-05-11,2013,5,11,Consumer,Technology,833.9265
+East,Maryland,2013-05-11,2013,5,11,Consumer,Furniture,12612.66
 West,California,2013-05-11,2013,5,11,Consumer,Office Supplies,2168.05
 West,California,2013-05-11,2013,5,11,Consumer,Office Supplies,1661.8
 Central,Michigan,2013-05-11,2013,5,11,Corporate,Office Supplies,144.55
@@ -2835,6 +2918,7 @@ Central,Illinois,2013-05-19,2013,5,19,Corporate,Office Supplies,224.58
 Central,Illinois,2013-05-19,2013,5,19,Corporate,Office Supplies,365.77
 West,Oregon,2013-05-19,2013,5,19,Small Business,Office Supplies,1546.8
 West,Oregon,2013-05-19,2013,5,19,Small Business,Office Supplies,176.5
+Central,Illinois,2013-05-19,2013,5,19,Corporate,Technology,16073.03
 East,Pennsylvania,2013-05-19,2013,5,19,Home Office,Technology,4257.276
 West,Oregon,2013-05-19,2013,5,19,Small Business,Furniture,3457.56
 East,New Jersey,2013-05-20,2013,5,20,Corporate,Office Supplies,700.46
@@ -2923,6 +3007,7 @@ South,North Carolina,2013-06-01,2013,6,1,Corporate,Office Supplies,540.64
 South,North Carolina,2013-06-01,2013,6,1,Corporate,Office Supplies,13.5
 Central,Indiana,2013-06-01,2013,6,1,Consumer,Technology,4261.94
 East,New Jersey,2013-06-01,2013,6,1,Consumer,Office Supplies,763.12
+East,Maine,2013-06-01,2013,6,1,Consumer,Furniture,19269.05
 East,Maryland,2013-06-02,2013,6,2,Consumer,Furniture,7668.55
 South,Florida,2013-06-02,2013,6,2,Consumer,Office Supplies,10330.94
 South,Florida,2013-06-02,2013,6,2,Consumer,Technology,599.52
@@ -3016,6 +3101,7 @@ East,Pennsylvania,2013-06-17,2013,6,17,Small Business,Technology,66.88
 East,Pennsylvania,2013-06-17,2013,6,17,Small Business,Office Supplies,447.34
 Central,Texas,2013-06-17,2013,6,17,Corporate,Office Supplies,187.55
 Central,Wisconsin,2013-06-17,2013,6,17,Home Office,Office Supplies,26.11
+Central,Wisconsin,2013-06-17,2013,6,17,Home Office,Technology,14647.26
 West,Arizona,2013-06-18,2013,6,18,Home Office,Technology,11481.03
 South,Florida,2013-06-19,2013,6,19,Corporate,Office Supplies,1661.04
 East,New York,2013-06-19,2013,6,19,Consumer,Office Supplies,164.5
@@ -3058,6 +3144,7 @@ South,Arkansas,2013-06-25,2013,6,25,Corporate,Office Supplies,49.14
 Central,Kansas,2013-06-25,2013,6,25,Home Office,Office Supplies,695.99
 East,Ohio,2013-06-25,2013,6,25,Consumer,Office Supplies,193.16
 Central,Kansas,2013-06-25,2013,6,25,Home Office,Office Supplies,2030.44
+Central,Kansas,2013-06-25,2013,6,25,Home Office,Technology,27875.54
 West,California,2013-06-25,2013,6,25,Corporate,Furniture,6568.024
 Central,Texas,2013-06-25,2013,6,25,Home Office,Office Supplies,9013.58
 Central,Texas,2013-06-25,2013,6,25,Home Office,Office Supplies,175.42
@@ -3233,6 +3320,7 @@ East,New York,2013-07-28,2013,7,28,Corporate,Furniture,1095.27
 South,South Carolina,2013-07-28,2013,7,28,Corporate,Office Supplies,17.06
 West,New Mexico,2013-07-28,2013,7,28,Corporate,Office Supplies,15.0
 South,South Carolina,2013-07-28,2013,7,28,Corporate,Technology,600.86
+West,Washington,2013-07-29,2013,7,29,Corporate,Furniture,12719.7
 West,Colorado,2013-07-29,2013,7,29,Home Office,Technology,4416.651
 Central,Illinois,2013-07-29,2013,7,29,Corporate,Office Supplies,626.07
 West,Idaho,2013-07-29,2013,7,29,Consumer,Office Supplies,5875.66
@@ -3332,6 +3420,7 @@ Central,Texas,2013-08-14,2013,8,14,Consumer,Furniture,2062.75
 Central,Texas,2013-08-14,2013,8,14,Consumer,Furniture,71.57
 Central,Illinois,2013-08-15,2013,8,15,Corporate,Technology,42.31
 South,Alabama,2013-08-15,2013,8,15,Corporate,Office Supplies,231.08
+South,Florida,2013-08-15,2013,8,15,Corporate,Furniture,21062.91
 South,Alabama,2013-08-15,2013,8,15,Corporate,Office Supplies,428.36
 Central,Illinois,2013-08-15,2013,8,15,Corporate,Office Supplies,152.67
 South,Louisiana,2013-08-16,2013,8,16,Consumer,Office Supplies,487.98
@@ -3495,6 +3584,8 @@ Central,Texas,2013-09-11,2013,9,11,Small Business,Technology,553.02
 West,Idaho,2013-09-12,2013,9,12,Consumer,Office Supplies,28.75
 Central,Texas,2013-09-12,2013,9,12,Corporate,Office Supplies,104.27
 West,Idaho,2013-09-12,2013,9,12,Consumer,Office Supplies,385.05
+West,Idaho,2013-09-12,2013,9,12,Consumer,Technology,19014.24
+East,New Jersey,2013-09-12,2013,9,12,Corporate,Technology,20329.8
 East,MA,2013-09-12,2013,9,12,Corporate,Furniture,3685.38
 West,Washington,2013-09-13,2013,9,13,Small Business,Furniture,284.0
 South,North Carolina,2013-09-13,2013,9,13,Consumer,Office Supplies,116.84
@@ -3503,6 +3594,8 @@ South,South Carolina,2013-09-13,2013,9,13,Home Office,Office Supplies,71.24
 West,Colorado,2013-09-13,2013,9,13,Home Office,Technology,526.45
 West,Utah,2013-09-13,2013,9,13,Home Office,Technology,984.6315
 Central,MO,2013-09-14,2013,9,14,Corporate,Office Supplies,363.16
+Central,MO,2013-09-14,2013,9,14,Corporate,Furniture,17884.53
+Central,MO,2013-09-14,2013,9,14,Corporate,Technology,12571.63
 Central,Texas,2013-09-14,2013,9,14,Corporate,Furniture,2826.9
 Central,Texas,2013-09-14,2013,9,14,Corporate,Furniture,7834.77
 Central,MO,2013-09-14,2013,9,14,Corporate,Office Supplies,128.86
@@ -3516,6 +3609,7 @@ East,Delaware,2013-09-15,2013,9,15,Consumer,Office Supplies,380.38
 West,Idaho,2013-09-15,2013,9,15,Small Business,Technology,5740.32
 East,Delaware,2013-09-15,2013,9,15,Consumer,Office Supplies,336.06
 South,Tennessee,2013-09-15,2013,9,15,Small Business,Office Supplies,116.63
+West,California,2013-09-15,2013,9,15,Home Office,Technology,23949.51
 East,Ohio,2013-09-17,2013,9,17,Home Office,Furniture,397.17
 Central,Michigan,2013-09-17,2013,9,17,Home Office,Furniture,12072.9
 South,North Carolina,2013-09-17,2013,9,17,Home Office,Office Supplies,405.83
@@ -3569,6 +3663,7 @@ West,Idaho,2013-09-23,2013,9,23,Small Business,Office Supplies,2048.78
 Central,Illinois,2013-09-23,2013,9,23,Corporate,Technology,1078.49
 Central,Indiana,2013-09-23,2013,9,23,Corporate,Technology,10791.38
 West,California,2013-09-24,2013,9,24,Corporate,Office Supplies,1500.84
+East,Ohio,2013-09-24,2013,9,24,Home Office,Furniture,18561.31
 East,New York,2013-09-24,2013,9,24,Corporate,Office Supplies,703.54
 East,New York,2013-09-24,2013,9,24,Corporate,Office Supplies,67.3
 West,California,2013-09-24,2013,9,24,Corporate,Office Supplies,98.64
@@ -3602,6 +3697,7 @@ South,Florida,2013-09-27,2013,9,27,Corporate,Technology,2174.96
 West,Washington,2013-09-27,2013,9,27,Consumer,Furniture,2268.91
 Central,Texas,2013-09-28,2013,9,28,Home Office,Furniture,1143.35
 West,New Mexico,2013-09-28,2013,9,28,Small Business,Technology,609.97
+Central,Wisconsin,2013-09-28,2013,9,28,Home Office,Office Supplies,18697.24
 Central,Wisconsin,2013-09-28,2013,9,28,Home Office,Office Supplies,786.13
 South,North Carolina,2013-09-29,2013,9,29,Corporate,Technology,3451.85
 Central,Oklahoma,2013-09-29,2013,9,29,Corporate,Furniture,8704.08
@@ -3610,6 +3706,7 @@ West,California,2013-09-29,2013,9,29,Corporate,Office Supplies,10223.19
 East,MA,2013-09-29,2013,9,29,Corporate,Office Supplies,257.9
 West,California,2013-09-29,2013,9,29,Corporate,Office Supplies,312.42
 Central,Indiana,2013-09-29,2013,9,29,Consumer,Technology,2531.35
+Central,Oklahoma,2013-09-29,2013,9,29,Corporate,Technology,24051.49
 Central,Texas,2013-09-29,2013,9,29,Consumer,Technology,125.7
 Central,Texas,2013-09-29,2013,9,29,Consumer,Technology,205.3
 Central,Texas,2013-09-30,2013,9,30,Small Business,Office Supplies,52.93
@@ -3697,6 +3794,7 @@ Central,Minnesota,2013-10-12,2013,10,12,Home Office,Technology,7143.927
 South,Georgia,2013-10-12,2013,10,12,Corporate,Technology,806.05
 South,Georgia,2013-10-12,2013,10,12,Corporate,Office Supplies,90.37
 South,North Carolina,2013-10-12,2013,10,12,Home Office,Office Supplies,11.76
+Central,Michigan,2013-10-12,2013,10,12,Corporate,Technology,18775.76
 Central,Minnesota,2013-10-12,2013,10,12,Home Office,Technology,1880.8
 Central,Michigan,2013-10-12,2013,10,12,Home Office,Office Supplies,846.35
 Central,Michigan,2013-10-12,2013,10,12,Home Office,Technology,1976.3945
@@ -3716,6 +3814,7 @@ East,Ohio,2013-10-15,2013,10,15,Corporate,Office Supplies,1734.31
 Central,Illinois,2013-10-15,2013,10,15,Small Business,Office Supplies,321.68
 East,MA,2013-10-15,2013,10,15,Consumer,Technology,10253.75
 Central,Illinois,2013-10-15,2013,10,15,Small Business,Office Supplies,971.95
+East,New Jersey,2013-10-15,2013,10,15,Consumer,Technology,16193.16
 East,Connecticut,2013-10-15,2013,10,15,Consumer,Office Supplies,157.33
 East,Rhode Island,2013-10-16,2013,10,16,Home Office,Technology,972.35
 East,MA,2013-10-16,2013,10,16,Home Office,Office Supplies,173.33
@@ -3737,6 +3836,7 @@ Central,South Dakota,2013-10-19,2013,10,19,Corporate,Office Supplies,1646.47
 East,MA,2013-10-20,2013,10,20,Corporate,Office Supplies,1068.79
 Central,Texas,2013-10-20,2013,10,20,Home Office,Furniture,7286.65
 Central,Illinois,2013-10-20,2013,10,20,Small Business,Office Supplies,40.72
+South,Virginia,2013-10-20,2013,10,20,Corporate,Technology,25313.34
 East,New York,2013-10-20,2013,10,20,Consumer,Furniture,1764.97
 East,Vermont,2013-10-20,2013,10,20,Corporate,Office Supplies,287.13
 Central,Illinois,2013-10-20,2013,10,20,Small Business,Office Supplies,113.3
@@ -3746,6 +3846,8 @@ Central,Texas,2013-10-21,2013,10,21,Consumer,Office Supplies,34.59
 Central,Texas,2013-10-21,2013,10,21,Consumer,Furniture,5029.216
 Central,Texas,2013-10-22,2013,10,22,Home Office,Furniture,1718.43
 Central,Michigan,2013-10-22,2013,10,22,Corporate,Office Supplies,336.91
+Central,Minnesota,2013-10-22,2013,10,22,Home Office,Technology,28761.52
+East,Pennsylvania,2013-10-22,2013,10,22,Home Office,Furniture,14358.64
 Central,Texas,2013-10-22,2013,10,22,Home Office,Office Supplies,48.26
 East,Connecticut,2013-10-22,2013,10,22,Consumer,Office Supplies,1086.39
 East,Pennsylvania,2013-10-22,2013,10,22,Home Office,Office Supplies,8920.08
@@ -3920,10 +4022,12 @@ Central,Kansas,2013-11-20,2013,11,20,Home Office,Office Supplies,398.76
 Central,MO,2013-11-21,2013,11,21,Corporate,Furniture,933.21
 Central,MO,2013-11-21,2013,11,21,Small Business,Office Supplies,85.77
 Central,MO,2013-11-21,2013,11,21,Small Business,Office Supplies,149.31
+Central,Iowa,2013-11-21,2013,11,21,Home Office,Technology,19109.61
 East,New York,2013-11-21,2013,11,21,Corporate,Technology,2569.6265
 Central,MO,2013-11-21,2013,11,21,Consumer,Technology,618.1965
 Central,Illinois,2013-11-22,2013,11,22,Corporate,Technology,826.9735
 Central,Texas,2013-11-22,2013,11,22,Consumer,Office Supplies,167.41
+Central,Texas,2013-11-22,2013,11,22,Consumer,Technology,14240.76
 West,Colorado,2013-11-22,2013,11,22,Consumer,Technology,13.52
 South,Louisiana,2013-11-22,2013,11,22,Corporate,Technology,553.3415
 South,Virginia,2013-11-22,2013,11,22,Corporate,Office Supplies,142.12
@@ -3960,6 +4064,7 @@ Central,Texas,2013-11-25,2013,11,25,Home Office,Technology,187.78
 Central,Texas,2013-11-25,2013,11,25,Home Office,Technology,1575.14
 East,New Hampshire,2013-11-25,2013,11,25,Home Office,Furniture,4108.17
 West,California,2013-11-25,2013,11,25,Corporate,Technology,900.06
+West,Arizona,2013-11-26,2013,11,26,Home Office,Technology,15152.55
 East,Pennsylvania,2013-11-26,2013,11,26,Corporate,Office Supplies,475.9
 Central,Texas,2013-11-27,2013,11,27,Corporate,Technology,1018.402
 Central,Texas,2013-11-27,2013,11,27,Corporate,Technology,3337.5165
@@ -3983,6 +4088,7 @@ South,Louisiana,2013-11-30,2013,11,30,Corporate,Office Supplies,74.75
 Central,Texas,2013-11-30,2013,11,30,Home Office,Office Supplies,527.25
 East,Maine,2013-11-30,2013,11,30,Small Business,Office Supplies,1844.26
 East,Pennsylvania,2013-11-30,2013,11,30,Consumer,Furniture,376.58
+East,Pennsylvania,2013-12-01,2013,12,1,Home Office,Office Supplies,12586.19
 South,South Carolina,2013-12-01,2013,12,1,Consumer,Technology,357.01
 West,Oregon,2013-12-01,2013,12,1,Small Business,Furniture,118.06
 East,MA,2013-12-01,2013,12,1,Consumer,Office Supplies,141.27
@@ -4039,9 +4145,11 @@ Central,Illinois,2013-12-07,2013,12,7,Corporate,Office Supplies,108.42
 Central,Nebraska,2013-12-07,2013,12,7,Corporate,Office Supplies,2063.42
 Central,Nebraska,2013-12-07,2013,12,7,Corporate,Technology,112.86
 West,Washington,2013-12-07,2013,12,7,Small Business,Technology,1289.62
+Central,South Dakota,2013-12-08,2013,12,8,Corporate,Technology,17717.34
 Central,Minnesota,2013-12-08,2013,12,8,Corporate,Furniture,138.31
 Central,Wisconsin,2013-12-09,2013,12,9,Corporate,Technology,1143.88
 West,Colorado,2013-12-09,2013,12,9,Home Office,Technology,371.95
+Central,Illinois,2013-12-09,2013,12,9,Consumer,Furniture,14223.82
 East,New Hampshire,2013-12-09,2013,12,9,Home Office,Office Supplies,7522.8
 South,Alabama,2013-12-10,2013,12,10,Home Office,Furniture,10480.272
 South,Alabama,2013-12-10,2013,12,10,Home Office,Office Supplies,1991.26
@@ -4117,6 +4225,7 @@ West,California,2013-12-21,2013,12,21,Home Office,Office Supplies,2360.98
 Central,Texas,2013-12-21,2013,12,21,Corporate,Office Supplies,102.32
 Central,Michigan,2013-12-21,2013,12,21,Small Business,Technology,729.92
 West,Washington,2013-12-21,2013,12,21,Small Business,Office Supplies,82.93
+Central,South Dakota,2013-12-21,2013,12,21,Small Business,Technology,14556.67
 West,California,2013-12-21,2013,12,21,Home Office,Office Supplies,182.2
 South,Virginia,2013-12-21,2013,12,21,Corporate,Office Supplies,27.44
 South,Tennessee,2013-12-21,2013,12,21,Small Business,Technology,1950.036
@@ -4215,6 +4324,7 @@ West,Utah,2014-01-05,2014,1,5,Home Office,Office Supplies,552.08
 East,Maryland,2014-01-06,2014,1,6,Consumer,Office Supplies,51.3
 East,Maryland,2014-01-06,2014,1,6,Consumer,Office Supplies,307.57
 East,Maryland,2014-01-06,2014,1,6,Consumer,Office Supplies,87.52
+East,Maryland,2014-01-06,2014,1,6,Consumer,Furniture,14861.07
 East,New Jersey,2014-01-06,2014,1,6,Corporate,Furniture,5713.48
 East,Maryland,2014-01-06,2014,1,6,Consumer,Furniture,8.48
 Central,MO,2014-01-06,2014,1,6,Small Business,Furniture,108.73
@@ -4246,6 +4356,7 @@ East,New York,2014-01-10,2014,1,10,Corporate,Furniture,1782.68
 Central,North Dakota,2014-01-10,2014,1,10,Home Office,Furniture,418.34
 West,California,2014-01-10,2014,1,10,Corporate,Office Supplies,59.08
 Central,Texas,2014-01-10,2014,1,10,Small Business,Office Supplies,32.49
+Central,Michigan,2014-01-10,2014,1,10,Consumer,Technology,27663.92
 West,California,2014-01-10,2014,1,10,Corporate,Technology,886.363
 Central,North Dakota,2014-01-10,2014,1,10,Home Office,Office Supplies,69.98
 Central,Texas,2014-01-10,2014,1,10,Small Business,Office Supplies,188.34
@@ -4368,9 +4479,12 @@ South,Virginia,2014-02-05,2014,2,5,Consumer,Office Supplies,81.78
 West,Colorado,2014-02-05,2014,2,5,Home Office,Office Supplies,4153.06
 Central,Nebraska,2014-02-05,2014,2,5,Small Business,Office Supplies,112.57
 South,Arkansas,2014-02-05,2014,2,5,Home Office,Technology,1566.8
+South,Arkansas,2014-02-05,2014,2,5,Corporate,Technology,17131.36
+West,Washington,2014-02-05,2014,2,5,Consumer,Furniture,17448.75
 Central,Texas,2014-02-06,2014,2,6,Consumer,Office Supplies,643.53
 South,North Carolina,2014-02-06,2014,2,6,Corporate,Office Supplies,21.01
 West,Colorado,2014-02-06,2014,2,6,Home Office,Office Supplies,65.78
+Central,Wisconsin,2014-02-06,2014,2,6,Consumer,Furniture,19342.84
 East,Maryland,2014-02-06,2014,2,6,Consumer,Furniture,1280.73
 West,California,2014-02-06,2014,2,6,Corporate,Furniture,351.12
 West,California,2014-02-06,2014,2,6,Small Business,Technology,4442.049
@@ -4407,6 +4521,7 @@ West,California,2014-02-11,2014,2,11,Home Office,Office Supplies,297.34
 East,Ohio,2014-02-11,2014,2,11,Home Office,Furniture,172.34
 West,California,2014-02-11,2014,2,11,Home Office,Furniture,89.04
 West,California,2014-02-11,2014,2,11,Home Office,Office Supplies,1264.13
+East,Ohio,2014-02-11,2014,2,11,Small Business,Office Supplies,17874.26
 South,South Carolina,2014-02-12,2014,2,12,Home Office,Office Supplies,663.24
 East,New York,2014-02-12,2014,2,12,Home Office,Furniture,5407.9
 South,South Carolina,2014-02-12,2014,2,12,Home Office,Office Supplies,174.3
@@ -4450,6 +4565,7 @@ Central,Illinois,2014-02-17,2014,2,17,Small Business,Technology,756.15
 Central,Texas,2014-02-18,2014,2,18,Small Business,Office Supplies,2905.3
 East,MA,2014-02-18,2014,2,18,Small Business,Office Supplies,69.57
 West,California,2014-02-18,2014,2,18,Corporate,Office Supplies,3089.06
+West,California,2014-02-18,2014,2,18,Corporate,Technology,20265.22
 Central,Minnesota,2014-02-19,2014,2,19,Small Business,Office Supplies,3465.97
 West,Oregon,2014-02-19,2014,2,19,Corporate,Furniture,3335.27
 West,Oregon,2014-02-19,2014,2,19,Corporate,Office Supplies,110.15
@@ -4531,6 +4647,7 @@ East,Ohio,2014-03-05,2014,3,5,Corporate,Office Supplies,163.98
 West,Utah,2014-03-05,2014,3,5,Home Office,Technology,3951.6755
 East,New York,2014-03-05,2014,3,5,Corporate,Furniture,7663.74
 West,Oregon,2014-03-05,2014,3,5,Corporate,Office Supplies,862.64
+West,Utah,2014-03-05,2014,3,5,Home Office,Office Supplies,14346.73
 West,Utah,2014-03-05,2014,3,5,Home Office,Office Supplies,40.34
 Central,Indiana,2014-03-07,2014,3,7,Corporate,Furniture,226.18
 Central,Minnesota,2014-03-07,2014,3,7,Corporate,Office Supplies,27.05
@@ -4555,6 +4672,7 @@ West,Washington,2014-03-10,2014,3,10,Consumer,Office Supplies,603.69
 Central,Indiana,2014-03-10,2014,3,10,Corporate,Office Supplies,176.15
 South,Florida,2014-03-10,2014,3,10,Corporate,Office Supplies,154.62
 South,Florida,2014-03-10,2014,3,10,Corporate,Office Supplies,1638.2
+West,California,2014-03-10,2014,3,10,Small Business,Furniture,12685.544
 Central,Texas,2014-03-10,2014,3,10,Home Office,Furniture,450.39
 Central,Texas,2014-03-10,2014,3,10,Home Office,Technology,1193.1195
 Central,Kansas,2014-03-10,2014,3,10,Home Office,Technology,57.5
@@ -4574,6 +4692,7 @@ South,Florida,2014-03-13,2014,3,13,Home Office,Office Supplies,1460.42
 East,New York,2014-03-13,2014,3,13,Corporate,Office Supplies,159.71
 South,Florida,2014-03-13,2014,3,13,Home Office,Technology,6659.7415
 West,California,2014-03-14,2014,3,14,Corporate,Furniture,269.3
+South,Arkansas,2014-03-15,2014,3,15,Small Business,Technology,28664.52
 Central,Nebraska,2014-03-15,2014,3,15,Corporate,Furniture,9499.3
 Central,Kansas,2014-03-15,2014,3,15,Corporate,Furniture,431.29
 Central,Kansas,2014-03-15,2014,3,15,Corporate,Office Supplies,294.26
@@ -4605,6 +4724,7 @@ South,Alabama,2014-03-18,2014,3,18,Home Office,Furniture,410.27
 Central,MO,2014-03-18,2014,3,18,Corporate,Office Supplies,76.06
 East,Maryland,2014-03-18,2014,3,18,Home Office,Office Supplies,156.09
 South,Alabama,2014-03-18,2014,3,18,Home Office,Technology,1557.42
+Central,MO,2014-03-18,2014,3,18,Corporate,Furniture,18056.68
 East,Ohio,2014-03-19,2014,3,19,Corporate,Office Supplies,133.07
 Central,Minnesota,2014-03-19,2014,3,19,Corporate,Technology,7452.137
 Central,Illinois,2014-03-19,2014,3,19,Corporate,Office Supplies,157.79
@@ -4612,6 +4732,7 @@ East,Maine,2014-03-20,2014,3,20,Consumer,Office Supplies,119.2
 South,Kentucky,2014-03-20,2014,3,20,Corporate,Office Supplies,7.64
 East,Maine,2014-03-20,2014,3,20,Home Office,Office Supplies,306.13
 East,Connecticut,2014-03-20,2014,3,20,Consumer,Furniture,1825.42
+South,Kentucky,2014-03-20,2014,3,20,Corporate,Technology,21532.26
 East,Maine,2014-03-21,2014,3,21,Small Business,Office Supplies,110.96
 East,New Jersey,2014-03-21,2014,3,21,Corporate,Technology,407.8725
 Central,Michigan,2014-03-21,2014,3,21,Corporate,Furniture,3732.25
@@ -4635,6 +4756,7 @@ South,Louisiana,2014-03-25,2014,3,25,Corporate,Office Supplies,162.49
 Central,Indiana,2014-03-26,2014,3,26,Corporate,Furniture,76.61
 Central,Indiana,2014-03-26,2014,3,26,Corporate,Office Supplies,3780.43
 East,New Hampshire,2014-03-26,2014,3,26,Corporate,Office Supplies,13.71
+Central,Illinois,2014-03-26,2014,3,26,Corporate,Technology,17387.65
 Central,Indiana,2014-03-26,2014,3,26,Corporate,Furniture,1961.68
 South,Florida,2014-03-26,2014,3,26,Consumer,Office Supplies,205.11
 South,Florida,2014-03-26,2014,3,26,Consumer,Office Supplies,3981.23
@@ -4693,6 +4815,7 @@ Central,Illinois,2014-04-08,2014,4,8,Small Business,Office Supplies,77.99
 Central,Illinois,2014-04-08,2014,4,8,Small Business,Technology,701.46
 West,Wyoming,2014-04-08,2014,4,8,Home Office,Technology,469.8375
 West,Wyoming,2014-04-08,2014,4,8,Home Office,Furniture,823.78
+East,Ohio,2014-04-08,2014,4,8,Small Business,Technology,13671.94
 Central,Michigan,2014-04-08,2014,4,8,Home Office,Furniture,1735.59
 East,West Virginia,2014-04-08,2014,4,8,Home Office,Office Supplies,647.77
 West,Utah,2014-04-09,2014,4,9,Corporate,Office Supplies,570.51
@@ -4812,8 +4935,10 @@ Central,Texas,2014-04-29,2014,4,29,Consumer,Furniture,11365.616
 East,New York,2014-04-29,2014,4,29,Small Business,Office Supplies,76.16
 Central,Indiana,2014-04-29,2014,4,29,Home Office,Office Supplies,500.48
 East,Maine,2014-04-29,2014,4,29,Small Business,Office Supplies,1959.43
+East,Maine,2014-04-29,2014,4,29,Small Business,Furniture,14072.64
 East,Ohio,2014-04-30,2014,4,30,Home Office,Furniture,5437.92
 East,Ohio,2014-04-30,2014,4,30,Corporate,Office Supplies,340.97
+Central,Minnesota,2014-04-30,2014,4,30,Home Office,Technology,23281.05
 West,California,2014-04-30,2014,4,30,Home Office,Technology,105.13
 East,Ohio,2014-04-30,2014,4,30,Corporate,Office Supplies,136.24
 Central,Minnesota,2014-04-30,2014,4,30,Home Office,Office Supplies,82.06
@@ -4946,6 +5071,7 @@ East,MA,2014-05-21,2014,5,21,Corporate,Office Supplies,202.64
 East,Vermont,2014-05-21,2014,5,21,Corporate,Office Supplies,179.26
 South,Mississippi,2014-05-21,2014,5,21,Home Office,Office Supplies,278.8
 East,Maryland,2014-05-21,2014,5,21,Home Office,Office Supplies,142.1
+West,California,2014-05-22,2014,5,22,Corporate,Furniture,20701.928
 Central,Texas,2014-05-22,2014,5,22,Corporate,Furniture,846.59
 Central,Wisconsin,2014-05-22,2014,5,22,Corporate,Furniture,4647.69
 East,New York,2014-05-22,2014,5,22,Corporate,Office Supplies,468.95
@@ -4965,6 +5091,7 @@ South,Tennessee,2014-05-24,2014,5,24,Home Office,Furniture,569.92
 South,Tennessee,2014-05-24,2014,5,24,Home Office,Office Supplies,183.65
 West,California,2014-05-25,2014,5,25,Small Business,Office Supplies,140.63
 West,California,2014-05-25,2014,5,25,Small Business,Technology,4872.6675
+West,Arizona,2014-05-25,2014,5,25,Small Business,Technology,17599.39
 Central,Texas,2014-05-25,2014,5,25,Home Office,Furniture,33.11
 Central,Texas,2014-05-25,2014,5,25,Home Office,Office Supplies,204.15
 West,Arizona,2014-05-25,2014,5,25,Small Business,Office Supplies,115.34
@@ -5135,6 +5262,7 @@ East,Rhode Island,2014-06-23,2014,6,23,Home Office,Technology,1683.57
 South,Florida,2014-06-24,2014,6,24,Home Office,Furniture,131.27
 South,Florida,2014-06-24,2014,6,24,Consumer,Office Supplies,1662.5
 South,Florida,2014-06-24,2014,6,24,Consumer,Office Supplies,839.7
+South,Florida,2014-06-24,2014,6,24,Home Office,Technology,13571.7
 East,Maryland,2014-06-25,2014,6,25,Corporate,Furniture,26.33
 West,Arizona,2014-06-25,2014,6,25,Small Business,Technology,1506.8375
 East,Maryland,2014-06-25,2014,6,25,Corporate,Office Supplies,2926.33
@@ -5179,6 +5307,7 @@ Central,Minnesota,2014-07-03,2014,7,3,Consumer,Furniture,325.92
 Central,Michigan,2014-07-03,2014,7,3,Corporate,Office Supplies,1477.39
 South,North Carolina,2014-07-03,2014,7,3,Corporate,Office Supplies,296.82
 Central,Minnesota,2014-07-03,2014,7,3,Consumer,Technology,127.74
+West,Washington,2014-07-03,2014,7,3,Consumer,Technology,27720.98
 West,Washington,2014-07-03,2014,7,3,Consumer,Office Supplies,520.13
 South,Florida,2014-07-03,2014,7,3,Corporate,Technology,631.499
 Central,Oklahoma,2014-07-03,2014,7,3,Home Office,Furniture,5051.89
@@ -5192,6 +5321,7 @@ Central,Texas,2014-07-04,2014,7,4,Corporate,Furniture,735.09
 South,Tennessee,2014-07-04,2014,7,4,Small Business,Furniture,197.56
 East,West Virginia,2014-07-04,2014,7,4,Corporate,Technology,258.11
 Central,Texas,2014-07-04,2014,7,4,Corporate,Office Supplies,99.36
+West,Washington,2014-07-05,2014,7,5,Small Business,Office Supplies,14588.28
 West,Washington,2014-07-05,2014,7,5,Small Business,Office Supplies,55.68
 South,Tennessee,2014-07-05,2014,7,5,Home Office,Office Supplies,286.06
 West,Washington,2014-07-05,2014,7,5,Small Business,Furniture,2675.08
@@ -5202,6 +5332,7 @@ Central,Texas,2014-07-06,2014,7,6,Corporate,Office Supplies,515.65
 South,Alabama,2014-07-06,2014,7,6,Corporate,Office Supplies,9.69
 South,Alabama,2014-07-06,2014,7,6,Corporate,Office Supplies,331.99
 West,California,2014-07-06,2014,7,6,Corporate,Office Supplies,286.26
+South,Louisiana,2014-07-06,2014,7,6,Corporate,Technology,29186.49
 West,Arizona,2014-07-07,2014,7,7,Consumer,Office Supplies,423.24
 East,Ohio,2014-07-07,2014,7,7,Consumer,Office Supplies,197.49
 East,Ohio,2014-07-07,2014,7,7,Consumer,Office Supplies,49.86
@@ -5271,6 +5402,7 @@ Central,Illinois,2014-07-21,2014,7,21,Home Office,Office Supplies,2700.41
 Central,Illinois,2014-07-21,2014,7,21,Corporate,Office Supplies,18.92
 West,Utah,2014-07-21,2014,7,21,Corporate,Office Supplies,132.86
 West,New Mexico,2014-07-21,2014,7,21,Home Office,Furniture,4203.88
+Central,Minnesota,2014-07-21,2014,7,21,Corporate,Technology,18028.07
 Central,Nebraska,2014-07-21,2014,7,21,Small Business,Office Supplies,117.33
 East,Vermont,2014-07-22,2014,7,22,Small Business,Office Supplies,193.25
 South,North Carolina,2014-07-22,2014,7,22,Corporate,Office Supplies,642.42
@@ -5383,6 +5515,7 @@ West,Oregon,2014-08-11,2014,8,11,Corporate,Office Supplies,199.11
 East,Ohio,2014-08-11,2014,8,11,Corporate,Technology,2388.636
 South,Kentucky,2014-08-11,2014,8,11,Home Office,Technology,1108.366
 East,New York,2014-08-11,2014,8,11,Home Office,Furniture,1053.74
+Central,Illinois,2014-08-12,2014,8,12,Corporate,Office Supplies,18235.47
 Central,Illinois,2014-08-12,2014,8,12,Corporate,Technology,2631.107
 East,Maine,2014-08-12,2014,8,12,Small Business,Office Supplies,240.14
 South,Florida,2014-08-13,2014,8,13,Corporate,Office Supplies,409.97
@@ -5435,6 +5568,7 @@ West,Idaho,2014-08-21,2014,8,21,Small Business,Technology,249.48
 East,New Jersey,2014-08-21,2014,8,21,Consumer,Technology,3064.658
 East,MA,2014-08-21,2014,8,21,Consumer,Furniture,4211.0
 East,Vermont,2014-08-21,2014,8,21,Consumer,Office Supplies,19.34
+Central,Texas,2014-08-22,2014,8,22,Home Office,Furniture,13608.83
 Central,Texas,2014-08-22,2014,8,22,Home Office,Office Supplies,89.32
 West,Colorado,2014-08-23,2014,8,23,Corporate,Office Supplies,214.19
 West,Montana,2014-08-23,2014,8,23,Consumer,Furniture,4680.89
@@ -5496,12 +5630,15 @@ West,California,2014-09-03,2014,9,3,Consumer,Office Supplies,27.01
 West,California,2014-09-03,2014,9,3,Corporate,Office Supplies,53.99
 East,Pennsylvania,2014-09-03,2014,9,3,Home Office,Technology,2296.76
 West,California,2014-09-04,2014,9,4,Consumer,Office Supplies,196.98
+Central,Michigan,2014-09-04,2014,9,4,Small Business,Furniture,12979.1
 Central,Wisconsin,2014-09-04,2014,9,4,Home Office,Office Supplies,33.96
 South,Tennessee,2014-09-04,2014,9,4,Small Business,Office Supplies,7922.69
+West,Oregon,2014-09-04,2014,9,4,Small Business,Technology,21555.6
 West,Washington,2014-09-04,2014,9,4,Corporate,Technology,2912.015
 West,California,2014-09-04,2014,9,4,Consumer,Technology,1756.695
 East,Pennsylvania,2014-09-04,2014,9,4,Small Business,Furniture,220.97
 West,California,2014-09-05,2014,9,5,Small Business,Office Supplies,39.49
+South,South Carolina,2014-09-05,2014,9,5,Home Office,Furniture,12908.4
 East,Ohio,2014-09-05,2014,9,5,Corporate,Office Supplies,13.04
 Central,Illinois,2014-09-05,2014,9,5,Home Office,Office Supplies,387.0
 South,Virginia,2014-09-06,2014,9,6,Consumer,Office Supplies,109.39
@@ -5523,6 +5660,7 @@ Central,Minnesota,2014-09-08,2014,9,8,Corporate,Technology,1031.06
 West,California,2014-09-08,2014,9,8,Corporate,Office Supplies,643.31
 East,Maryland,2014-09-09,2014,9,9,Home Office,Furniture,266.3
 West,Arizona,2014-09-09,2014,9,9,Corporate,Technology,4097.1445
+East,New York,2014-09-09,2014,9,9,Home Office,Furniture,20596.58
 Central,Texas,2014-09-10,2014,9,10,Consumer,Furniture,522.06
 East,New Jersey,2014-09-10,2014,9,10,Small Business,Office Supplies,95.38
 Central,Wisconsin,2014-09-10,2014,9,10,Consumer,Furniture,250.7
@@ -5584,6 +5722,7 @@ East,New York,2014-09-19,2014,9,19,Corporate,Technology,1124.244
 South,Georgia,2014-09-19,2014,9,19,Corporate,Technology,636.5
 South,Georgia,2014-09-19,2014,9,19,Corporate,Technology,2614.3705
 Central,Michigan,2014-09-20,2014,9,20,Home Office,Office Supplies,206.68
+West,New Mexico,2014-09-21,2014,9,21,Small Business,Technology,21046.74
 West,California,2014-09-22,2014,9,22,Small Business,Office Supplies,473.0
 Central,Texas,2014-09-22,2014,9,22,Home Office,Office Supplies,8185.89
 Central,Indiana,2014-09-22,2014,9,22,Corporate,Office Supplies,136.42
@@ -5643,12 +5782,14 @@ South,North Carolina,2014-10-01,2014,10,1,Home Office,Technology,1281.1795
 West,California,2014-10-01,2014,10,1,Small Business,Technology,1429.088
 Central,Michigan,2014-10-02,2014,10,2,Corporate,Office Supplies,238.25
 West,Oregon,2014-10-02,2014,10,2,Corporate,Office Supplies,140.69
+West,Oregon,2014-10-02,2014,10,2,Corporate,Technology,15703.82
 West,Oregon,2014-10-02,2014,10,2,Corporate,Furniture,7789.63
 East,Ohio,2014-10-02,2014,10,2,Consumer,Office Supplies,153.23
 East,Pennsylvania,2014-10-02,2014,10,2,Home Office,Office Supplies,70.91
 South,Georgia,2014-10-02,2014,10,2,Corporate,Office Supplies,75.39
 South,Georgia,2014-10-02,2014,10,2,Corporate,Office Supplies,28.82
 South,Tennessee,2014-10-03,2014,10,3,Corporate,Furniture,1479.14
+South,Georgia,2014-10-03,2014,10,3,Consumer,Furniture,14493.84
 Central,Illinois,2014-10-03,2014,10,3,Home Office,Furniture,3881.89
 South,Virginia,2014-10-03,2014,10,3,Home Office,Furniture,2108.21
 Central,Texas,2014-10-03,2014,10,3,Consumer,Office Supplies,945.54
@@ -5714,6 +5855,7 @@ South,Tennessee,2014-10-13,2014,10,13,Small Business,Office Supplies,241.92
 West,California,2014-10-14,2014,10,14,Corporate,Office Supplies,56.77
 West,California,2014-10-14,2014,10,14,Corporate,Office Supplies,155.48
 South,Mississippi,2014-10-15,2014,10,15,Home Office,Office Supplies,189.99
+Central,Illinois,2014-10-15,2014,10,15,Corporate,Technology,22079.47
 South,Tennessee,2014-10-15,2014,10,15,Home Office,Technology,344.24
 South,Florida,2014-10-16,2014,10,16,Small Business,Technology,2637.78
 South,Florida,2014-10-16,2014,10,16,Home Office,Technology,2143.2155
@@ -5723,10 +5865,12 @@ Central,Illinois,2014-10-17,2014,10,17,Corporate,Office Supplies,371.94
 South,Florida,2014-10-17,2014,10,17,Home Office,Furniture,4346.98
 South,Louisiana,2014-10-17,2014,10,17,Corporate,Office Supplies,5642.18
 South,Arkansas,2014-10-18,2014,10,18,Small Business,Furniture,323.26
+Central,Texas,2014-10-18,2014,10,18,Corporate,Office Supplies,12805.25
 East,MA,2014-10-18,2014,10,18,Corporate,Office Supplies,157.87
 West,California,2014-10-18,2014,10,18,Small Business,Office Supplies,646.14
 Central,Texas,2014-10-18,2014,10,18,Corporate,Technology,1435.32
 South,Arkansas,2014-10-19,2014,10,19,Small Business,Office Supplies,137.77
+West,Washington,2014-10-19,2014,10,19,Consumer,Technology,24233.54
 West,Washington,2014-10-19,2014,10,19,Consumer,Furniture,380.62
 West,Washington,2014-10-19,2014,10,19,Consumer,Furniture,6325.65
 South,Arkansas,2014-10-19,2014,10,19,Small Business,Furniture,6483.42
@@ -5816,6 +5960,7 @@ West,Utah,2014-11-02,2014,11,2,Corporate,Technology,293.27
 West,Utah,2014-11-03,2014,11,3,Small Business,Furniture,3329.27
 West,California,2014-11-03,2014,11,3,Corporate,Technology,509.49
 South,Arkansas,2014-11-03,2014,11,3,Home Office,Furniture,466.35
+Central,Illinois,2014-11-05,2014,11,5,Small Business,Furniture,13104.992
 East,Pennsylvania,2014-11-05,2014,11,5,Small Business,Furniture,3023.73
 West,Washington,2014-11-05,2014,11,5,Consumer,Technology,337.2035
 South,Arkansas,2014-11-05,2014,11,5,Corporate,Furniture,48.0
@@ -5824,6 +5969,7 @@ East,New Jersey,2014-11-06,2014,11,6,Home Office,Furniture,3532.96
 West,Washington,2014-11-06,2014,11,6,Corporate,Furniture,152.44
 Central,MO,2014-11-06,2014,11,6,Small Business,Technology,1196.7915
 West,California,2014-11-07,2014,11,7,Consumer,Office Supplies,6831.72
+West,Arizona,2014-11-07,2014,11,7,Consumer,Technology,13905.88
 Central,Michigan,2014-11-07,2014,11,7,Home Office,Office Supplies,1463.27
 Central,Michigan,2014-11-07,2014,11,7,Home Office,Technology,360.24
 West,Utah,2014-11-07,2014,11,7,Corporate,Technology,616.39
@@ -5861,6 +6007,7 @@ West,Colorado,2014-11-12,2014,11,12,Small Business,Office Supplies,2257.88
 Central,Michigan,2014-11-12,2014,11,12,Small Business,Technology,181.66
 Central,Illinois,2014-11-12,2014,11,12,Home Office,Furniture,3922.42
 Central,Illinois,2014-11-12,2014,11,12,Home Office,Technology,1733.3625
+East,West Virginia,2014-11-13,2014,11,13,Corporate,Furniture,14960.096
 East,New York,2014-11-13,2014,11,13,Home Office,Office Supplies,49.49
 East,New York,2014-11-13,2014,11,13,Home Office,Technology,404.1495
 West,California,2014-11-14,2014,11,14,Home Office,Furniture,104.94
@@ -5908,9 +6055,11 @@ West,Montana,2014-11-19,2014,11,19,Small Business,Office Supplies,3.2
 South,Arkansas,2014-11-19,2014,11,19,Corporate,Technology,2337.03
 South,Arkansas,2014-11-19,2014,11,19,Corporate,Technology,10.62
 Central,Michigan,2014-11-19,2014,11,19,Small Business,Technology,7813.7
+South,Arkansas,2014-11-19,2014,11,19,Corporate,Furniture,29345.27
 Central,Iowa,2014-11-19,2014,11,19,Corporate,Office Supplies,114.28
 Central,Michigan,2014-11-19,2014,11,19,Small Business,Office Supplies,164.92
 Central,Iowa,2014-11-19,2014,11,19,Corporate,Office Supplies,1889.04
+Central,Minnesota,2014-11-19,2014,11,19,Corporate,Technology,15602.93
 Central,Iowa,2014-11-19,2014,11,19,Corporate,Office Supplies,301.36
 South,Tennessee,2014-11-20,2014,11,20,Small Business,Furniture,1901.29
 South,Tennessee,2014-11-20,2014,11,20,Small Business,Office Supplies,305.68
@@ -5930,6 +6079,7 @@ Central,Minnesota,2014-11-23,2014,11,23,Corporate,Office Supplies,68.66
 West,California,2014-11-24,2014,11,24,Corporate,Office Supplies,1147.64
 East,New Jersey,2014-11-24,2014,11,24,Corporate,Technology,436.78
 Central,Illinois,2014-11-25,2014,11,25,Small Business,Furniture,8380.22
+Central,Illinois,2014-11-25,2014,11,25,Small Business,Office Supplies,19325.2
 South,Florida,2014-11-25,2014,11,25,Consumer,Office Supplies,40.24
 Central,Texas,2014-11-25,2014,11,25,Small Business,Office Supplies,156.66
 South,Virginia,2014-11-26,2014,11,26,Corporate,Office Supplies,1580.57
@@ -5940,6 +6090,7 @@ Central,Wisconsin,2014-11-26,2014,11,26,Home Office,Office Supplies,514.03
 East,MA,2014-11-26,2014,11,26,Small Business,Office Supplies,54.32
 South,Florida,2014-11-26,2014,11,26,Consumer,Office Supplies,76.6
 Central,Wisconsin,2014-11-26,2014,11,26,Small Business,Technology,4393.75
+West,Oregon,2014-11-27,2014,11,27,Small Business,Technology,21366.51
 Central,MO,2014-11-27,2014,11,27,Consumer,Furniture,12.74
 West,Oregon,2014-11-27,2014,11,27,Small Business,Office Supplies,320.04
 Central,MO,2014-11-27,2014,11,27,Consumer,Office Supplies,136.85
@@ -5994,6 +6145,7 @@ West,California,2014-12-06,2014,12,6,Consumer,Office Supplies,1733.1
 East,Pennsylvania,2014-12-07,2014,12,7,Small Business,Furniture,782.05
 Central,Indiana,2014-12-07,2014,12,7,Home Office,Office Supplies,7608.88
 East,New Jersey,2014-12-07,2014,12,7,Corporate,Office Supplies,1412.98
+East,New Jersey,2014-12-07,2014,12,7,Corporate,Technology,19539.94
 Central,Texas,2014-12-07,2014,12,7,Corporate,Technology,2795.004
 Central,Texas,2014-12-07,2014,12,7,Corporate,Furniture,2573.92
 Central,Indiana,2014-12-07,2014,12,7,Home Office,Furniture,1270.03
@@ -6027,6 +6179,7 @@ West,California,2014-12-10,2014,12,10,Home Office,Technology,68.16
 West,California,2014-12-10,2014,12,10,Home Office,Furniture,1212.928
 West,Idaho,2014-12-11,2014,12,11,Consumer,Office Supplies,68.42
 West,California,2014-12-11,2014,12,11,Corporate,Office Supplies,268.58
+East,New York,2014-12-11,2014,12,11,Corporate,Technology,12858.88
 West,California,2014-12-11,2014,12,11,Corporate,Furniture,1280.65
 West,Idaho,2014-12-11,2014,12,11,Consumer,Furniture,5526.16
 East,New York,2014-12-11,2014,12,11,Corporate,Furniture,146.69
@@ -6089,6 +6242,7 @@ Central,Wisconsin,2014-12-20,2014,12,20,Home Office,Office Supplies,28.23
 East,New Hampshire,2014-12-20,2014,12,20,Home Office,Office Supplies,160.11
 Central,Minnesota,2014-12-20,2014,12,20,Small Business,Office Supplies,248.86
 South,Florida,2014-12-20,2014,12,20,Small Business,Office Supplies,70.02
+East,MA,2014-12-21,2014,12,21,Home Office,Furniture,26622.55
 East,MA,2014-12-21,2014,12,21,Small Business,Office Supplies,229.43
 East,New Jersey,2014-12-21,2014,12,21,Small Business,Office Supplies,1200.13
 West,Utah,2014-12-21,2014,12,21,Consumer,Office Supplies,304.52
@@ -6163,6 +6317,7 @@ West,Oregon,2015-01-04,2015,1,4,Small Business,Office Supplies,55.82
 South,Arkansas,2015-01-04,2015,1,4,Corporate,Office Supplies,113.14
 South,Florida,2015-01-04,2015,1,4,Home Office,Technology,500.5
 South,Arkansas,2015-01-04,2015,1,4,Consumer,Furniture,742.8
+South,Kentucky,2015-01-04,2015,1,4,Home Office,Office Supplies,12723.95
 Central,Wisconsin,2015-01-05,2015,1,5,Corporate,Technology,4962.05
 Central,Texas,2015-01-05,2015,1,5,Consumer,Furniture,120.53
 East,MA,2015-01-05,2015,1,5,Corporate,Office Supplies,2160.27
@@ -6179,6 +6334,7 @@ East,New York,2015-01-05,2015,1,5,Corporate,Office Supplies,89.25
 Central,Kansas,2015-01-05,2015,1,5,Corporate,Technology,2323.36
 Central,Indiana,2015-01-06,2015,1,6,Home Office,Office Supplies,1483.49
 South,Alabama,2015-01-06,2015,1,6,Home Office,Office Supplies,86.0
+Central,Indiana,2015-01-06,2015,1,6,Home Office,Furniture,14729.36
 South,Alabama,2015-01-06,2015,1,6,Home Office,Office Supplies,4805.36
 West,Idaho,2015-01-07,2015,1,7,Consumer,Office Supplies,91.43
 Central,Indiana,2015-01-07,2015,1,7,Corporate,Office Supplies,114.17
@@ -6200,6 +6356,7 @@ West,Washington,2015-01-09,2015,1,9,Home Office,Office Supplies,88.94
 Central,Wisconsin,2015-01-09,2015,1,9,Home Office,Technology,278.902
 East,New Jersey,2015-01-10,2015,1,10,Corporate,Furniture,5811.97
 South,Tennessee,2015-01-10,2015,1,10,Small Business,Furniture,6815.23
+East,New Jersey,2015-01-10,2015,1,10,Consumer,Office Supplies,12741.81
 South,Tennessee,2015-01-10,2015,1,10,Small Business,Technology,162.58
 West,California,2015-01-10,2015,1,10,Corporate,Furniture,322.73
 Central,MO,2015-01-11,2015,1,11,Corporate,Furniture,9843.11
@@ -6220,11 +6377,13 @@ South,Louisiana,2015-01-12,2015,1,12,Corporate,Technology,312.03
 Central,Texas,2015-01-12,2015,1,12,Corporate,Office Supplies,145.93
 East,Maryland,2015-01-12,2015,1,12,Consumer,Furniture,260.12
 South,Georgia,2015-01-13,2015,1,13,Corporate,Office Supplies,163.27
+South,Georgia,2015-01-13,2015,1,13,Corporate,Technology,24559.91
 South,Georgia,2015-01-13,2015,1,13,Corporate,Furniture,1217.5
 West,California,2015-01-13,2015,1,13,Corporate,Office Supplies,336.65
 South,Georgia,2015-01-13,2015,1,13,Corporate,Furniture,441.53
 South,Tennessee,2015-01-13,2015,1,13,Corporate,Office Supplies,236.99
 South,Tennessee,2015-01-13,2015,1,13,Corporate,Technology,4617.336
+West,Washington,2015-01-14,2015,1,14,Small Business,Technology,17605.77
 West,Arizona,2015-01-15,2015,1,15,Small Business,Office Supplies,1585.6
 East,New Jersey,2015-01-15,2015,1,15,Small Business,Office Supplies,290.68
 West,Arizona,2015-01-15,2015,1,15,Small Business,Office Supplies,215.85
@@ -6253,6 +6412,7 @@ East,New York,2015-01-19,2015,1,19,Small Business,Furniture,109.58
 Central,Oklahoma,2015-01-19,2015,1,19,Home Office,Technology,6628.55
 Central,Illinois,2015-01-20,2015,1,20,Home Office,Office Supplies,208.28
 Central,Indiana,2015-01-20,2015,1,20,Corporate,Technology,171.9635
+East,Maryland,2015-01-20,2015,1,20,Home Office,Furniture,24701.12
 Central,Indiana,2015-01-20,2015,1,20,Corporate,Technology,952.47
 Central,Michigan,2015-01-20,2015,1,20,Corporate,Technology,697.5
 Central,Nebraska,2015-01-21,2015,1,21,Small Business,Office Supplies,1554.53
@@ -6268,6 +6428,7 @@ East,Maine,2015-01-23,2015,1,23,Home Office,Office Supplies,62.77
 South,Florida,2015-01-23,2015,1,23,Small Business,Technology,145.42
 South,Florida,2015-01-23,2015,1,23,Small Business,Technology,2080.035
 South,Florida,2015-01-23,2015,1,23,Small Business,Technology,1559.4355
+East,Maryland,2015-01-24,2015,1,24,Corporate,Furniture,23239.96
 West,Colorado,2015-01-24,2015,1,24,Corporate,Office Supplies,878.75
 Central,MO,2015-01-24,2015,1,24,Corporate,Office Supplies,614.35
 East,Maryland,2015-01-24,2015,1,24,Corporate,Office Supplies,302.91
@@ -6313,6 +6474,7 @@ West,Oregon,2015-02-01,2015,2,1,Small Business,Furniture,2503.008
 Central,Texas,2015-02-01,2015,2,1,Small Business,Office Supplies,362.71
 West,Oregon,2015-02-01,2015,2,1,Small Business,Office Supplies,869.78
 Central,Texas,2015-02-01,2015,2,1,Small Business,Technology,2077.1875
+West,Washington,2015-02-01,2015,2,1,Consumer,Technology,17965.45
 Central,Texas,2015-02-02,2015,2,2,Home Office,Office Supplies,66.41
 West,Washington,2015-02-02,2015,2,2,Consumer,Office Supplies,314.34
 East,Pennsylvania,2015-02-02,2015,2,2,Corporate,Office Supplies,122.02
@@ -6388,6 +6550,7 @@ Central,Illinois,2015-02-14,2015,2,14,Home Office,Office Supplies,225.16
 East,New Hampshire,2015-02-14,2015,2,14,Home Office,Office Supplies,115.1
 South,Florida,2015-02-15,2015,2,15,Corporate,Office Supplies,115.02
 Central,Texas,2015-02-15,2015,2,15,Consumer,Technology,542.6
+East,New Jersey,2015-02-15,2015,2,15,Consumer,Furniture,13367.82
 East,Rhode Island,2015-02-15,2015,2,15,Corporate,Office Supplies,13.53
 South,Florida,2015-02-15,2015,2,15,Corporate,Office Supplies,118.63
 East,Maine,2015-02-15,2015,2,15,Consumer,Technology,206.2865
@@ -6401,6 +6564,7 @@ South,Louisiana,2015-02-16,2015,2,16,Corporate,Technology,4697.032
 South,South Carolina,2015-02-17,2015,2,17,Home Office,Furniture,96.21
 Central,Michigan,2015-02-17,2015,2,17,Corporate,Office Supplies,68.88
 West,Utah,2015-02-17,2015,2,17,Consumer,Technology,76.8655
+West,Utah,2015-02-17,2015,2,17,Consumer,Technology,21141.07
 South,South Carolina,2015-02-17,2015,2,17,Home Office,Furniture,1616.66
 Central,Illinois,2015-02-17,2015,2,17,Corporate,Technology,2157.3085
 West,Colorado,2015-02-17,2015,2,17,Home Office,Technology,2592.432
@@ -6432,6 +6596,7 @@ Central,Texas,2015-02-23,2015,2,23,Small Business,Office Supplies,199.8
 Central,Wisconsin,2015-02-23,2015,2,23,Home Office,Office Supplies,434.11
 Central,Wisconsin,2015-02-23,2015,2,23,Home Office,Office Supplies,288.9
 Central,Texas,2015-02-23,2015,2,23,Small Business,Office Supplies,68.97
+West,New Mexico,2015-02-23,2015,2,23,Consumer,Furniture,16313.51
 Central,Illinois,2015-02-23,2015,2,23,Corporate,Furniture,4698.5
 Central,Illinois,2015-02-23,2015,2,23,Corporate,Furniture,1363.0
 Central,Illinois,2015-02-23,2015,2,23,Corporate,Office Supplies,347.47
@@ -6445,6 +6610,7 @@ Central,Texas,2015-02-26,2015,2,26,Small Business,Office Supplies,425.91
 West,Washington,2015-02-26,2015,2,26,Consumer,Office Supplies,322.82
 East,Maine,2015-02-26,2015,2,26,Small Business,Technology,21.84
 East,Maryland,2015-02-27,2015,2,27,Consumer,Furniture,8246.86
+West,California,2015-02-27,2015,2,27,Consumer,Furniture,16886.76
 Central,Oklahoma,2015-02-27,2015,2,27,Home Office,Office Supplies,9758.7
 Central,Kansas,2015-02-27,2015,2,27,Home Office,Office Supplies,29.41
 Central,Kansas,2015-02-27,2015,2,27,Home Office,Technology,892.38
@@ -6462,6 +6628,7 @@ Central,Michigan,2015-03-01,2015,3,1,Small Business,Furniture,961.06
 Central,Michigan,2015-03-01,2015,3,1,Small Business,Technology,1435.95
 East,New York,2015-03-02,2015,3,2,Small Business,Office Supplies,62.88
 Central,MO,2015-03-02,2015,3,2,Home Office,Technology,1375.3765
+East,New York,2015-03-02,2015,3,2,Small Business,Technology,14300.26
 South,Arkansas,2015-03-02,2015,3,2,Home Office,Furniture,423.07
 Central,MO,2015-03-02,2015,3,2,Home Office,Office Supplies,11041.42
 South,Arkansas,2015-03-02,2015,3,2,Home Office,Office Supplies,1602.21
@@ -6491,6 +6658,7 @@ Central,Texas,2015-03-04,2015,3,4,Consumer,Office Supplies,823.98
 South,Tennessee,2015-03-05,2015,3,5,Consumer,Furniture,186.02
 South,Tennessee,2015-03-05,2015,3,5,Consumer,Office Supplies,142.44
 South,Florida,2015-03-05,2015,3,5,Corporate,Office Supplies,313.85
+South,Florida,2015-03-05,2015,3,5,Corporate,Technology,19461.8
 West,California,2015-03-05,2015,3,5,Consumer,Technology,364.4
 West,California,2015-03-06,2015,3,6,Corporate,Furniture,1839.448
 South,Florida,2015-03-06,2015,3,6,Consumer,Technology,95.0555
@@ -6522,6 +6690,7 @@ East,Ohio,2015-03-10,2015,3,10,Small Business,Technology,4769.0695
 West,California,2015-03-11,2015,3,11,Corporate,Office Supplies,930.84
 South,Florida,2015-03-11,2015,3,11,Small Business,Office Supplies,1876.09
 South,Florida,2015-03-11,2015,3,11,Small Business,Office Supplies,145.26
+Central,Texas,2015-03-11,2015,3,11,Corporate,Technology,16587.13
 Central,Texas,2015-03-11,2015,3,11,Corporate,Office Supplies,507.98
 Central,Texas,2015-03-12,2015,3,12,Home Office,Office Supplies,236.45
 Central,MO,2015-03-12,2015,3,12,Small Business,Technology,2853.8835
@@ -6584,6 +6753,7 @@ West,California,2015-03-23,2015,3,23,Corporate,Technology,3360.3
 West,California,2015-03-23,2015,3,23,Corporate,Technology,386.71
 West,California,2015-03-23,2015,3,23,Corporate,Furniture,4771.89
 Central,Nebraska,2015-03-23,2015,3,23,Corporate,Furniture,316.35
+West,California,2015-03-23,2015,3,23,Corporate,Office Supplies,13064.06
 Central,Iowa,2015-03-23,2015,3,23,Consumer,Office Supplies,132.31
 West,California,2015-03-23,2015,3,23,Corporate,Office Supplies,134.06
 Central,Kansas,2015-03-23,2015,3,23,Small Business,Office Supplies,3977.97
@@ -6641,6 +6811,7 @@ West,Arizona,2015-03-30,2015,3,30,Corporate,Office Supplies,22.28
 West,Washington,2015-03-30,2015,3,30,Small Business,Furniture,2339.64
 South,Alabama,2015-03-30,2015,3,30,Consumer,Technology,629.5865
 East,Ohio,2015-03-30,2015,3,30,Corporate,Technology,221.66
+South,Florida,2015-03-30,2015,3,30,Corporate,Technology,21205.5
 East,Maryland,2015-03-30,2015,3,30,Small Business,Office Supplies,304.65
 South,Kentucky,2015-03-30,2015,3,30,Corporate,Office Supplies,109.92
 East,Ohio,2015-03-31,2015,3,31,Corporate,Technology,2732.01
@@ -6657,6 +6828,7 @@ Central,Texas,2015-04-03,2015,4,3,Corporate,Furniture,2703.37
 Central,Texas,2015-04-03,2015,4,3,Corporate,Office Supplies,1538.17
 West,Washington,2015-04-03,2015,4,3,Consumer,Technology,168.99
 South,Arkansas,2015-04-03,2015,4,3,Corporate,Office Supplies,153.01
+East,New Hampshire,2015-04-03,2015,4,3,Home Office,Technology,13382.01
 East,MA,2015-04-04,2015,4,4,Corporate,Technology,511.07
 West,Oregon,2015-04-04,2015,4,4,Corporate,Furniture,329.03
 Central,MO,2015-04-04,2015,4,4,Corporate,Office Supplies,330.22
@@ -6669,6 +6841,7 @@ Central,Kansas,2015-04-05,2015,4,5,Corporate,Office Supplies,168.55
 Central,Texas,2015-04-05,2015,4,5,Small Business,Office Supplies,87.31
 West,Utah,2015-04-05,2015,4,5,Small Business,Office Supplies,790.63
 South,Louisiana,2015-04-06,2015,4,6,Consumer,Furniture,6730.07
+Central,Texas,2015-04-06,2015,4,6,Corporate,Technology,15174.95
 Central,Texas,2015-04-06,2015,4,6,Corporate,Technology,1084.12
 Central,Texas,2015-04-06,2015,4,6,Corporate,Office Supplies,67.87
 Central,Texas,2015-04-06,2015,4,6,Corporate,Office Supplies,542.24
@@ -6714,6 +6887,7 @@ South,Kentucky,2015-04-13,2015,4,13,Home Office,Office Supplies,41.39
 South,Virginia,2015-04-13,2015,4,13,Small Business,Office Supplies,170.46
 South,Florida,2015-04-13,2015,4,13,Consumer,Furniture,5000.87
 South,Florida,2015-04-13,2015,4,13,Home Office,Furniture,4278.61
+South,Florida,2015-04-13,2015,4,13,Consumer,Office Supplies,16269.82
 South,Florida,2015-04-13,2015,4,13,Consumer,Office Supplies,876.59
 South,Florida,2015-04-13,2015,4,13,Corporate,Office Supplies,15.72
 South,Florida,2015-04-13,2015,4,13,Corporate,Office Supplies,313.83
@@ -6842,6 +7016,7 @@ South,Tennessee,2015-05-03,2015,5,3,Corporate,Office Supplies,71.45
 West,California,2015-05-03,2015,5,3,Home Office,Furniture,4394.78
 East,Ohio,2015-05-04,2015,5,4,Corporate,Office Supplies,1757.43
 West,Oregon,2015-05-04,2015,5,4,Consumer,Office Supplies,14.61
+South,Virginia,2015-05-04,2015,5,4,Consumer,Technology,22145.37
 East,Ohio,2015-05-04,2015,5,4,Corporate,Technology,2913.1455
 Central,Illinois,2015-05-04,2015,5,4,Small Business,Office Supplies,3338.98
 Central,Michigan,2015-05-04,2015,5,4,Corporate,Furniture,246.98
@@ -6856,6 +7031,7 @@ Central,Indiana,2015-05-05,2015,5,5,Corporate,Office Supplies,4479.16
 Central,Indiana,2015-05-05,2015,5,5,Corporate,Office Supplies,1314.65
 South,Georgia,2015-05-05,2015,5,5,Home Office,Office Supplies,246.57
 Central,Michigan,2015-05-05,2015,5,5,Home Office,Technology,1712.66
+South,Tennessee,2015-05-06,2015,5,6,Corporate,Technology,14981.74
 East,Ohio,2015-05-06,2015,5,6,Home Office,Technology,40.8255
 South,Tennessee,2015-05-06,2015,5,6,Corporate,Office Supplies,5587.2
 West,Nevada,2015-05-06,2015,5,6,Home Office,Office Supplies,446.06
@@ -6966,6 +7142,7 @@ Central,Illinois,2015-05-21,2015,5,21,Corporate,Office Supplies,368.18
 West,California,2015-05-21,2015,5,21,Home Office,Office Supplies,80.45
 West,Utah,2015-05-21,2015,5,21,Corporate,Technology,1556.42
 West,Utah,2015-05-21,2015,5,21,Corporate,Office Supplies,130.28
+South,North Carolina,2015-05-21,2015,5,21,Corporate,Technology,41343.21
 East,New York,2015-05-21,2015,5,21,Small Business,Office Supplies,1134.05
 West,California,2015-05-21,2015,5,21,Corporate,Office Supplies,270.16
 East,New York,2015-05-21,2015,5,21,Small Business,Technology,1470.0495
@@ -6994,6 +7171,7 @@ South,Tennessee,2015-05-25,2015,5,25,Home Office,Office Supplies,84.01
 South,Virginia,2015-05-25,2015,5,25,Consumer,Technology,4300.626
 South,Tennessee,2015-05-25,2015,5,25,Home Office,Office Supplies,69.06
 Central,Texas,2015-05-25,2015,5,25,Small Business,Office Supplies,1326.69
+East,Pennsylvania,2015-05-26,2015,5,26,Corporate,Furniture,16699.56
 Central,Texas,2015-05-26,2015,5,26,Small Business,Furniture,278.19
 South,Alabama,2015-05-26,2015,5,26,Home Office,Office Supplies,61.82
 West,Arizona,2015-05-26,2015,5,26,Home Office,Office Supplies,2752.68
@@ -7033,6 +7211,7 @@ South,Florida,2015-05-31,2015,5,31,Consumer,Office Supplies,122.42
 Central,Minnesota,2015-05-31,2015,5,31,Corporate,Technology,7965.9025
 Central,Minnesota,2015-05-31,2015,5,31,Corporate,Furniture,1452.216
 East,Maryland,2015-05-31,2015,5,31,Consumer,Technology,738.2505
+East,Maryland,2015-05-31,2015,5,31,Consumer,Furniture,16028.26
 West,Utah,2015-05-31,2015,5,31,Corporate,Office Supplies,277.08
 Central,Oklahoma,2015-06-01,2015,6,1,Corporate,Furniture,6739.92
 West,Washington,2015-06-01,2015,6,1,Home Office,Furniture,2580.67
@@ -7041,6 +7220,7 @@ West,Washington,2015-06-01,2015,6,1,Home Office,Office Supplies,121.26
 West,Washington,2015-06-01,2015,6,1,Home Office,Technology,955.46
 West,California,2015-06-01,2015,6,1,Small Business,Technology,60.69
 West,California,2015-06-01,2015,6,1,Small Business,Office Supplies,532.89
+East,MA,2015-06-02,2015,6,2,Corporate,Office Supplies,12569.31
 Central,MO,2015-06-02,2015,6,2,Consumer,Technology,824.24
 East,MA,2015-06-02,2015,6,2,Home Office,Technology,2318.2135
 West,Idaho,2015-06-02,2015,6,2,Corporate,Furniture,2711.14
@@ -7056,6 +7236,7 @@ West,California,2015-06-03,2015,6,3,Small Business,Office Supplies,127.51
 West,California,2015-06-03,2015,6,3,Small Business,Furniture,2004.22
 South,Alabama,2015-06-04,2015,6,4,Home Office,Office Supplies,623.35
 South,Virginia,2015-06-04,2015,6,4,Home Office,Office Supplies,86.61
+South,Tennessee,2015-06-05,2015,6,5,Small Business,Office Supplies,14753.08
 South,Florida,2015-06-05,2015,6,5,Home Office,Office Supplies,4567.36
 Central,Iowa,2015-06-05,2015,6,5,Corporate,Office Supplies,170.81
 Central,Iowa,2015-06-05,2015,6,5,Corporate,Technology,4726.595
@@ -7249,6 +7430,7 @@ Central,Texas,2015-07-12,2015,7,12,Consumer,Office Supplies,311.65
 Central,Texas,2015-07-12,2015,7,12,Consumer,Office Supplies,101.19
 South,Georgia,2015-07-13,2015,7,13,Corporate,Furniture,1233.76
 East,Connecticut,2015-07-13,2015,7,13,Home Office,Office Supplies,2277.03
+South,Georgia,2015-07-13,2015,7,13,Corporate,Technology,13934.53
 South,Georgia,2015-07-13,2015,7,13,Corporate,Technology,2377.28
 West,Oregon,2015-07-13,2015,7,13,Small Business,Office Supplies,2531.66
 West,Oregon,2015-07-13,2015,7,13,Small Business,Technology,5382.3105
@@ -7357,6 +7539,7 @@ South,North Carolina,2015-08-01,2015,8,1,Home Office,Office Supplies,236.31
 South,North Carolina,2015-08-01,2015,8,1,Home Office,Office Supplies,626.96
 South,Florida,2015-08-01,2015,8,1,Small Business,Technology,1273.266
 South,Florida,2015-08-01,2015,8,1,Small Business,Office Supplies,39.68
+West,Washington,2015-08-01,2015,8,1,Small Business,Technology,21134.71
 South,Virginia,2015-08-01,2015,8,1,Small Business,Technology,4648.64
 West,California,2015-08-02,2015,8,2,Small Business,Furniture,2982.5
 East,New York,2015-08-02,2015,8,2,Corporate,Technology,2006.38
@@ -7388,9 +7571,12 @@ East,Ohio,2015-08-06,2015,8,6,Corporate,Office Supplies,157.4
 Central,Wisconsin,2015-08-06,2015,8,6,Home Office,Office Supplies,109.7
 Central,Wisconsin,2015-08-06,2015,8,6,Home Office,Office Supplies,80.89
 Central,Minnesota,2015-08-07,2015,8,7,Corporate,Furniture,4051.8
+West,Oregon,2015-08-07,2015,8,7,Small Business,Technology,23775.56
 Central,Minnesota,2015-08-07,2015,8,7,Corporate,Furniture,195.23
 South,Florida,2015-08-07,2015,8,7,Corporate,Office Supplies,6216.6
+West,California,2015-08-07,2015,8,7,Corporate,Technology,21320.58
 East,New Hampshire,2015-08-07,2015,8,7,Corporate,Office Supplies,20.16
+Central,Indiana,2015-08-07,2015,8,7,Small Business,Furniture,20333.816
 South,Louisiana,2015-08-08,2015,8,8,Corporate,Office Supplies,27.83
 West,Utah,2015-08-09,2015,8,9,Corporate,Office Supplies,131.12
 West,Oregon,2015-08-09,2015,8,9,Corporate,Technology,10994.74
@@ -7422,6 +7608,7 @@ East,MA,2015-08-12,2015,8,12,Consumer,Office Supplies,9062.44
 East,MA,2015-08-12,2015,8,12,Consumer,Office Supplies,1662.57
 South,Alabama,2015-08-12,2015,8,12,Corporate,Office Supplies,152.44
 West,Arizona,2015-08-12,2015,8,12,Corporate,Technology,41.03
+Central,Minnesota,2015-08-12,2015,8,12,Home Office,Furniture,13701.35
 South,Florida,2015-08-12,2015,8,12,Corporate,Office Supplies,2040.39
 Central,Minnesota,2015-08-12,2015,8,12,Home Office,Office Supplies,82.97
 West,Arizona,2015-08-12,2015,8,12,Small Business,Furniture,2844.64
@@ -7568,6 +7755,7 @@ Central,Texas,2015-09-05,2015,9,5,Corporate,Technology,4587.926
 South,Tennessee,2015-09-05,2015,9,5,Small Business,Technology,174.72
 Central,Michigan,2015-09-05,2015,9,5,Corporate,Office Supplies,53.93
 East,Pennsylvania,2015-09-06,2015,9,6,Corporate,Furniture,3491.06
+East,Pennsylvania,2015-09-06,2015,9,6,Corporate,Technology,14383.83
 East,New Jersey,2015-09-06,2015,9,6,Small Business,Office Supplies,75.77
 West,California,2015-09-06,2015,9,6,Small Business,Technology,5062.18
 West,Washington,2015-09-07,2015,9,7,Consumer,Furniture,2483.53
@@ -7616,6 +7804,7 @@ East,Ohio,2015-09-13,2015,9,13,Home Office,Technology,394.8
 Central,Wisconsin,2015-09-13,2015,9,13,Small Business,Technology,6111.1685
 Central,Wisconsin,2015-09-13,2015,9,13,Home Office,Office Supplies,162.16
 Central,Wisconsin,2015-09-13,2015,9,13,Small Business,Office Supplies,113.71
+Central,Wisconsin,2015-09-13,2015,9,13,Home Office,Furniture,15168.82
 East,Ohio,2015-09-14,2015,9,14,Corporate,Office Supplies,132.01
 South,North Carolina,2015-09-14,2015,9,14,Corporate,Office Supplies,1710.65
 East,MA,2015-09-14,2015,9,14,Consumer,Office Supplies,773.83
@@ -7625,6 +7814,7 @@ West,California,2015-09-14,2015,9,14,Consumer,Office Supplies,94.55
 West,California,2015-09-14,2015,9,14,Consumer,Technology,328.627
 East,Ohio,2015-09-14,2015,9,14,Corporate,Technology,626.33
 East,Ohio,2015-09-14,2015,9,14,Corporate,Furniture,394.34
+Central,Michigan,2015-09-15,2015,9,15,Corporate,Furniture,13244.04
 Central,Michigan,2015-09-15,2015,9,15,Corporate,Office Supplies,321.95
 East,Ohio,2015-09-15,2015,9,15,Home Office,Office Supplies,59.05
 South,Virginia,2015-09-15,2015,9,15,Small Business,Furniture,3050.81
@@ -7730,6 +7920,7 @@ West,California,2015-10-01,2015,10,1,Corporate,Office Supplies,84.33
 West,California,2015-10-01,2015,10,1,Corporate,Technology,227.66
 South,Virginia,2015-10-01,2015,10,1,Small Business,Technology,1434.086
 Central,Michigan,2015-10-02,2015,10,2,Corporate,Office Supplies,1556.87
+West,California,2015-10-02,2015,10,2,Consumer,Technology,13698.96
 West,Montana,2015-10-02,2015,10,2,Small Business,Furniture,4917.69
 Central,Michigan,2015-10-02,2015,10,2,Corporate,Office Supplies,9235.97
 Central,Michigan,2015-10-02,2015,10,2,Corporate,Office Supplies,195.98
@@ -7797,6 +7988,7 @@ South,North Carolina,2015-10-13,2015,10,13,Small Business,Furniture,1152.63
 Central,Nebraska,2015-10-13,2015,10,13,Small Business,Office Supplies,191.36
 South,North Carolina,2015-10-13,2015,10,13,Small Business,Office Supplies,7.56
 West,Idaho,2015-10-14,2015,10,14,Small Business,Technology,2939.6825
+Central,MO,2015-10-14,2015,10,14,Corporate,Technology,17304.85
 West,Idaho,2015-10-14,2015,10,14,Small Business,Technology,3413.69
 Central,MO,2015-10-14,2015,10,14,Corporate,Office Supplies,794.32
 East,Maryland,2015-10-14,2015,10,14,Consumer,Technology,2135.9735
@@ -7807,6 +7999,7 @@ South,South Carolina,2015-10-15,2015,10,15,Home Office,Office Supplies,2123.64
 West,California,2015-10-16,2015,10,16,Corporate,Office Supplies,363.54
 East,New York,2015-10-16,2015,10,16,Consumer,Office Supplies,19.36
 West,California,2015-10-16,2015,10,16,Consumer,Office Supplies,34.29
+West,California,2015-10-16,2015,10,16,Consumer,Office Supplies,23516.31
 South,Georgia,2015-10-16,2015,10,16,Corporate,Office Supplies,228.82
 Central,Michigan,2015-10-16,2015,10,16,Consumer,Furniture,662.21
 Central,Wisconsin,2015-10-17,2015,10,17,Corporate,Office Supplies,1355.47
@@ -7841,6 +8034,7 @@ Central,Illinois,2015-10-21,2015,10,21,Small Business,Office Supplies,278.0
 West,New Mexico,2015-10-21,2015,10,21,Home Office,Furniture,182.86
 East,New Jersey,2015-10-21,2015,10,21,Small Business,Furniture,1125.76
 East,MA,2015-10-22,2015,10,22,Corporate,Office Supplies,3645.12
+Central,Texas,2015-10-22,2015,10,22,Home Office,Office Supplies,14665.55
 West,California,2015-10-22,2015,10,22,Consumer,Office Supplies,913.99
 East,Connecticut,2015-10-22,2015,10,22,Corporate,Office Supplies,114.55
 East,Ohio,2015-10-23,2015,10,23,Consumer,Office Supplies,134.88
@@ -7886,6 +8080,7 @@ West,New Mexico,2015-10-28,2015,10,28,Small Business,Technology,4648.52
 East,Ohio,2015-10-28,2015,10,28,Home Office,Technology,1946.55
 Central,Minnesota,2015-10-28,2015,10,28,Corporate,Office Supplies,706.68
 East,Connecticut,2015-10-28,2015,10,28,Corporate,Technology,1514.9635
+West,Arizona,2015-10-29,2015,10,29,Consumer,Furniture,12837.11
 East,Pennsylvania,2015-10-29,2015,10,29,Home Office,Furniture,113.43
 Central,Illinois,2015-10-29,2015,10,29,Small Business,Office Supplies,697.41
 East,Maryland,2015-10-29,2015,10,29,Consumer,Furniture,1617.91
@@ -7949,6 +8144,7 @@ East,MA,2015-11-08,2015,11,8,Corporate,Furniture,2185.61
 Central,Illinois,2015-11-09,2015,11,9,Corporate,Furniture,2754.93
 West,Colorado,2015-11-09,2015,11,9,Home Office,Office Supplies,200.41
 West,California,2015-11-09,2015,11,9,Corporate,Technology,1560.96
+Central,Illinois,2015-11-09,2015,11,9,Corporate,Office Supplies,19417.55
 West,California,2015-11-09,2015,11,9,Corporate,Office Supplies,1351.78
 Central,Texas,2015-11-09,2015,11,9,Home Office,Technology,1278.6465
 East,Connecticut,2015-11-10,2015,11,10,Consumer,Furniture,1722.65
@@ -7985,6 +8181,7 @@ East,Ohio,2015-11-16,2015,11,16,Small Business,Office Supplies,3191.24
 West,California,2015-11-17,2015,11,17,Corporate,Office Supplies,628.33
 West,California,2015-11-17,2015,11,17,Corporate,Furniture,1770.7
 Central,Indiana,2015-11-18,2015,11,18,Small Business,Furniture,9750.55
+Central,Texas,2015-11-18,2015,11,18,Small Business,Office Supplies,13921.6
 Central,Texas,2015-11-18,2015,11,18,Small Business,Office Supplies,467.5
 West,California,2015-11-18,2015,11,18,Corporate,Furniture,1736.41
 Central,Oklahoma,2015-11-18,2015,11,18,Corporate,Office Supplies,32.72
@@ -7994,6 +8191,7 @@ East,Pennsylvania,2015-11-19,2015,11,19,Home Office,Office Supplies,773.74
 Central,Indiana,2015-11-19,2015,11,19,Corporate,Technology,222.91
 West,Idaho,2015-11-19,2015,11,19,Corporate,Office Supplies,109.52
 West,Arizona,2015-11-19,2015,11,19,Consumer,Office Supplies,259.43
+South,Alabama,2015-11-19,2015,11,19,Home Office,Technology,21921.28
 East,Pennsylvania,2015-11-19,2015,11,19,Home Office,Technology,302.1325
 South,Virginia,2015-11-20,2015,11,20,Corporate,Office Supplies,183.41
 East,Ohio,2015-11-20,2015,11,20,Home Office,Office Supplies,2014.13
@@ -8043,16 +8241,21 @@ West,Oregon,2015-11-30,2015,11,30,Corporate,Office Supplies,1275.61
 East,Maryland,2015-11-30,2015,11,30,Corporate,Furniture,628.22
 West,Oregon,2015-11-30,2015,11,30,Corporate,Office Supplies,212.91
 West,Oregon,2015-11-30,2015,11,30,Corporate,Technology,5972.59
+South,Florida,2015-11-30,2015,11,30,Small Business,Technology,23300.12
 East,New York,2015-12-01,2015,12,1,Small Business,Office Supplies,1299.91
 East,New York,2015-12-01,2015,12,1,Small Business,Furniture,3731.59
 Central,North Dakota,2015-12-01,2015,12,1,Home Office,Office Supplies,464.59
 Central,North Dakota,2015-12-01,2015,12,1,Home Office,Office Supplies,316.68
+East,New York,2015-12-01,2015,12,1,Small Business,Technology,33367.85
 Central,Minnesota,2015-12-02,2015,12,2,Corporate,Furniture,10006.28
 West,California,2015-12-02,2015,12,2,Corporate,Technology,4077.756
 East,Maryland,2015-12-02,2015,12,2,Home Office,Technology,1100.21
+East,Ohio,2015-12-02,2015,12,2,Small Business,Furniture,17560.95
 West,California,2015-12-02,2015,12,2,Corporate,Furniture,16.97
 Central,Texas,2015-12-02,2015,12,2,Home Office,Office Supplies,66.19
 South,Florida,2015-12-02,2015,12,2,Small Business,Technology,423.95
+East,Ohio,2015-12-02,2015,12,2,Small Business,Furniture,19845.696
+South,Georgia,2015-12-02,2015,12,2,Corporate,Technology,18316.3
 Central,Minnesota,2015-12-02,2015,12,2,Corporate,Office Supplies,407.17
 East,New York,2015-12-03,2015,12,3,Home Office,Furniture,912.35
 East,New Hampshire,2015-12-03,2015,12,3,Consumer,Furniture,1008.872
@@ -8087,6 +8290,7 @@ Central,Wisconsin,2015-12-09,2015,12,9,Small Business,Technology,114.83
 East,New Jersey,2015-12-09,2015,12,9,Corporate,Office Supplies,99.53
 East,MA,2015-12-09,2015,12,9,Corporate,Office Supplies,177.95
 South,Georgia,2015-12-09,2015,12,9,Small Business,Technology,6095.14
+Central,Wisconsin,2015-12-09,2015,12,9,Small Business,Technology,16743.76
 South,Georgia,2015-12-09,2015,12,9,Small Business,Technology,1487.8995
 South,Georgia,2015-12-09,2015,12,9,Small Business,Technology,3776.28
 East,New Jersey,2015-12-09,2015,12,9,Corporate,Technology,587.2
@@ -8112,6 +8316,7 @@ West,Montana,2015-12-11,2015,12,11,Home Office,Office Supplies,135.77
 West,Montana,2015-12-11,2015,12,11,Home Office,Office Supplies,447.25
 Central,Iowa,2015-12-11,2015,12,11,Corporate,Technology,531.063
 West,Colorado,2015-12-11,2015,12,11,Small Business,Office Supplies,1234.36
+East,New Jersey,2015-12-12,2015,12,12,Corporate,Furniture,24391.16
 East,MA,2015-12-12,2015,12,12,Corporate,Furniture,4408.27
 West,California,2015-12-12,2015,12,12,Corporate,Office Supplies,262.13
 West,California,2015-12-12,2015,12,12,Corporate,Office Supplies,173.12
@@ -8121,6 +8326,7 @@ East,West Virginia,2015-12-12,2015,12,12,Home Office,Office Supplies,533.47
 East,New York,2015-12-13,2015,12,13,Consumer,Office Supplies,1537.5
 West,California,2015-12-13,2015,12,13,Consumer,Furniture,135.928
 East,Maryland,2015-12-14,2015,12,14,Home Office,Office Supplies,19.81
+Central,Michigan,2015-12-15,2015,12,15,Corporate,Office Supplies,16002.29
 Central,Michigan,2015-12-15,2015,12,15,Corporate,Office Supplies,182.26
 South,South Carolina,2015-12-15,2015,12,15,Corporate,Office Supplies,14.74
 South,South Carolina,2015-12-15,2015,12,15,Corporate,Office Supplies,117.68
@@ -8175,9 +8381,11 @@ Central,Minnesota,2015-12-27,2015,12,27,Small Business,Office Supplies,833.51
 Central,Wisconsin,2015-12-27,2015,12,27,Small Business,Furniture,759.94
 Central,Minnesota,2015-12-27,2015,12,27,Small Business,Office Supplies,86.68
 East,New York,2015-12-27,2015,12,27,Consumer,Technology,3883.4715
+East,New York,2015-12-27,2015,12,27,Consumer,Office Supplies,15337.58
 South,North Carolina,2015-12-28,2015,12,28,Home Office,Office Supplies,560.03
 West,Colorado,2015-12-28,2015,12,28,Home Office,Office Supplies,44.45
 West,California,2015-12-28,2015,12,28,Small Business,Office Supplies,2116.7
+East,New York,2015-12-29,2015,12,29,Corporate,Office Supplies,12690.33
 West,New Mexico,2015-12-29,2015,12,29,Corporate,Office Supplies,178.7
 South,Mississippi,2015-12-29,2015,12,29,Home Office,Furniture,3711.04
 East,New York,2015-12-29,2015,12,29,Corporate,Office Supplies,181.8
