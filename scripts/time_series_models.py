@@ -1,219 +1,149 @@
 """
-time_series_models.py
-
-Script para:
-1) Cargar el dataset limpio (data/processed/walmart_retail_data_limpio.csv)
-2) Agregar las ventas a nivel diario
-3) Crear sets de entrenamiento y prueba
-4) Implementar varios modelos de pronóstico (Naive, Moving Average, ARIMA)
-5) Comparar su desempeño (MAE, MAPE)
-
-Requisitos:
-  pip install pandas numpy matplotlib statsmodels pmdarima
+Ejemplo de:
+1) Cargar datos limpios (con 'Order Date' y 'Sales')
+2) Agregar ventas diarias
+3) Dividir train/test
+4) Modelos ARIMA vs. SARIMA (rolling)
 """
 
 import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from datetime import datetime
 import warnings
-warnings.filterwarnings("ignore")
-
-# Para ARIMA
+from statsmodels.tsa.stattools import adfuller
 import statsmodels.api as sm
-# (Opcional) Auto ARIMA
-try:
-    from pmdarima import auto_arima
-    PMDARIMA_AVAILABLE = True
-except ImportError:
-    PMDARIMA_AVAILABLE = False
+
+warnings.filterwarnings("ignore")
 
 
 def load_clean_data(path):
-    """
-    Carga el CSV limpio con columnas:
-    - 'Order Date' (parseable a datetime)
-    - 'Sales'
-    Retorna un DataFrame de pandas.
-    """
-    df = pd.read_csv(path, parse_dates=["Order Date"])
+    df = pd.read_csv(path)
+    df["Order Date"] = pd.to_datetime(df["Order Date"], errors="coerce")
+    df["Sales"] = pd.to_numeric(df["Sales"], errors="coerce").fillna(0)
     return df
 
 
 def aggregate_daily(df):
-    """
-    Agrupa las ventas a nivel diario, asegurándose de que
-    no existan huecos de fecha.
-    Retorna un DataFrame con índice fecha y columna 'Sales'.
-    """
-    # Sumar ventas por día
     daily = df.groupby(df["Order Date"].dt.date)["Sales"].sum().reset_index()
     daily["Order Date"] = pd.to_datetime(daily["Order Date"])
-
-    # Crear rango de fechas completo
     start_date = daily["Order Date"].min()
     end_date = daily["Order Date"].max()
     date_range = pd.date_range(start=start_date, end=end_date, freq='D')
     df_full = pd.DataFrame({"Order Date": date_range})
-
-    # Merge para rellenar con 0 días sin venta
     daily_sales = df_full.merge(daily, on="Order Date", how="left")
     daily_sales["Sales"] = daily_sales["Sales"].fillna(0)
-
-    # Ordenar y poner índice
     daily_sales.sort_values("Order Date", inplace=True)
     daily_sales.set_index("Order Date", inplace=True)
+    daily_sales.index.freq = 'D'
     return daily_sales
 
 
 def train_test_split_time_series(df, split_date):
-    """
-    Separa el DataFrame (indexado por fecha) en train y test,
-    usando 'split_date' como corte (string 'YYYY-MM-DD').
-    Retorna (train, test).
-    """
-    train = df.loc[:split_date].copy()  # incluye hasta split_date
-    test = df.loc[split_date:].copy()   # a partir de split_date
+    train = df.loc[:split_date].copy()
+    test = df.loc[split_date:].copy()
+    train.index.freq = 'D'
+    test.index.freq = 'D'
     return train, test
 
 
+def check_stationarity(series):
+    result = adfuller(series)
+    print(f"ADF Test p-value: {result[1]:.5f}")
+    return result[1] < 0.05
+
+
 def mae_mape(y_true, y_pred):
-    """
-    Calcula MAE y MAPE entre series de pandas.
-    Retorna (mae, mape).
-    """
-    mae_val = (y_true - y_pred).abs().mean()
-    # Evitar división cero si hay valores 0
-    # Reemplazar 0 con un valor muy pequeño (o ignorar)
-    mape_val = ((y_true - y_pred).abs() / (y_true.replace(0, np.finfo(float).eps)).abs()).mean() * 100
+    common_idx = y_true.index.intersection(y_pred.index)
+    y_true = y_true.loc[common_idx]
+    y_pred = y_pred.loc[common_idx]
+    mask = (y_true != 0)
+    if mask.sum() == 0:
+        return 0.0, 0.0
+    diff = (y_true[mask] - y_pred[mask])
+    mae_val = diff.abs().mean()
+    mape_val = (diff.abs() / y_true[mask].abs()).mean() * 100
     return mae_val, mape_val
 
 
-def naive_forecast(train, test):
-    """
-    Modelo Naive: Forecast(t) = Actual(t-1).
-    Maneja el 1er día de test usando la última venta de train.
-    Retorna pd.Series con las predicciones para test.
-    """
-    # Crear copia de test
-    predictions = test.copy()
+def arima_rolling_forecast(train, test, order=(1,0,1), use_actuals=False):
+    df_rolling = train.copy()
+    df_rolling = df_rolling.asfreq('D', method='ffill')
+    preds = []
 
-    # Desplazamos 1 día las ventas en test
-    predictions["Pred_naive"] = test["Sales"].shift(1)
+    for current_date in test.index:
+        print(f"Fecha actual: {current_date}, Frecuencia inferida: {pd.infer_freq(df_rolling.index)}")
 
-    # Tomar la última venta de train para el primer día de test
-    last_train_day = train.index.max()
-    last_train_sales = train.loc[last_train_day, "Sales"]
-    first_test_day = test.index.min()
-    predictions.loc[first_test_day, "Pred_naive"] = last_train_sales
+        model = sm.tsa.ARIMA(df_rolling["Sales"], order=order)
+        model_fit = model.fit()
+        forecast_val = model_fit.forecast(steps=1)[0]
+        new_sale = test.loc[current_date, "Sales"] if use_actuals else forecast_val
+        preds.append(float(forecast_val))
 
-    return predictions["Pred_naive"]
+        new_row = pd.DataFrame({"Sales": [float(new_sale)]}, index=[current_date])
+        df_rolling = pd.concat([df_rolling, new_row])
+        df_rolling = df_rolling[~df_rolling.index.duplicated(keep='last')]
+        df_rolling = df_rolling.asfreq('D', method='ffill')
 
-
-def moving_average_forecast(train, test, window=7):
-    """
-    Modelo de Media Móvil (ej. 7 días).
-    Toma la venta promedio de los últimos 'window' días
-    para predecir el día actual.
-    Retorna pd.Series con las predicciones para test.
-    """
-    # Unimos train + test para calcular rolling
-    combined = pd.concat([train["Sales"], test["Sales"]], axis=0)
-    rolling_mean = combined.rolling(window=window).mean()
-
-    # Extraemos sólo para fechas de test
-    predictions = test.copy()
-    predictions["Pred_ma"] = rolling_mean.loc[test.index]
-    return predictions["Pred_ma"]
+    return pd.Series(preds, index=test.index, name="ARIMA_Rolling")
 
 
-def arima_forecast(train, test, order=(1,1,1)):
-    """
-    Modelo ARIMA simple con statsmodels, usando order=(p,d,q).
-    Retorna pd.Series con predicciones en el rango de test.
-    """
-    # Ajustar ARIMA en la serie de entrenamiento
-    train_series = train["Sales"]
-    model = sm.tsa.ARIMA(train_series, order=order)
-    model_fit = model.fit()
+def sarima_rolling_forecast(train, test, order=(1,1,1), seasonal_order=(1,1,1,7), use_actuals=False):
+    df_rolling = train.copy()
+    df_rolling = df_rolling.asfreq('D', method='ffill')
+    preds = []
 
-    # Predicción para el rango de test
-    start_date = test.index[0]
-    end_date = test.index[-1]
+    for current_date in test.index:
+        print(f"Fecha actual: {current_date}, Frecuencia inferida: {pd.infer_freq(df_rolling.index)}")
 
-    forecast = model_fit.predict(start=start_date, end=end_date, typ="levels")
-    return forecast
+        model = sm.tsa.statespace.SARIMAX(
+            df_rolling["Sales"],
+            order=order,
+            seasonal_order=seasonal_order,
+            enforce_stationarity=False,
+            enforce_invertibility=False
+        )
+        model_fit = model.fit(method='powell', disp=False)
+        forecast_val = model_fit.forecast(steps=1)[0]
+        new_sale = test.loc[current_date, "Sales"] if use_actuals else forecast_val
+        preds.append(float(forecast_val))
+
+        new_row = pd.DataFrame({"Sales": [float(new_sale)]}, index=[current_date])
+        df_rolling = pd.concat([df_rolling, new_row])
+        df_rolling = df_rolling[~df_rolling.index.duplicated(keep='last')]
+        df_rolling = df_rolling.asfreq('D', method='ffill')
+
+    return pd.Series(preds, index=test.index, name="SARIMA_Rolling")
 
 
 def main():
-    # 1. Ruta del dataset limpio
-    data_path = os.path.join("data", "processed", "walmart_retail_data_limpio.csv")
+    data_path = "../data/processed/walmart_cleaned.csv"
     df = load_clean_data(data_path)
-
-    # 2. Agregar ventas diarias
     daily_sales = aggregate_daily(df)
-    print("Datos diarios:", daily_sales.shape, "Fechas de", daily_sales.index.min(), "a", daily_sales.index.max())
 
-    # 3. Separar Train/Test
-    # Ejemplo: Usamos todo hasta '2014-12-31' como Train, y '2015-01-01' en adelante como Test
+    print("Daily sales shape:", daily_sales.shape)
+    print("Rango de fechas:", daily_sales.index.min(), "->", daily_sales.index.max())
+
     split_date = "2015-01-01"
     train, test = train_test_split_time_series(daily_sales, split_date)
-    print("Entrenamiento:", train.shape, "Prueba:", test.shape)
 
-    # Asegurar que no haya nulos en Sales
-    train["Sales"] = train["Sales"].fillna(0)
-    test["Sales"] = test["Sales"].fillna(0)
+    print(f"Duplicados en train: {train.index.duplicated().sum()}")
+    print(f"Duplicados en test: {test.index.duplicated().sum()}")
 
-    # 4. Modelo Naive
-    pred_naive = naive_forecast(train, test)
-    mae_n, mape_n = mae_mape(test["Sales"], pred_naive)
-    print(f"Naive Model -> MAE: {mae_n:.2f}, MAPE: {mape_n:.2f}%")
-
-    # 5. Modelo de Media Móvil (7 días)
-    pred_ma7 = moving_average_forecast(train, test, window=7)
-    mae_ma, mape_ma = mae_mape(test["Sales"], pred_ma7)
-    print(f"Moving Average(7) -> MAE: {mae_ma:.2f}, MAPE: {mape_ma:.2f}%")
-
-    # 6. Modelo ARIMA(1,1,1) (ejemplo)
-    pred_arima = arima_forecast(train, test, order=(1,1,1))
-    # Alinear con test (por si faltan índices)
-    pred_arima = pred_arima.reindex(test.index, method="ffill")
+    pred_arima = arima_rolling_forecast(train, test, order=(1,0,1), use_actuals=False)
     mae_a, mape_a = mae_mape(test["Sales"], pred_arima)
-    print(f"ARIMA(1,1,1) -> MAE: {mae_a:.2f}, MAPE: {mape_a:.2f}%")
+    print(f"ARIMA(1,0,1) Rolling -> MAE: {mae_a:.2f}, MAPE: {mape_a:.2f}%")
 
-    # 7. (Opcional) Auto-ARIMA
-    if PMDARIMA_AVAILABLE:
-        print("\nProbando auto_arima (pmdarima)...")
-        from pmdarima import auto_arima
-        stepwise_fit = auto_arima(train["Sales"], 
-                                  start_p=1, start_q=1,
-                                  max_p=5, max_q=5,
-                                  seasonal=False,  # Cambiar a True si consideras estacionalidad (semanal, etc.)
-                                  trace=True,
-                                  error_action='ignore',
-                                  suppress_warnings=True,
-                                  stepwise=True)
-        print(stepwise_fit.summary())
+    pred_sarima = sarima_rolling_forecast(train, test, order=(1,1,1), seasonal_order=(1,1,1,7))
+    mae_s, mape_s = mae_mape(test["Sales"], pred_sarima)
+    print(f"SARIMA(1,1,1)x(1,1,1,7) Rolling -> MAE: {mae_s:.2f}, MAPE: {mape_s:.2f}%")
 
-        # Predicción con auto_arima
-        n_periods = len(test)
-        forecast_auto = stepwise_fit.predict(n_periods=n_periods)
-        pred_auto_arima = pd.Series(forecast_auto, index=test.index)
-
-        mae_auto, mape_auto = mae_mape(test["Sales"], pred_auto_arima)
-        print(f"Auto-ARIMA -> MAE: {mae_auto:.2f}, MAPE: {mape_auto:.2f}%")
-    else:
-        print("\nPMDARIMA no está instalado, omitiendo auto_arima test.")
-
-    # 8. Visualización comparativa (opcional)
     plt.figure(figsize=(12,6))
     plt.plot(train.index, train["Sales"], label="Train Sales", color="blue")
     plt.plot(test.index, test["Sales"], label="Test Sales", color="black")
-    plt.plot(test.index, pred_naive, label="Naive Forecast", color="red", alpha=0.6)
-    plt.plot(test.index, pred_ma7, label="MA(7) Forecast", color="green", alpha=0.6)
-    plt.plot(test.index, pred_arima, label="ARIMA(1,1,1)", color="orange", alpha=0.6)
-    plt.title("Comparación de Modelos Clásicos vs. Ventas Reales")
+    plt.plot(pred_arima.index, pred_arima, label="ARIMA Rolling", color="red", alpha=0.6)
+    plt.plot(pred_sarima.index, pred_sarima, label="SARIMA Rolling", color="green", alpha=0.6)
+    plt.title("Comparación ARIMA vs. SARIMA (Rolling)")
     plt.xlabel("Fecha")
     plt.ylabel("Ventas Diarias")
     plt.legend()
