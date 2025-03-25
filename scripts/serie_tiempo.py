@@ -3,7 +3,7 @@ plot_time_series.py
 
 Script que:
 1) Carga un dataset limpio con columnas 'Order Date' y 'Sales'
-2) Agrupa las ventas diarias
+2) Agrupa las ventas semanales
 3) Grafica la serie de tiempo resultante
 """
 
@@ -16,10 +16,10 @@ import matplotlib.dates as mdates
 import os
 import plotly.express as px
 
-def interactive_plot(daily_sales):
-    fig = px.line(daily_sales, x=daily_sales.index, y='Sales', title='Ventas Diarias a lo Largo del Tiempo')
+def interactive_plot(weekly_sales):
+    fig = px.line(weekly_sales, x=weekly_sales.index, y='Sales', title='Ventas Semanales a lo Largo del Tiempo')
     fig.update_xaxes(title_text='Fecha')
-    fig.update_yaxes(title_text='Ventas Totales (Daily Sales)')
+    fig.update_yaxes(title_text='Ventas Totales (Weekly Sales)')
     fig.show()
 
 def main(plot_type="superpuesta"):
@@ -30,44 +30,42 @@ def main(plot_type="superpuesta"):
     df = pd.read_csv(data_path, parse_dates=["Order Date"])
     
     if plot_type == "superpuesta":
-        # 3. Crear una columna para el día del año
-        df["Day_of_Year"] = df["Order Date"].dt.dayofyear
+        # 3. Crear una columna para la semana del año
+        df["Week_of_Year"] = df["Order Date"].dt.isocalendar().week
         df["Year"] = df["Order Date"].dt.year
         
-        # 4. Agrupar las ventas diarias por año y día del año
-        daily_sales = df.groupby(["Year", "Day_of_Year"])["Sales"].sum().unstack(level=0)
+        # 4. Agrupar las ventas semanales por año y semana del año
+        weekly_sales = df.groupby(["Year", "Week_of_Year"])["Sales"].sum().unstack(level=0)
         
         # 5. Graficar la serie de tiempo para cada año
         plt.figure(figsize=(10, 5))
-        for year in daily_sales.columns:
-            plt.plot(daily_sales.index, daily_sales[year], label=str(year), linewidth=1)
+        for year in weekly_sales.columns:
+            plt.plot(weekly_sales.index, weekly_sales[year], label=str(year), linewidth=1)
 
         # 6. Personalizar la gráfica
-        plt.title("Ventas Diarias a lo Largo del Tiempo (Superpuestas por Año)")
-        plt.xlabel("Día del Año")
-        plt.ylabel("Ventas Totales (Daily Sales)")
+        plt.title("Ventas Semanales a lo Largo del Tiempo (Superpuestas por Año)")
+        plt.xlabel("Semana del Año")
+        plt.ylabel("Ventas Totales (Weekly Sales)")
         plt.legend(title="Año")
         plt.grid(True)
-        # Formatear el eje X para mostrar todos los días del mes
-        plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m-%d'))
-        plt.gca().xaxis.set_major_locator(mdates.DayLocator())
+        # Formatear el eje X para mostrar todas las semanas
+        plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%W'))
+        plt.gca().xaxis.set_major_locator(mdates.WeekdayLocator())
         plt.gcf().autofmt_xdate()  # Rotar las etiquetas de fecha
 
     else:
-        # 3. Agrupar las ventas diarias
-        daily_sales = df.groupby(df["Order Date"].dt.date)["Sales"].sum()
-        
-        # Convierto el índice a tipo datetime de nuevo, si deseas
-        daily_sales.index = pd.to_datetime(daily_sales.index)
+        # 3. Agrupar las ventas semanales
+        df.set_index("Order Date", inplace=True)
+        weekly_sales = df.resample('W')['Sales'].sum()
         
         # 4. Graficar la serie de tiempo
         plt.figure(figsize=(10, 5))
-        plt.plot(daily_sales.index, daily_sales.values, linewidth=1)
+        plt.plot(weekly_sales.index, weekly_sales.values, linewidth=1)
 
         # 5. Personalizar la gráfica
-        plt.title("Ventas Diarias a lo Largo del Tiempo")
+        plt.title("Ventas Semanales a lo Largo del Tiempo")
         plt.xlabel("Fecha")
-        plt.ylabel("Ventas Totales (Daily Sales)")
+        plt.ylabel("Ventas Totales (Weekly Sales)")
         plt.grid(True)
         
         # Formatear el eje X para mostrar fechas completas

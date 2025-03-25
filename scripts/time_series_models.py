@@ -1,190 +1,252 @@
 """
 time_series_models.py
 
-1) Carga datos limpios
-2) Aplica transformación logarítmica (log1p) para estabilizar la varianza
-3) Divide en train/test
-4) Modelos ARIMA y SARIMA (rolling)
-5) Usa auto_arima para optimizar parámetros
-
-Requisitos:
-    pip install pandas numpy matplotlib statsmodels pmdarima scipy
+Incluye:
+1) Carga y limpieza de datos
+2) Agregación de datos a nivel semanal
+3) Transformación logarítmica (log1p) y su inversa (expm1)
+4) División en train/test
+5) Función para analizar la estacionalidad (ACF y PACF)
+6) Modelos ARIMA y SARIMA (auto_arima)
+7) Comparación con distintos valores de m para SARIMA
+8) Visualización con propiedades para distinguir líneas
 """
 
-import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import warnings
-from statsmodels.tsa.stattools import adfuller
-import statsmodels.api as sm
+from sklearn.metrics import mean_absolute_percentage_error, mean_squared_error
+
+# Para auto_arima y ACF/PACF
 from pmdarima import auto_arima
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 
 warnings.filterwarnings("ignore")
 
-
-# Carga de datos
+# ------------------------------
+# 1. Carga y limpieza de datos
+# ------------------------------
 def load_clean_data(path):
     df = pd.read_csv(path)
     df["Order Date"] = pd.to_datetime(df["Order Date"], errors="coerce")
     df["Sales"] = pd.to_numeric(df["Sales"], errors="coerce").fillna(0)
     return df
 
+def remove_outliers(series, q=0.99):
+    upper = series.quantile(q)
+    return series.clip(upper=upper)
 
-# Agregación diaria y limpieza
-def aggregate_daily(df):
-    daily = df.groupby(df["Order Date"].dt.date)["Sales"].sum().reset_index()
-    daily["Order Date"] = pd.to_datetime(daily["Order Date"])
-    
-    date_range = pd.date_range(start=daily["Order Date"].min(), end=daily["Order Date"].max(), freq='D')
-    df_full = pd.DataFrame({"Order Date": date_range})
-    
-    daily_sales = df_full.merge(daily, on="Order Date", how="left")
-    daily_sales["Sales"] = daily_sales["Sales"].fillna(0)
-    
-    daily_sales.sort_values("Order Date", inplace=True)
-    daily_sales.set_index("Order Date", inplace=True)
-    daily_sales.index.freq = 'D'
-    
-    return daily_sales
+# ------------------------------
+# 2. Agregación semanal
+# ------------------------------
+def aggregate_weekly(df):
+    df = df.set_index("Order Date").sort_index()
+    weekly_sales = df["Sales"].resample("W").sum()
+    # Forzamos la frecuencia semanal explícitamente
+    weekly_sales.index.freq = "W"
+    return weekly_sales
 
-
-# Transformación logarítmica (log1p) y su inversa
+# ------------------------------
+# 3. Transformaciones log
+# ------------------------------
 def apply_log(series):
+    # Usamos log1p para evitar problemas con ceros
     return np.log1p(series)
 
 def inverse_log(series):
+    # Inversa de log1p
     return np.expm1(series)
 
-
-# División de datos
-def train_test_split_time_series(df, split_date):
-    train = df.loc[:split_date].copy()
-    test = df.loc[split_date:].copy()
-    
-    train.index.freq = 'D'
-    test.index.freq = 'D'
-    
+# ------------------------------
+# 4. División Train/Test
+# ------------------------------
+def train_test_split_time_series(series, split_date):
+    train = series.loc[:split_date].copy()
+    test = series.loc[split_date:].copy()
     return train, test
 
+# ------------------------------
+# 5. Análisis de estacionalidad
+# ------------------------------
+def analyze_seasonality(series, lags=60):
+    """
+    Genera los gráficos de ACF y PACF para 'lags' retardos.
+    Útil para detectar picos y periodos estacionales.
+    """
+    fig, axes = plt.subplots(1, 2, figsize=(14, 4))
+    plot_acf(series, lags=lags, ax=axes[0])
+    plot_pacf(series, lags=lags, ax=axes[1])
+    axes[0].set_title("ACF")
+    axes[1].set_title("PACF")
+    plt.tight_layout()
+    plt.show()
 
-# ARIMA rolling forecast usando datos log-transformados
-def arima_rolling_forecast(train, test, order=(1,1,1), use_actuals=False):
-    # Se espera que los datos ya estén en log1p
-    df_rolling = train.copy().asfreq('D', method='ffill')
-    preds = []
+# ------------------------------
+# 6. Modelos ARIMA y SARIMA
+# ------------------------------
+def run_arima_model(train, test):
+    """
+    Ajusta un modelo ARIMA (sin estacionalidad) usando auto_arima.
+    """
+    model_arima = auto_arima(
+        train, 
+        seasonal=False, 
+        trace=True,
+        error_action='ignore', 
+        suppress_warnings=True,
+        stepwise=True,
+        max_p=3, 
+        max_d=2, 
+        max_q=3
+    )
+    print("Auto ARIMA (sin estacionalidad) - Order:", model_arima.order)
     
-    for current_date in test.index:
-        model = sm.tsa.ARIMA(df_rolling["Sales"], order=order)
-        model_fit = model.fit()
-        forecast_series = model_fit.forecast(steps=1)
-        forecast_val = forecast_series.iloc[0] if isinstance(forecast_series, pd.Series) else forecast_series[0]
-        
-        new_sale = test.loc[current_date, "Sales"] if use_actuals else forecast_val
-        preds.append(float(forecast_val))
-        
-        new_row = pd.DataFrame({"Sales": [float(new_sale)]}, index=[current_date])
-        df_rolling = pd.concat([df_rolling, new_row])
-        df_rolling = df_rolling[~df_rolling.index.duplicated(keep='last')]
-        df_rolling = df_rolling.asfreq('D', method='ffill')
+    # Pronosticamos
+    forecast_log = model_arima.predict(n_periods=len(test))
+    forecast = inverse_log(forecast_log)
+    test_orig = inverse_log(test)
     
-    preds = np.array(preds)
-    # Aplicamos la inversa de log para regresar a la escala original
-    preds = inverse_log(preds)
-    return pd.Series(preds, index=test.index, name="ARIMA_Rolling")
-
-
-# SARIMA rolling forecast usando datos log-transformados
-def sarima_rolling_forecast(train, test, order=(1,1,1), seasonal_order=(1,1,1,7), use_actuals=False):
-    # Se espera que los datos ya estén en log1p
-    df_rolling = train.copy().asfreq('D', method='ffill')
-    preds = []
+    # Métricas
+    mae_val = np.mean(np.abs(test_orig - forecast))
+    mape_val = mean_absolute_percentage_error(test_orig, forecast) * 100
+    print(f"ARIMA => MAE: {mae_val:.2f}, MAPE: {mape_val:.2f}%")
     
-    for current_date in test.index:
-        model = sm.tsa.statespace.SARIMAX(df_rolling["Sales"],
-                                          order=order,
-                                          seasonal_order=seasonal_order,
-                                          enforce_stationarity=False,
-                                          enforce_invertibility=False)
-        model_fit = model.fit(method='powell', disp=False)
-        forecast_series = model_fit.forecast(steps=1)
-        forecast_val = forecast_series.iloc[0] if isinstance(forecast_series, pd.Series) else forecast_series[0]
-        
-        new_sale = test.loc[current_date, "Sales"] if use_actuals else forecast_val
-        preds.append(float(forecast_val))
-        
-        new_row = pd.DataFrame({"Sales": [float(new_sale)]}, index=[current_date])
-        df_rolling = pd.concat([df_rolling, new_row])
-        df_rolling = df_rolling[~df_rolling.index.duplicated(keep='last')]
-        df_rolling = df_rolling.asfreq('D', method='ffill')
+    return model_arima, pd.Series(forecast, index=test.index)
+
+def run_sarima_model(train, test, m=26):
+    """
+    Ajusta un modelo SARIMA (con estacionalidad) usando auto_arima,
+    para un m específico.
+    """
+    model_sarima = auto_arima(
+        train, 
+        seasonal=True, 
+        m=m,
+        trace=True, 
+        error_action='ignore', 
+        suppress_warnings=True,
+        stepwise=True,
+        max_p=3, 
+        max_d=2, 
+        max_q=3,
+        max_P=2, 
+        max_D=2, 
+        max_Q=2
+    )
+    print(f"Auto SARIMA con m={m} - Order: {model_sarima.order}, Seasonal: {model_sarima.seasonal_order}")
     
-    preds = np.array(preds)
-    preds = inverse_log(preds)
-    return pd.Series(preds, index=test.index, name="SARIMA_Rolling")
+    # Pronosticamos
+    forecast_log = model_sarima.predict(n_periods=len(test))
+    forecast = inverse_log(forecast_log)
+    test_orig = inverse_log(test)
+    
+    # Métricas
+    mae_val = np.mean(np.abs(test_orig - forecast))
+    mape_val = mean_absolute_percentage_error(test_orig, forecast) * 100
+    print(f"SARIMA (m={m}) => MAE: {mae_val:.2f}, MAPE: {mape_val:.2f}%")
+    
+    return model_sarima, pd.Series(forecast, index=test.index)
 
+def run_sarima_multiple_m(train, test, m_values=[26, 52]):
+    """
+    Prueba varios valores de m para detectar si hay alguna estacionalidad
+    clara que mejore el modelo. Devuelve un dict con pronósticos y métricas.
+    """
+    results = {}
+    test_orig = inverse_log(test)
+    for m in m_values:
+        print(f"\n--- Ajuste SARIMA con m={m} ---")
+        model, forecast_series = run_sarima_model(train, test, m=m)
+        
+        mae_val = np.mean(np.abs(test_orig - forecast_series))
+        mape_val = mean_absolute_percentage_error(test_orig, forecast_series) * 100
+        results[m] = {
+            "model": model,
+            "forecast": forecast_series,
+            "mae": mae_val,
+            "mape": mape_val
+        }
+    return results
 
-# Evaluación de errores
-def mae_mape(y_true, y_pred):
-    common_idx = y_true.index.intersection(y_pred.index)
-    y_true, y_pred = y_true.loc[common_idx], y_pred.loc[common_idx]
-    mask = y_true != 0
-    mae_val = (y_true[mask] - y_pred[mask]).abs().mean()
-    mape_val = ((y_true[mask] - y_pred[mask]).abs() / y_true[mask]).mean() * 100
-    return mae_val, mape_val
-
-
+# ------------------------------
+# 7. main()
+# ------------------------------
 def main():
+    # Ajusta la ruta de tu CSV
     data_path = "../data/processed/walmart_cleaned.csv"
     df = load_clean_data(data_path)
-    daily_sales = aggregate_daily(df)
+    df["Sales"] = remove_outliers(df["Sales"], q=0.99)
     
-    print("Daily sales shape:", daily_sales.shape)
-    print("Rango de fechas:", daily_sales.index.min(), "->", daily_sales.index.max())
+    # Agregación semanal
+    weekly_sales = aggregate_weekly(df)
     
-    # Aplicar transformación logarítmica
-    daily_sales["Sales"] = apply_log(daily_sales["Sales"])
+    # Visualiza la serie original (opcional)
+    plt.figure(figsize=(12,4))
+    plt.plot(weekly_sales.index, weekly_sales, label="Ventas semanales (original)")
+    plt.title("Serie original antes de log")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
     
+    # Análisis de estacionalidad con ACF/PACF
+    print("Analizando estacionalidad en la serie original (o transformada).")
+    # Se recomienda analizar en log si hay mucha varianza:
+    weekly_sales_log = apply_log(weekly_sales)
+    analyze_seasonality(weekly_sales_log, lags=60)  # Ajusta lags según necesites
+    
+    # División en train/test
     split_date = "2015-01-01"
-    train, test = train_test_split_time_series(daily_sales, split_date)
+    train, test = train_test_split_time_series(weekly_sales_log, split_date)
+    print("Train shape:", train.shape)
+    print("Test shape:", test.shape)
     
-    print(f"Duplicados en train: {train.index.duplicated().sum()}")
-    print(f"Duplicados en test: {test.index.duplicated().sum()}")
+    # Modelo ARIMA (sin estacionalidad)
+    print("\n--- Ajuste ARIMA (sin estacionalidad) ---")
+    arima_model, arima_forecast = run_arima_model(train, test)
     
-    # Auto ARIMA para optimizar parámetros (forzamos d=1 para asegurar estacionariedad)
-    best_arima = auto_arima(train["Sales"], seasonal=False, stepwise=True, trace=True, d=1)
-    print(best_arima.summary())
+    # Prueba varios m para SARIMA
+    m_candidates = [26, 52]  # Ajusta los valores según sospechas de estacionalidad
+    sarima_results = run_sarima_multiple_m(train, test, m_values=m_candidates)
     
-    # Para SARIMA, se usa m=30 como ciclo aproximado mensual
-    best_sarima = auto_arima(train["Sales"], seasonal=True, m=30, stepwise=True, trace=True)
-    print(best_sarima.summary())
+    # Visualización comparativa
+    test_original = inverse_log(test)
     
-    order_arima = best_arima.order
-    order_sarima = best_sarima.order
-    seasonal_order_sarima = best_sarima.seasonal_order
-    
-    # ARIMA Rolling Forecast
-    pred_arima = arima_rolling_forecast(train, test, order=order_arima, use_actuals=False)
-    mae_a, mape_a = mae_mape(inverse_log(test["Sales"]), pred_arima)
-    print(f"ARIMA {order_arima} Rolling -> MAE: {mae_a:.2f}, MAPE: {mape_a:.2f}%")
-    
-    # SARIMA Rolling Forecast
-    pred_sarima = sarima_rolling_forecast(train, test, order=order_sarima, seasonal_order=seasonal_order_sarima, use_actuals=False)
-    mae_s, mape_s = mae_mape(inverse_log(test["Sales"]), pred_sarima)
-    print(f"SARIMA {order_sarima}x{seasonal_order_sarima} Rolling -> MAE: {mae_s:.2f}, MAPE: {mape_s:.2f}%")
-    
-    # Gráfico de resultados en la escala original
     plt.figure(figsize=(12,6))
-    plt.plot(train.index, inverse_log(train["Sales"]), label="Train Sales", color="blue")
-    plt.plot(test.index, inverse_log(test["Sales"]), label="Test Sales", color="black")
-    plt.plot(pred_arima.index, pred_arima, label="ARIMA Rolling", color="red", alpha=0.6)
-    plt.plot(pred_sarima.index, pred_sarima, label="SARIMA Rolling", color="green", alpha=0.6)
+    plt.plot(train.index, inverse_log(train), label="Train Sales", color="blue")
+    plt.plot(test.index, test_original, label="Test Sales", color="black")
     
-    plt.title("Comparación ARIMA vs. SARIMA (Rolling)")
-    plt.xlabel("Fecha")
-    plt.ylabel("Ventas Diarias")
+    # ARIMA sin estacionalidad
+    plt.plot(arima_forecast.index, arima_forecast, label="ARIMA Forecast", 
+             color="red", alpha=0.7, zorder=5, linewidth=2)
+    
+    # Dibuja cada SARIMA con distinto m
+    color_map = {26: "green", 52: "orange", 104: "purple"}  # Ejemplo de colores
+    for m, res in sarima_results.items():
+        forecast_series = res["forecast"]
+        plt.plot(
+            forecast_series.index, forecast_series, 
+            label=f"SARIMA (m={m})", 
+            color=color_map.get(m, "gray"), 
+            alpha=0.9, zorder=10, linewidth=2
+        )
+    
+    plt.title("Comparación de ARIMA y SARIMA con distintos m")
+    plt.xlabel("Fecha (semanas)")
+    plt.ylabel("Ventas Semanales")
     plt.legend()
     plt.grid(True)
     plt.show()
+    
+    # Muestra un resumen de las métricas para cada m
+    print("\nResumen de métricas SARIMA:")
+    for m, vals in sarima_results.items():
+        print(f" m={m}: MAE={vals['mae']:.2f}, MAPE={vals['mape']:.2f}%")
+    
+    print("\n--- Fin del script ---")
+    print("Si ambos modelos devuelven una línea horizontal, significa que la "
+          "serie no presenta estacionalidad o tendencia significativa para "
+          "mejorar el criterio AIC/BIC frente a un modelo constante.")
 
 
 if __name__ == "__main__":
