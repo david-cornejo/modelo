@@ -1,6 +1,8 @@
 # Ignorar carpeta del entorno virtual
 .venv/
 venv/
+.modelo/
+modelo/
 
 # Extras a ignorar:
 __pycache__/
