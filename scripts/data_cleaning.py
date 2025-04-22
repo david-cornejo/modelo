@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 # Cargar el archivo original
-df = pd.read_csv("../data/raw/Archivo 2017.csv")
+df = pd.read_csv("../data/raw/2020.csv")
 
 # Saltar las primeras filas irrelevantes (encabezados duplicados, información general)
 df = df[6:]
@@ -10,12 +10,12 @@ df = df[6:]
 # Renombrar columnas con encabezados correctos
 df.columns = ['Fecha', 'Serie', 'Folio', 'Concepto', 'Cargos', 'Abonos', 
               'Saldo Documento', 'Vence', 'Tipo de Cambio', 
-              'Estado del Documento', 'Referencia', 'Extra']
+              'Estado del Documento', 'Referencia']
 
 # Eliminar columnas innecesarias
 df = df.drop(columns=['Serie', 'Folio', 'Abonos', 'Saldo Documento', 
                       'Vence', 'Tipo de Cambio', 'Estado del Documento', 
-                      'Referencia', 'Extra'])
+                      'Referencia'])
 
 # Eliminar filas vacías o con 'Cargos' inválidos (texto como ' ', resúmenes, etc.)
 df['Cargos'] = df['Cargos'].astype(str).str.replace(',', '').str.strip()
@@ -40,7 +40,7 @@ df = df.sort_values(by='Fecha')
 df['Fecha'] = df['Fecha'].dt.strftime('%d/%m/%Y')
 
 # Guardar el archivo limpio si lo deseas
-df.to_csv("../data/processed/ventas_2017_limpias.csv", index=False)
+df.to_csv("../data/processed/ventas_2020_limpias.csv", index=False)
 
 # Mostrar preview (opcional si estás trabajando en Jupyter)
 print(df.head())

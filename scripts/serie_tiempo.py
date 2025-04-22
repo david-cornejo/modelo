@@ -44,7 +44,7 @@ def graficar_serie(df):
     fig.show()
 
 def main():
-    ruta = "../data/processed/cargos_2015-2017.csv"  # Cambia si tu archivo está en otra ruta
+    ruta = "../data/processed/ventas_2015-2020.csv"  # Cambia si tu archivo está en otra ruta
     df = cargar_datos(ruta)
     graficar_serie(df)
 

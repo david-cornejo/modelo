@@ -15,6 +15,6 @@ df_union = pd.concat([pd.read_csv(f) for f in archivos], ignore_index=True)
 # df_union = df_union.sort_values(by='Fecha')
 
 # Guardar archivo combinado
-df_union.to_csv("../data/processed/abonos_2015-2017.csv", index=False)
+df_union.to_csv("../data/processed/abonos_2015-2020.csv", index=False)
 
 print("Unión completada. Total de registros:", len(df_union))
