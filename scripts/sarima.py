@@ -116,7 +116,7 @@ def rolling_forecast(series: pd.Series, cfg, train_size: int) -> pd.Series:
 
 
 def main():
-    path = '../data/processed/ventas_2015-2020.csv'
+    path = '../data/processed/merged/ventas_2015-2024.csv'
 
     # 1) Carga y agregación semanal
     weekly = load_and_aggregate_weekly(path, value_col='Cargos')
@@ -160,7 +160,8 @@ def main():
     res = model.fit(disp=False)
     preds_man = res.forecast(steps=len(test))
 
-    mae_man = mean_absolute_error(test, preds_man)
+    mask = test.notna() & preds_man.notna()
+    mae_man = mean_absolute_error(test[mask], preds_man[mask])
     mape_man = mean_absolute_percentage_error(test, preds_man) * 100
     print(f"[Manual SARIMA] MAE={mae_man:.2f}, MAPE={mape_man:.2f}%")
 

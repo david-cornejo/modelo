@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 # Cargar el archivo original
-df = pd.read_csv("../data/raw/2020.csv")
+df = pd.read_csv("../data/raw/2021.csv")
 
 # Saltar las primeras filas irrelevantes (encabezados duplicados, información general)
 df = df[6:]
@@ -40,7 +40,7 @@ df = df.sort_values(by='Fecha')
 df['Fecha'] = df['Fecha'].dt.strftime('%d/%m/%Y')
 
 # Guardar el archivo limpio si lo deseas
-df.to_csv("../data/processed/ventas_2020_limpias.csv", index=False)
+df.to_csv("../data/processed/ventas_2021_limpias.csv", index=False)
 
 # Mostrar preview (opcional si estás trabajando en Jupyter)
 print(df.head())

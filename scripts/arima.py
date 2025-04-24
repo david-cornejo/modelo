@@ -57,7 +57,7 @@ def plot_forecast(train, test, forecast):
 # 6. Main
 # -------------------------------
 def main():
-    path = "../data/processed/ventas_2015-2020.csv"
+    path = "../data/processed/merged/ventas_2016-2024.csv"
     series = load_weekly_data(path)
     train, test = train_test_split_series(series, test_weeks=52)
     

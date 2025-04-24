@@ -18,7 +18,7 @@ def cargar_datos(path):
 
 def graficar_serie(df):
     df.set_index("Fecha", inplace=True)
-    cargos_semanales = df.resample('W')['Cargos'].sum()
+    cargos_semanales = df.resample('M')['Cargos'].sum()
 
     # Gráfico estático
     plt.figure(figsize=(12, 6))
@@ -44,7 +44,7 @@ def graficar_serie(df):
     fig.show()
 
 def main():
-    ruta = "../data/processed/ventas_2015-2020.csv"  # Cambia si tu archivo está en otra ruta
+    ruta = "../data/processed/merged/ventas_2015-2024.csv"  # Cambia si tu archivo está en otra ruta
     df = cargar_datos(ruta)
     graficar_serie(df)
 

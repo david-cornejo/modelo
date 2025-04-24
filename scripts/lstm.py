@@ -1,5 +1,11 @@
 import os
+# ──────────────────────────────────────────────────────────────────────────────
+# Forzar CPU y desactivar XLA/Metal para evitar errores de plataforma
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"        # suprime logs innecesarios
+os.environ["CUDA_VISIBLE_DEVICES"] = ""         # deshabilita GPUs/Metal
+os.environ["TF_XLA_FLAGS"] = "--tf_xla_enable_xla_devices=false"
+# ──────────────────────────────────────────────────────────────────────────────
 
 import pandas as pd
 import numpy as np
@@ -9,9 +15,14 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dense, Dropout, Input
 from keras.callbacks import EarlyStopping
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
+from sklearn.metrics import mean_absolute_percentage_error
 import warnings
 warnings.filterwarnings("ignore")
+
+# Asegurarnos de que TF no intente JIT/XLA
+tf.config.optimizer.set_jit(False)
+# Confirmar que no hay GPUs visibles
+tf.config.set_visible_devices([], 'GPU')
 
 def load_and_aggregate(data_path, use_log_transform=False):
     df = pd.read_csv(data_path)
@@ -19,109 +30,98 @@ def load_and_aggregate(data_path, use_log_transform=False):
     df["Cargos"] = pd.to_numeric(df["Cargos"], errors="coerce")
     df = df[df["Cargos"] > 0]
     df.set_index("Fecha", inplace=True)
-    weekly_cargos = df["Cargos"].resample("W").sum().fillna(0)
+    weekly = df["Cargos"].resample("M").sum().fillna(0)
     if use_log_transform:
-        weekly_cargos = np.log1p(weekly_cargos)
-    return weekly_cargos
+        weekly = np.log1p(weekly)
+    return weekly
 
 def create_sequences(data, window_size):
     X, y = [], []
     for i in range(len(data) - window_size):
-        X.append(data[i:i+window_size])
-        y.append(data[i+window_size])
+        X.append(data[i : i + window_size])
+        y.append(data[i + window_size])
     return np.array(X), np.array(y)
 
 def build_lstm_model(input_shape, dropout_rate):
-    model = Sequential()
-    model.add(Input(shape=input_shape))
-    model.add(LSTM(50, return_sequences=True))
-    model.add(Dropout(dropout_rate))
-    model.add(LSTM(50))
-    model.add(Dropout(dropout_rate))
-    model.add(Dense(1))
-    model.compile(optimizer='adam', loss='mean_squared_error')
+    model = Sequential([
+        Input(shape=input_shape),
+        LSTM(50, return_sequences=True),
+        Dropout(dropout_rate),
+        LSTM(50),
+        Dropout(dropout_rate),
+        Dense(1)
+    ])
+    model.compile(optimizer="adam", loss="mean_squared_error")
     return model
 
-def evaluate_model(y_true, y_pred):
-    mae = mean_absolute_error(y_true, y_pred)
-    mape = mean_absolute_percentage_error(y_true, y_pred) * 100
-    return mae, mape
-
 def main():
-    data_path = "../data/processed/ventas_2015-2020.csv"
+    data_path = "../data/processed/merged/ventas_2015-2024.csv"
     use_log = True
 
-    weekly_cargos = load_and_aggregate(data_path, use_log_transform=use_log)
-    split_index = int(len(weekly_cargos) * 0.8)
-    train_series = weekly_cargos.iloc[:split_index]
-    test_series = weekly_cargos.iloc[split_index:]
+    # 1) Carga y agregación
+    weekly = load_and_aggregate(data_path, use_log_transform=use_log)
 
-    scaler = MinMaxScaler(feature_range=(0, 1))
+    # 2) División train/test
+    split_idx = int(len(weekly) * 0.85)
+    train_series = weekly.iloc[:split_idx]
+    test_series = weekly.iloc[split_idx:]
+
+    # 3) Escalado
+    scaler = MinMaxScaler()
     train_scaled = scaler.fit_transform(train_series.values.reshape(-1, 1))
-    test_scaled = scaler.transform(test_series.values.reshape(-1, 1))
+    test_scaled  = scaler.transform(test_series.values.reshape(-1, 1))
 
-    # Grid de hiperparámetros
-    window_sizes = [4, 8, 12]
-    dropout_rates = [0.1, 0.2]
-    batch_sizes = [8, 16]
-    epochs_list = [50]
+    # 4) Parámetros definidos manualmente (valores ajustados)
+    window_size  = 4
+    dropout_rate = 0.01
+    batch_size   = 16
+    epochs       = 50
 
-    best_mape = float("inf")
-    best_config = None
-    best_model = None
-    best_results = None
+    print(f"Usando configuración: window={window_size}, dropout={dropout_rate}, batch={batch_size}, epochs={epochs}")
 
-    for window_size in window_sizes:
-        X_train, y_train = create_sequences(train_scaled, window_size)
-        X_test, y_test = create_sequences(test_scaled, window_size)
+    # 5) Creación de secuencias
+    Xtr, ytr = create_sequences(train_scaled, window_size)
+    Xte, yte = create_sequences(test_scaled, window_size)
+    Xtr = Xtr.reshape(*Xtr.shape, 1)
+    Xte = Xte.reshape(*Xte.shape, 1)
 
-        X_train = X_train.reshape((X_train.shape[0], X_train.shape[1], 1))
-        X_test = X_test.reshape((X_test.shape[0], X_test.shape[1], 1))
+    # 6) Construcción y entrenamiento del modelo
+    model = build_lstm_model((window_size, 1), dropout_rate)
+    es = EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True)
+    model.fit(Xtr, ytr, validation_split=0.01, epochs=epochs, batch_size=batch_size,
+              verbose=1, callbacks=[es])
 
-        for dropout in dropout_rates:
-            for batch in batch_sizes:
-                for epochs in epochs_list:
-                    print(f"Probando: window={window_size}, dropout={dropout}, batch={batch}, epochs={epochs}")
-                    model = build_lstm_model((window_size, 1), dropout)
-                    early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
-                    model.fit(X_train, y_train, epochs=epochs, batch_size=batch, 
-                              validation_split=0.1, verbose=0, callbacks=[early_stop])
+    # 7) Predicción y desescalado
+    pred_scaled = model.predict(Xte)
+    pred = scaler.inverse_transform(pred_scaled)
+    true = scaler.inverse_transform(yte.reshape(-1, 1))
+    if use_log:
+        pred = np.expm1(pred)
+        true = np.expm1(true)
 
-                    test_pred_scaled = model.predict(X_test)
-                    test_pred = scaler.inverse_transform(test_pred_scaled)
-                    y_test_orig = scaler.inverse_transform(y_test)
+    mape_val = mean_absolute_percentage_error(true, pred) * 100
+    print(f"\nMAPE: {mape_val:.2f}%")
 
-                    if use_log:
-                        test_pred = np.expm1(test_pred)
-                        y_test_orig = np.expm1(y_test_orig)
+    # Ajustar las fechas para alinear los datos (se pierde 'window_size' muestras iniciales)
+    dates = test_series.index[window_size:]
+    n = min(len(dates), len(pred))
+    results_df = pd.DataFrame({
+        "Fecha": dates[:n],
+        "Real":  true.flatten()[:n],
+        "Pred":  pred.flatten()[:n]
+    })
+    print(results_df.head())
 
-                    mape = mean_absolute_percentage_error(y_test_orig, test_pred) * 100
-
-                    if mape < best_mape:
-                        best_mape = mape
-                        best_config = (window_size, dropout, batch, epochs)
-                        best_model = model
-                        test_dates = test_series.index[window_size:]
-                        min_len = min(len(test_dates), len(test_pred))
-                        best_results = pd.DataFrame({
-                            "Fecha": test_dates[:min_len],
-                            "Valor Real": y_test_orig.flatten()[:min_len],
-                            "Valor Predicho": test_pred.flatten()[:min_len]
-                        })
-
-    # Resultados finales
-    print(f"\n🎯 Mejor Configuración: window={best_config[0]}, dropout={best_config[1]}, batch={best_config[2]}, epochs={best_config[3]}")
-    print(f"✅ Mejor MAPE: {best_mape:.2f}%")
-    print(best_results.head())
-
-    # Gráficas
+    # 8) Gráfica final
     plt.figure(figsize=(12,6))
-    plt.plot(train_series.index, np.expm1(train_series.values) if use_log else train_series.values, label="Train", color="blue")
-    plt.plot(test_series.index, np.expm1(test_series.values) if use_log else test_series.values, label="Test", color="black")
-    plt.plot(best_results["Fecha"], best_results["Valor Predicho"], label="LSTM Predicción", color="red", linestyle="--")
+    train_vals = np.expm1(train_series) if use_log else train_series
+    test_vals  = np.expm1(test_series)  if use_log else test_series
+    plt.plot(train_series.index, train_vals, label="Train")
+    plt.plot(test_series.index, test_vals, label="Test", color="black")
+    plt.plot(results_df["Fecha"], results_df["Pred"], "--", label="LSTM Predicho", color="red")
     plt.xlabel("Fecha")
     plt.ylabel("Ventas Semanales")
-    plt.title("Predicción con LSTM (mejor configuración)")
+    plt.title("LSTM Forecast (configuración manual)")
     plt.legend()
     plt.grid(True)
     plt.show()

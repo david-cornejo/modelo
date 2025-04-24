@@ -6,31 +6,31 @@ from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 
 # 1) Carga de la serie diaria y agregación semanal
 serie_diaria = (
-    pd.read_csv("../data/processed/ventas_2015-2020.csv",
+    pd.read_csv("../data/processed/merged/ventas_2015-2024.csv",
                 parse_dates=["Fecha"], index_col="Fecha")
       ["Cargos"]
 )
 
 # Agregar los datos a nivel semanal (suma de cargos por semana)
-serie = serie_diaria.resample("W").sum()
+serie = serie_diaria.resample("M").sum()
 # 2) Suavizado de todos los outliers usando IQR + mediana móvil
-def smooth_outliers(s, window=5):
-    q1, q3 = np.percentile(s, [25, 75])
+def smooth_outliers_mean(s, window=5):
+    q1, q3 = np.percentile(s, [15, 85])
     iqr = q3 - q1
     lower, upper = q1 - 1.5*iqr, q3 + 1.5*iqr
 
-    # mediana móvil sobre toda la serie
-    med_rolling = s.rolling(window=window, center=True).median()
+    # media móvil sobre toda la serie (min_periods=1 para evitar NaN)
+    mean_rolling = s.rolling(window=window, center=True, min_periods=1).mean()
 
     s_smooth = s.copy()
     is_outlier = (s < lower) | (s > upper)
-    s_smooth.loc[is_outlier] = med_rolling.loc[is_outlier]
+    s_smooth.loc[is_outlier] = mean_rolling.loc[is_outlier]
     return s_smooth
 
-serie_smooth = smooth_outliers(serie, window=5)
+serie_smooth = smooth_outliers_mean(serie, window=5)
 
 # 3) Split train/test (80% train)
-n = int(len(serie_smooth) * 0.8)
+n = int(len(serie_smooth) * 0.85)
 train, test = serie_smooth.iloc[:n], serie_smooth.iloc[n:]
 
 # 4) Ajuste Holt–Winters sobre serie suavizada
@@ -38,7 +38,7 @@ modelo = ExponentialSmoothing(
     train,
     trend="add",
     seasonal="add",
-    seasonal_periods=52  # 52 semanas en un año
+    seasonal_periods=32  # 52 semanas en un año
 ).fit()
 
 pred = modelo.forecast(len(test))
