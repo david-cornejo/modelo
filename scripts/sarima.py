@@ -1,198 +1,85 @@
-import warnings
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import numpy  as np
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-from statsmodels.tsa.stattools import adfuller
-from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
-from statsmodels.tsa.statespace.sarimax import SARIMAX
-from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
-from pmdarima import auto_arima
-import itertools
+import pmdarima as pm
+from sklearn.metrics import mean_absolute_percentage_error
 
-warnings.filterwarnings('ignore')
+DATA_PATH    = "../data/processed/merged/ventas_2015-2024.csv"
+TEST_HORIZON = 18
+SEASONAL_M   = 12
 
+def load_series(path):
+    df = (
+        pd.read_csv(path, parse_dates=["Fecha"], index_col="Fecha")
+          .assign(Cargos=lambda d: pd.to_numeric(d["Cargos"], errors="coerce"))
+          .dropna(subset=["Cargos"])
+    )
+    # Agrega mensual
+    return df["Cargos"].resample("M").sum()
 
-# --- Suavizado de outliers en toda la serie ---
-def smooth_outliers(s: pd.Series, window: int = 5) -> pd.Series:
-    """
-    Detecta outliers en la serie usando IQR y los reemplaza
-    por la mediana móvil de la ventana especificada.
-    """
-    q1, q3 = np.percentile(s, [25, 75])
+def smooth_outliers(s, q_low=15, q_high=85, factor=1.5, window=5):
+    q1, q3 = np.percentile(s, [q_low, q_high])
     iqr = q3 - q1
-    lower, upper = q1 - 1.5 * iqr, q3 + 1.5 * iqr
-    med_rolling = s.rolling(window=window, center=True).median()
-    s_smooth = s.copy()
-    outliers = (s < lower) | (s > upper)
-    s_smooth[outliers] = med_rolling[outliers]
-    return s_smooth
+    low, up = q1 - factor*iqr, q3 + factor*iqr
+    med = s.rolling(window, center=True, min_periods=1).median()
+    out = s.copy()
+    mask = (s<low)|(s>up)
+    out[mask] = med[mask]
+    return out
 
+# 1) Cargo y suavizo outliers
+serie = load_series(DATA_PATH)
+serie_s = smooth_outliers(serie)
 
-def load_and_aggregate_weekly(path: str,
-                              date_col: str = 'Fecha',
-                              value_col: str = 'Cargos') -> pd.Series:
-    """
-    Carga un CSV con fechas y un valor, y lo agrega a frecuencia semanal.
-    """
-    df = pd.read_csv(path, parse_dates=[date_col], dayfirst=True)
-    df.set_index(date_col, inplace=True)
-    df[value_col] = pd.to_numeric(df[value_col], errors='coerce').fillna(0)
-    weekly = df[value_col].resample('W').sum().fillna(0)
-    return weekly
+# 2) split train/test
+train = serie_s.iloc[:-TEST_HORIZON]
+test  = serie_s.iloc[-TEST_HORIZON:]
 
+# 3) Ajuste auto_arima FORZANDO AR (start_p/P>=1)
+print("🔍 Ajustando SARIMA con búsqueda de órdenes que incluyan AR...")
+sarima = pm.auto_arima(
+    train,
+    seasonal=True, m=SEASONAL_M,
+    start_p=1, max_p=5,
+    start_P=1, max_P=2,
+    d=None, D=None,
+    stepwise=True,
+    suppress_warnings=True,
+    error_action="ignore",
+    trace=True
+)
+print("\n▶ Modelo seleccionado:", sarima.summary())
 
-def test_stationarity(series: pd.Series, s: int = 52):
-    """
-    Ejecuta Augmented Dickey-Fuller en la serie y sus diferencias.
-    """
-    print("=== ADF Test ===")
-    for diff, name in [
-        (series, 'Original'),
-        (series.diff().dropna(), 'd=1'),
-        (series.diff(s).dropna(), f'D={s}')
-    ]:
-        pval = adfuller(diff)[1]
-        print(f"{name}: p-value={pval:.4f}")
+# 4) Rolling one-step forecasts
+history = train.copy().tolist()
+preds = []
+idxs  = test.index
 
+for t in range(TEST_HORIZON):
+    # Cada vez ajusto con todo lo observado hasta ahora
+    sar_mod = pm.ARIMA(order=sarima.order,
+                       seasonal_order=sarima.seasonal_order
+                      ).fit(history, suppress_warnings=True)
+    # pronostico 1 paso
+    yhat = sar_mod.predict(n_periods=1)[0]
+    preds.append(yhat)
+    # meto el valor real para el siguiente loop
+    history.append(test.iloc[t])
 
-def plot_acf_pacf(series: pd.Series, lags: int = 30):
-    """
-    Grafica la ACF y PACF de la serie y de su primera diferencia.
-    """
-    fig, axes = plt.subplots(2, 2, figsize=(12, 8))
-    plot_acf(series, lags=lags, ax=axes[0, 0]); axes[0, 0].set_title('ACF Original')
-    plot_pacf(series, lags=lags, ax=axes[0, 1]); axes[0, 1].set_title('PACF Original')
-    d1 = series.diff().dropna()
-    plot_acf(d1, lags=lags, ax=axes[1, 0]); axes[1, 0].set_title('ACF d=1')
-    plot_pacf(d1, lags=lags, ax=axes[1, 1]); axes[1, 1].set_title('PACF d=1')
-    plt.tight_layout()
-    plt.show()
+# 5) Métrica
+mape = mean_absolute_percentage_error(test, preds)*100
+print(f"\n📊 MAPE rolling SARIMA = {mape:.2f}%")
 
-
-def sarima_grid_search(series: pd.Series,
-                       p_vals, d_vals, q_vals,
-                       P_vals, D_vals, Q_vals,
-                       s: int = 52):
-    """
-    Grid-search de SARIMA(p,d,q)x(P,D,Q,s) optimizando AIC.
-    """
-    best_aic = np.inf
-    best_cfg = None
-    for p, d, q in itertools.product(p_vals, d_vals, q_vals):
-        for P, D, Q in itertools.product(P_vals, D_vals, Q_vals):
-            try:
-                m = SARIMAX(series,
-                            order=(p, d, q),
-                            seasonal_order=(P, D, Q, s),
-                            enforce_stationarity=False,
-                            enforce_invertibility=False)
-                res = m.fit(disp=False)
-                if res.aic < best_aic:
-                    best_aic = res.aic
-                    best_cfg = ((p, d, q), (P, D, Q, s))
-            except Exception:
-                continue
-    return best_cfg, best_aic
-
-
-def rolling_forecast(series: pd.Series, cfg, train_size: int) -> pd.Series:
-    """
-    Realiza rolling-forecast: ajusta el modelo hasta cada punto de test.
-    """
-    (p, d, q), (P, D, Q, s) = cfg
-    train, test = series[:train_size], series[train_size:]
-    history = train.copy()
-    preds = []
-    for t in test.index:
-        res = SARIMAX(history,
-                      order=(p, d, q),
-                      seasonal_order=(P, D, Q, s),
-                      enforce_stationarity=False,
-                      enforce_invertibility=False).fit(disp=False)
-        f = res.forecast(1)[0]
-        preds.append(f)
-        history.loc[t] = test.loc[t]
-    return pd.Series(preds, index=test.index)
-
-
-def main():
-    path = '../data/processed/merged/ventas_2015-2024.csv'
-
-    # 1) Carga y agregación semanal
-    weekly = load_and_aggregate_weekly(path, value_col='Cargos')
-
-    # 2) Suavizado global de outliers
-    weekly = smooth_outliers(weekly, window=5)
-
-    # 3) Visualizar serie suavizada
-    plt.figure(figsize=(10, 4))
-    plt.plot(weekly, label='Ventas Semanales (Suavizada)')
-    plt.title('Serie Semanal Suavizada')
-    plt.grid(True)
-    plt.show()
-
-    # 4) Pruebas de estacionariedad y ACF/PACF
-    test_stationarity(weekly)
-    plot_acf_pacf(weekly)
-
-    # 5) División train/test
-    split_date = '2018-12-31'
-    train = weekly[:split_date]
-    test = weekly[split_date:]
-    if not test.empty and test.index[0] == train.index[-1]:
-        test = test.iloc[1:]
-    train_size = len(train)
-
-    # 6) Grid‑search SARIMA manual
-    p_vals, d_vals, q_vals = range(0, 3), [0, 1], range(0, 3)
-    P_vals, D_vals, Q_vals = range(0, 2), [0, 1], range(0, 2)
-    best_cfg, best_aic = sarima_grid_search(train,
-                                            p_vals, d_vals, q_vals,
-                                            P_vals, D_vals, Q_vals)
-    print(f"Mejor SARIMA: order={best_cfg[0]}, seasonal={best_cfg[1]}, AIC={best_aic:.2f}")
-
-    # 7) Ajuste y pronósticos
-    model = SARIMAX(train,
-                    order=best_cfg[0],
-                    seasonal_order=best_cfg[1],
-                    enforce_stationarity=False,
-                    enforce_invertibility=False)
-    res = model.fit(disp=False)
-    preds_man = res.forecast(steps=len(test))
-
-    mask = test.notna() & preds_man.notna()
-    mae_man = mean_absolute_error(test[mask], preds_man[mask])
-    mape_man = mean_absolute_percentage_error(test, preds_man) * 100
-    print(f"[Manual SARIMA] MAE={mae_man:.2f}, MAPE={mape_man:.2f}%")
-
-    # 8) Benchmark auto_arima
-    auto = auto_arima(train, seasonal=True, m=52,
-                      start_p=0, max_p=3, start_q=0, max_q=3,
-                      d=None, start_P=0, max_P=2,
-                      start_Q=0, max_Q=2, D=None,
-                      stepwise=True, suppress_warnings=True)
-    preds_auto = pd.Series(auto.predict(n_periods=len(test)), index=test.index)
-    mae_auto = mean_absolute_error(test, preds_auto)
-    mape_auto = mean_absolute_percentage_error(test, preds_auto) * 100
-    print(f"[Auto ARIMA] MAE={mae_auto:.2f}, MAPE={mape_auto:.2f}%")
-
-    # 9) Rolling‑forecast
-    preds_roll = rolling_forecast(weekly, best_cfg, train_size)
-    mae_roll = mean_absolute_error(test, preds_roll)
-    print(f"[Rolling SARIMA] MAE={mae_roll:.2f}")
-
-    # 10) Gráfica comparativa
-    plt.figure(figsize=(10, 5))
-    plt.plot(train.index, train, label='Train')
-    plt.plot(test.index, test, label='Test', color='black')
-    plt.plot(preds_man.index, preds_man, '--', label='SARIMA Manual')
-    plt.plot(preds_auto.index, preds_auto, '--', label='Auto ARIMA')
-    plt.plot(preds_roll.index, preds_roll, '--', label='SARIMA Rolling')
-    plt.legend()
-    plt.title('Comparación de Modelos SARIMA vs AutoARIMA')
-    plt.grid(True)
-    plt.show()
-
-
-if __name__ == '__main__':
-    main()
+# 6) Gráfica
+plt.figure(figsize=(12,5))
+plt.plot(serie_s,           color="gray", alpha=0.3, label="Real (suavizado)")
+plt.plot(train.index, train, color="C0",       label="Train")
+plt.plot(test.index,  test,  color="black",    label="Test")
+plt.plot(idxs, preds, "--", color="C2",        label="SARIMA rolling pred")
+plt.title(f"Rolling SARIMA{sarima.order}x{sarima.seasonal_order} — MAPE={mape:.1f}%")
+plt.xlabel("Fecha"); plt.ylabel("Ventas mensuales")
+plt.legend(); plt.grid(True); plt.tight_layout()
+plt.show()

@@ -19,10 +19,17 @@ from sklearn.metrics import mean_absolute_percentage_error
 import warnings
 warnings.filterwarnings("ignore")
 
-# Asegurarnos de que TF no intente JIT/XLA
-tf.config.optimizer.set_jit(False)
-# Confirmar que no hay GPUs visibles
-tf.config.set_visible_devices([], 'GPU')
+# ———  NUEVO: función de suavizado tal cual la tenías  ——————————————
+def smooth_outliers_mean(s, window=5):
+    q1, q3 = np.percentile(s, [15, 85])
+    iqr = q3 - q1
+    lower, upper = q1 - 1.5*iqr, q3 + 1.5*iqr
+    mean_rolling = s.rolling(window=window, center=True, min_periods=1).mean()
+    s_smooth = s.copy()
+    is_outlier = (s < lower) | (s > upper)
+    s_smooth.loc[is_outlier] = mean_rolling.loc[is_outlier]
+    return s_smooth
+# ————————————————————————————————————————————————————————————————
 
 def load_and_aggregate(data_path, use_log_transform=False):
     df = pd.read_csv(data_path)
@@ -30,9 +37,8 @@ def load_and_aggregate(data_path, use_log_transform=False):
     df["Cargos"] = pd.to_numeric(df["Cargos"], errors="coerce")
     df = df[df["Cargos"] > 0]
     df.set_index("Fecha", inplace=True)
+    # agregación mensual
     weekly = df["Cargos"].resample("M").sum().fillna(0)
-    if use_log_transform:
-        weekly = np.log1p(weekly)
     return weekly
 
 def create_sequences(data, window_size):
@@ -59,72 +65,92 @@ def main():
     use_log = True
 
     # 1) Carga y agregación
-    weekly = load_and_aggregate(data_path, use_log_transform=use_log)
+    weekly_orig = load_and_aggregate(data_path)                      # ← guardamos la original
+    # 2) Suavizado de outliers
+    weekly_smooth = smooth_outliers_mean(weekly_orig, window=5)     # ← aplicamos suavizado
 
-    # 2) División train/test
-    split_idx = int(len(weekly) * 0.85)
-    train_series = weekly.iloc[:split_idx]
-    test_series = weekly.iloc[split_idx:]
+    # 3) Log transform si toca
+    if use_log:
+        weekly_orig_log   = np.log1p(weekly_orig)
+        weekly_smooth_log = np.log1p(weekly_smooth)
+    else:
+        weekly_orig_log   = weekly_orig
+        weekly_smooth_log = weekly_smooth
 
-    # 3) Escalado
+    # 4) División train/test sobre la serie suavizada
+    split_idx = int(len(weekly_smooth_log) * 0.85)
+    train_series = weekly_smooth_log.iloc[:split_idx]
+    test_series  = weekly_smooth_log.iloc[split_idx:]
+
+    # 5) Escalado
     scaler = MinMaxScaler()
     train_scaled = scaler.fit_transform(train_series.values.reshape(-1, 1))
     test_scaled  = scaler.transform(test_series.values.reshape(-1, 1))
 
-    # 4) Parámetros definidos manualmente (valores ajustados)
-    window_size  = 4
+    # 6) Parámetros manuales
+    window_size  = 2
     dropout_rate = 0.01
-    batch_size   = 16
+    batch_size   = 8
     epochs       = 50
 
-    print(f"Usando configuración: window={window_size}, dropout={dropout_rate}, batch={batch_size}, epochs={epochs}")
-
-    # 5) Creación de secuencias
+    # 7) Secuencias
     Xtr, ytr = create_sequences(train_scaled, window_size)
     Xte, yte = create_sequences(test_scaled, window_size)
     Xtr = Xtr.reshape(*Xtr.shape, 1)
     Xte = Xte.reshape(*Xte.shape, 1)
 
-    # 6) Construcción y entrenamiento del modelo
+    # 8) Entrenamiento
     model = build_lstm_model((window_size, 1), dropout_rate)
     es = EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True)
-    model.fit(Xtr, ytr, validation_split=0.01, epochs=epochs, batch_size=batch_size,
+    model.fit(Xtr, ytr, validation_split=0.01,
+              epochs=epochs, batch_size=batch_size,
               verbose=1, callbacks=[es])
 
-    # 7) Predicción y desescalado
+    # 9) Predicción y desescalado
     pred_scaled = model.predict(Xte)
     pred = scaler.inverse_transform(pred_scaled)
-    true = scaler.inverse_transform(yte.reshape(-1, 1))
+    true = scaler.inverse_transform(yte.reshape(-1,1))
     if use_log:
         pred = np.expm1(pred)
         true = np.expm1(true)
 
-    mape_val = mean_absolute_percentage_error(true, pred) * 100
-    print(f"\nMAPE: {mape_val:.2f}%")
-
-    # Ajustar las fechas para alinear los datos (se pierde 'window_size' muestras iniciales)
+    # Fechas alineadas
     dates = test_series.index[window_size:]
     n = min(len(dates), len(pred))
-    results_df = pd.DataFrame({
+    df_res = pd.DataFrame({
         "Fecha": dates[:n],
-        "Real":  true.flatten()[:n],
         "Pred":  pred.flatten()[:n]
     })
-    print(results_df.head())
 
-    # 8) Gráfica final
+    # ———  PLOTTING “estilo HW” ——————————————————————————————————
     plt.figure(figsize=(12,6))
-    train_vals = np.expm1(train_series) if use_log else train_series
-    test_vals  = np.expm1(test_series)  if use_log else test_series
-    plt.plot(train_series.index, train_vals, label="Train")
-    plt.plot(test_series.index, test_vals, label="Test", color="black")
-    plt.plot(results_df["Fecha"], results_df["Pred"], "--", label="LSTM Predicho", color="red")
+
+    # Train suavizado (en original scale)
+    plt.plot(weekly_smooth.index[:split_idx],
+             np.expm1(train_series) if use_log else train_series,
+             label="Train (suavizado)")
+
+    # Original Test (sin suavizar) en semitransparencia
+    plt.plot(weekly_orig.index[split_idx:],
+             np.expm1(test_series) if use_log else test_series,
+             label="Original Test", alpha=0.3)
+
+    # Test suavizado
+    plt.plot(weekly_smooth.index[split_idx:],
+             np.expm1(test_series) if use_log else test_series,
+             label="Test (suavizado)", color="black")
+
+    # Forecast LSTM
+    plt.plot(df_res["Fecha"], df_res["Pred"],
+             label="LSTM Forecast", linestyle="--")
+
+    plt.title("LSTM Forecast (configuración manual, con suavizado)")
     plt.xlabel("Fecha")
     plt.ylabel("Ventas Semanales")
-    plt.title("LSTM Forecast (configuración manual)")
     plt.legend()
     plt.grid(True)
     plt.show()
+    # ————————————————————————————————————————————————————————————————
 
 if __name__ == "__main__":
     main()

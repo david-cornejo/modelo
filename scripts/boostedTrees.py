@@ -57,8 +57,9 @@ df_feat.dropna(inplace=True)
 train = df_feat.iloc[:-TEST_HORIZON]
 test  = df_feat.iloc[-TEST_HORIZON:]
 
-X_train, y_train = train.drop("y",1), train["y"]
-X_test,  y_test  = test .drop("y",1),  test["y"]
+X_train, y_train = train.drop("y", axis=1), train["y"]
+X_test,  y_test  = test .drop("y", axis=1),  test["y"]
+
 
 # 5) Hiperparámetros a explorar
 param_distribs = {

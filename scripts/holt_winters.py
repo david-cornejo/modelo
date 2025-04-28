@@ -6,7 +6,7 @@ from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 
 # 1) Carga de la serie diaria y agregación semanal
 serie_diaria = (
-    pd.read_csv("../data/processed/merged/ventas_2015-2024.csv",
+    pd.read_csv("../data/processed/merged/ventas_2015-2020.csv",
                 parse_dates=["Fecha"], index_col="Fecha")
       ["Cargos"]
 )
@@ -38,7 +38,7 @@ modelo = ExponentialSmoothing(
     train,
     trend="add",
     seasonal="add",
-    seasonal_periods=32  # 52 semanas en un año
+    seasonal_periods=16
 ).fit()
 
 pred = modelo.forecast(len(test))
