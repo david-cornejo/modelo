@@ -6,7 +6,7 @@ from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 
 # 1) Carga de la serie diaria y agregación semanal
 serie_diaria = (
-    pd.read_csv("../data/processed/merged/ventas_2015-2020.csv",
+    pd.read_csv("../data/processed/merged/ventas_2015-2024.csv",
                 parse_dates=["Fecha"], index_col="Fecha")
       ["Cargos"]
 )
@@ -38,7 +38,7 @@ modelo = ExponentialSmoothing(
     train,
     trend="add",
     seasonal="add",
-    seasonal_periods=16
+    seasonal_periods=32
 ).fit()
 
 pred = modelo.forecast(len(test))
@@ -47,6 +47,7 @@ pred = modelo.forecast(len(test))
 mae  = mean_absolute_error(test, pred)
 mape = mean_absolute_percentage_error(test, pred) * 100
 print(f"Holt-Winters -> MAE: {mae:.2f}, MAPE: {mape:.2f}%")
+print(f"Holt-Winters -> Error absoluto medio: {mae:.2f}")
 
 # 6) Comparar reales vs predichos
 print("\nValores reales vs predichos:")

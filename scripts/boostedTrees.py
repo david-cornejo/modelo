@@ -10,7 +10,7 @@ from scipy.stats import randint, uniform
 # ───────────────────────── Parámetros ─────────────────────────
 DATA_PATH    = "../data/processed/merged/ventas_2015-2024.csv"
 TEST_HORIZON = 18      # últimos meses para test
-LAGS         = 12      # cuántos retardos básicos
+LAGS         = 24      # cuántos retardos básicos
 RANDOM_STATE = 68
 # ──────────────────────────────────────────────────────────────
 
@@ -23,15 +23,18 @@ df = (
 serie = df["Cargos"].resample("M").sum()
 
 # 2) Suavizado robusto de outliers
-def smooth_outliers(s, q_low=15, q_high=85, factor=1.5, window=5):
-    q1, q3 = np.percentile(s, [q_low, q_high])
+def smooth_outliers(s, window=5):
+    q1, q3 = np.percentile(s, [15, 85])
     iqr = q3 - q1
-    low, up = q1 - factor*iqr, q3 + factor*iqr
-    med = s.rolling(window, center=True, min_periods=1).median()
-    out = s.copy()
-    mask = (s < low) | (s > up)
-    out[mask] = med[mask]
-    return out
+    lower, upper = q1 - 1.5*iqr, q3 + 1.5*iqr
+
+    # media móvil sobre toda la serie (min_periods=1 para evitar NaN)
+    mean_rolling = s.rolling(window=window, center=True, min_periods=1).mean()
+
+    s_smooth = s.copy()
+    is_outlier = (s < lower) | (s > upper)
+    s_smooth.loc[is_outlier] = mean_rolling.loc[is_outlier]
+    return s_smooth
 
 serie_s = smooth_outliers(serie)
 
@@ -89,8 +92,10 @@ best_model = rs.best_estimator_
 
 # 6) predicción y métrica
 y_pred = best_model.predict(X_test)
+mae = np.mean(np.abs(y_test - y_pred))
 mape_bt = mean_absolute_percentage_error(y_test, y_pred)*100
 print(f"\nBoosted Trees mejorado — MAPE: {mape_bt:.2f}%")
+print(f"Boosted Trees mejorado — MAE: {mae:.2f}")
 
 # 7) gráfica
 plt.figure(figsize=(12,5))

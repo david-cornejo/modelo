@@ -5,19 +5,35 @@ from statsmodels.tsa.arima.model import ARIMA
 from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 
 # -------------------------------
-# 1. Cargar y preparar datos
+# 1. Cargar y preparar datos (agregación mensual igual a SARIMA)
 # -------------------------------
-def load_weekly_data(path):
-    df = pd.read_csv(path)
-    df["Fecha"] = pd.to_datetime(df["Fecha"])
-    df.set_index("Fecha", inplace=True)
-    weekly = df["Cargos"].resample("W").sum().fillna(0)
-    return weekly
+def load_monthly_data(path):
+    df = (
+        pd.read_csv(path, parse_dates=["Fecha"], index_col="Fecha")
+          .assign(Cargos=lambda d: pd.to_numeric(d["Cargos"], errors="coerce"))
+          .dropna(subset=["Cargos"])
+    )
+    monthly = df["Cargos"].resample("M").sum()
+    return monthly
+
+# Función para suavizar outliers (similar a la de SARIMA)
+def smooth_outliers(s, window=5):
+    q1, q3 = np.percentile(s, [15, 85])
+    iqr = q3 - q1
+    lower, upper = q1 - 1.5*iqr, q3 + 1.5*iqr
+
+    # media móvil sobre toda la serie (min_periods=1 para evitar NaN)
+    mean_rolling = s.rolling(window=window, center=True, min_periods=1).mean()
+
+    s_smooth = s.copy()
+    is_outlier = (s < lower) | (s > upper)
+    s_smooth.loc[is_outlier] = mean_rolling.loc[is_outlier]
+    return s_smooth
 
 # -------------------------------
 # 2. División de datos
 # -------------------------------
-def train_test_split_series(series, test_weeks=52):
+def train_test_split_series(series, test_weeks=12):
     train = series[:-test_weeks]
     test = series[-test_weeks:]
     return train, test
@@ -30,7 +46,7 @@ def fit_arima_model(train, order=(1,1,1)):
     model_fit = model.fit()
     return model_fit
 
-# -------------------------------∫
+# -------------------------------
 # 4. Predicción y evaluación
 # -------------------------------
 def evaluate_predictions(test, forecast):
@@ -43,7 +59,7 @@ def evaluate_predictions(test, forecast):
 # 5. Visualización
 # -------------------------------
 def plot_forecast(train, test, forecast):
-    plt.figure(figsize=(12,6))
+    plt.figure(figsize=(12, 6))
     plt.plot(train, label="Train")
     plt.plot(test, label="Test")
     plt.plot(test.index, forecast, label="ARIMA Forecast", linestyle="--", color="green")
@@ -57,9 +73,14 @@ def plot_forecast(train, test, forecast):
 # 6. Main
 # -------------------------------
 def main():
-    path = "../data/processed/merged/ventas_2016-2024.csv"
-    series = load_weekly_data(path)
-    train, test = train_test_split_series(series, test_weeks=52)
+    path = "../data/processed/merged/ventas_2015-2024.csv"
+    # Uso de la agregación mensual similar a SARIMA
+    series = load_monthly_data(path)
+
+    # Aplicar suavizado de outliers
+    series = smooth_outliers(series)
+    
+    train, test = train_test_split_series(series, test_weeks=18)
     
     print(f"Datos totales: {len(series)}, Train: {len(train)}, Test: {len(test)}")
     

@@ -3,7 +3,7 @@ import os
 # Forzar CPU y desactivar XLA/Metal para evitar errores de plataforma
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"        # suprime logs innecesarios
-os.environ["CUDA_VISIBLE_DEVICES"] = ""         # deshabilita GPUs/Metal
+#os.environ["CUDA_VISIBLE_DEVICES"] = ""         # deshabilita GPUs/Metal
 os.environ["TF_XLA_FLAGS"] = "--tf_xla_enable_xla_devices=false"
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -14,10 +14,12 @@ import tensorflow as tf
 from keras.models import Sequential
 from keras.layers import LSTM, Dense, Dropout, Input
 from keras.callbacks import EarlyStopping
+from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_absolute_percentage_error
 import warnings
 warnings.filterwarnings("ignore")
+tf.config.set_visible_devices([], 'GPU')
 
 # ———  NUEVO: función de suavizado tal cual la tenías  ——————————————
 def smooth_outliers_mean(s, window=5):
@@ -88,9 +90,9 @@ def main():
     test_scaled  = scaler.transform(test_series.values.reshape(-1, 1))
 
     # 6) Parámetros manuales
-    window_size  = 2
-    dropout_rate = 0.01
-    batch_size   = 8
+    window_size  = 3
+    dropout_rate = 0.1
+    batch_size   = 32  
     epochs       = 50
 
     # 7) Secuencias
@@ -114,6 +116,11 @@ def main():
         pred = np.expm1(pred)
         true = np.expm1(true)
 
+    # Calcular métricas
+    mae = mean_absolute_error(true, pred)
+    mape = mean_absolute_percentage_error(true, pred) * 100
+    print(f"LSTM Forecast -> MAE: {mae:.2f}, MAPE: {mape:.2f}%")
+
     # Fechas alineadas
     dates = test_series.index[window_size:]
     n = min(len(dates), len(pred))
@@ -127,22 +134,26 @@ def main():
 
     # Train suavizado (en original scale)
     plt.plot(weekly_smooth.index[:split_idx],
-             np.expm1(train_series) if use_log else train_series,
-             label="Train (suavizado)")
+            np.expm1(train_series) if use_log else train_series,
+            label="Train (suavizado)")
 
     # Original Test (sin suavizar) en semitransparencia
     plt.plot(weekly_orig.index[split_idx:],
-             np.expm1(test_series) if use_log else test_series,
-             label="Original Test", alpha=0.3)
+            np.expm1(test_series) if use_log else test_series,
+            label="Original Test", alpha=0.3)
 
     # Test suavizado
     plt.plot(weekly_smooth.index[split_idx:],
-             np.expm1(test_series) if use_log else test_series,
-             label="Test (suavizado)", color="black")
+            np.expm1(test_series) if use_log else test_series,
+            label="Test (suavizado)", color="black")
 
     # Forecast LSTM
     plt.plot(df_res["Fecha"], df_res["Pred"],
-             label="LSTM Forecast", linestyle="--")
+            label="LSTM Forecast", linestyle="--")
+
+    # Agregar métricas en la gráfica
+    plt.figtext(0.15, 0.85, f"MAE: {mae:.2f}\nMAPE: {mape:.2f}%", fontsize=12,
+                bbox=dict(facecolor='white', alpha=0.5))
 
     plt.title("LSTM Forecast (configuración manual, con suavizado)")
     plt.xlabel("Fecha")

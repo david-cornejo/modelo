@@ -20,21 +20,23 @@ def load_series(path):
     # Agrega mensual
     return df["Cargos"].resample("M").sum()
 
-def smooth_outliers(s, q_low=15, q_high=85, factor=1.5, window=5):
-    q1, q3 = np.percentile(s, [q_low, q_high])
+# Definir función de suavizado con media móvil (igual que en Holt)
+def smooth_outliers_mean(s, window=5):
+    q1, q3 = np.percentile(s, [15, 85])
     iqr = q3 - q1
-    low, up = q1 - factor*iqr, q3 + factor*iqr
-    med = s.rolling(window, center=True, min_periods=1).median()
-    out = s.copy()
-    mask = (s<low)|(s>up)
-    out[mask] = med[mask]
-    return out
+    low, up = q1 - 1.5 * iqr, q3 + 1.5 * iqr
+    # Media móvil usando promedio (min_periods=1 para evitar NaN)
+    mean_rolling = s.rolling(window=window, center=True, min_periods=1).mean()
+    s_smooth = s.copy()
+    is_outlier = (s < low) | (s > up)
+    s_smooth.loc[is_outlier] = mean_rolling.loc[is_outlier]
+    return s_smooth
 
-# 1) Cargo y suavizo outliers
+# 1) Cargo y suavizo outliers usando smooth_outliers_mean
 serie = load_series(DATA_PATH)
-serie_s = smooth_outliers(serie)
+serie_s = smooth_outliers_mean(serie)
 
-# 2) split train/test
+# Resto del código usa serie_s para el modelo SARIMA, por ejemplo:
 train = serie_s.iloc[:-TEST_HORIZON]
 test  = serie_s.iloc[-TEST_HORIZON:]
 
@@ -71,6 +73,8 @@ for t in range(TEST_HORIZON):
 
 # 5) Métrica
 mape = mean_absolute_percentage_error(test, preds)*100
+mae  = np.mean(np.abs(test - preds))
+print(f"\n📊 MAE rolling SARIMA = {mae:.2f}")
 print(f"\n📊 MAPE rolling SARIMA = {mape:.2f}%")
 
 # 6) Gráfica

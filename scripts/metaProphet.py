@@ -10,7 +10,7 @@ from sklearn.metrics import mean_absolute_percentage_error
 from tqdm import tqdm
 
 # ───────────────────────── Parámetros ─────────────────────────
-DATA_PATH     = "../data/processed/merged/ventas_2016-2024.csv"
+DATA_PATH     = "../data/processed/merged/ventas_2015-2024.csv"
 TEST_HORIZON  = 18     # últimos meses para test
 N_ITER        = 100    # cuántos modelos probar
 RANDOM_SEED   = 42
@@ -24,20 +24,22 @@ def load_and_resample(path):
     )
     return df["Cargos"].resample("ME").sum()
 
-# (Opcional) suavizado de outliers con IQR
-def smooth_outliers(s, q_low=15, q_high=85, factor=1.5, window=5):
-    q1, q3 = np.percentile(s, [q_low, q_high])
+def smooth_outliers_mean(s, window=5):
+    q1, q3 = np.percentile(s, [15, 85])
     iqr = q3 - q1
-    low, up = q1 - factor*iqr, q3 + factor*iqr
-    med = s.rolling(window, center=True, min_periods=1).median()
-    out = s.copy()
-    mask = (s < low) | (s > up)
-    out[mask] = med[mask]
-    return out
+    lower, upper = q1 - 1.5*iqr, q3 + 1.5*iqr
 
-# 1) Cargo y suavizo outliers
+    # media móvil sobre toda la serie (min_periods=1 para evitar NaN)
+    mean_rolling = s.rolling(window=window, center=True, min_periods=1).mean()
+
+    s_smooth = s.copy()
+    is_outlier = (s < lower) | (s > upper)
+    s_smooth.loc[is_outlier] = mean_rolling.loc[is_outlier]
+    return s_smooth
+
+# 1) Cargo la serie y suavizo outliers, igual que en Holt-Winters
 serie = load_and_resample(DATA_PATH)
-serie_s = smooth_outliers(serie)
+serie_s = smooth_outliers_mean(serie)
 
 # 2) Preparo DataFrame para Prophet
 df_prop = (
@@ -93,12 +95,14 @@ for i in tqdm(range(N_ITER), desc="Random Search"):
     fcst   = m.predict(future)
     y_pred = fcst.set_index("ds")["yhat"].loc[test_df["ds"]].values
     mape   = mean_absolute_percentage_error(y_true, y_pred)*100
+    mae = np.mean(np.abs(y_true - y_pred))
 
     if mape < best_mape:
         best_mape, best_params = mape, params
 
 print(f"\n>>> Mejor configuración tras {N_ITER} iteraciones:")
 print(f"    MAPE = {best_mape:.2f}%")
+print(f"    MAE  = {mae:.2f}")
 print("    Parámetros:", best_params)
 
 # 6) Entreno el modelo final con la mejor configuración
@@ -130,7 +134,7 @@ plt.plot(df_prop["ds"], df_prop["y"],      color="gray", alpha=0.3, label="Real 
 plt.plot(train_df["ds"], train_df["y"],    color="C0", label="Train")
 plt.plot(test_df["ds"],  test_df["y"],     color="black", label="Test")
 plt.plot(test_df["ds"],  y_pred, "--",     color="C2", label="Prophet pred")
-plt.title(f"Prophet RandomSearch — MAPE={final_mape:.1f}%")
+plt.title(f"Prophet RandomSearch — MAPE={final_mape:.1f}% | MAE={mae:.1f}")
 plt.xlabel("Fecha"); plt.ylabel("Ventas mensuales")
 plt.legend(); plt.grid(True); plt.tight_layout()
 plt.show()
