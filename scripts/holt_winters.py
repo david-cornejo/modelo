@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import time
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 
@@ -13,6 +14,7 @@ serie_diaria = (
 
 # Agregar los datos a nivel semanal (suma de cargos por semana)
 serie = serie_diaria.resample("M").sum()
+
 # 2) Suavizado de todos los outliers usando IQR + mediana móvil
 def smooth_outliers_mean(s, window=5):
     q1, q3 = np.percentile(s, [15, 85])
@@ -33,7 +35,10 @@ serie_smooth = smooth_outliers_mean(serie, window=5)
 n = int(len(serie_smooth) * 0.85)
 train, test = serie_smooth.iloc[:n], serie_smooth.iloc[n:]
 
-# 4) Ajuste Holt–Winters sobre serie suavizada
+# 4) Ajuste Holt–Winters sobre serie suavizada y predicción
+# Medición del tiempo de ejecución total del modelo (ajuste + forecast + evaluación)
+execution_start = time.time()
+
 modelo = ExponentialSmoothing(
     train,
     trend="add",
@@ -43,11 +48,13 @@ modelo = ExponentialSmoothing(
 
 pred = modelo.forecast(len(test))
 
+total_elapsed = time.time() - execution_start
+
 # 5) Métricas
 mae  = mean_absolute_error(test, pred)
 mape = mean_absolute_percentage_error(test, pred) * 100
 print(f"Holt-Winters -> MAE: {mae:.2f}, MAPE: {mape:.2f}%")
-print(f"Holt-Winters -> Error absoluto medio: {mae:.2f}")
+print(f"Holt-Winters -> Tiempo de ejecución total del modelo: {total_elapsed:.2f} segundos")
 
 # 6) Comparar reales vs predichos
 print("\nValores reales vs predichos:")
